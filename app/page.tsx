@@ -162,7 +162,7 @@ export default function Home() {
           <Reveal>
             <span className="eyebrow">Built, not theorized</span>
             <h2 className="display" style={{ marginTop: 18, maxWidth: "16ch" }}>
-              I ran this operating system at G2. The results held.
+              I&apos;ve built the working model of this operating system for a GTM organization and now I want to share it.
             </h2>
           </Reveal>
 

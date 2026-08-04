@@ -257,7 +257,7 @@ export default function Home() {
                 { label: "Onboarding", count: 2, active: false },
                 { label: "Adoption", count: 0, active: false },
                 { label: "Expansion", count: 0, active: false },
-                { label: "Renewal", count: 0, active: false },
+                { label: "Renewal", count: 1, active: false },
               ].map((s) => (
                 <div key={s.label} className={`stage-pill${s.active ? " active" : ""}`}>
                   <span className="stage-pill-label">{s.label}</span>
@@ -340,6 +340,80 @@ export default function Home() {
                 <span className="wf-meta-item">
                   <span className="wf-live-dot" />
                   <span className="val">Live</span>
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={180} className="workflow-card">
+            <div className="wf-header">
+              <div className="wf-title-row">
+                <div className="wf-icon">🔁</div>
+                <span className="wf-name">Churn-Risk Alert &amp; Audit Loop</span>
+              </div>
+              <div className="wf-badges">
+                <span className="wf-badge is-stage">Renewal</span>
+                <span className="wf-badge">AM</span>
+                <span className="wf-badge">CSM</span>
+              </div>
+            </div>
+            <div className="wf-desc">
+              Identifies at-risk customer accounts (pulse score 0 to 3), enriches
+              them with Salesforce and ZoomInfo context, posts actionable
+              churn-risk alerts to the relevant team channel, and audits for
+              acknowledgment or non-response over a 4-day window. Bridges the gap
+              until Catalyst v2 ships so CSMs and AMs can act on churn risk
+              immediately.
+            </div>
+            <div className="wf-how">
+              <div className="wf-how-label">How it works</div>
+              <div className="wf-cols">
+                <div className="wf-col">
+                  <div className="wf-col-label">Triggered by</div>
+                  <div className="wf-col-content">
+                    <strong>Scheduled</strong>
+                    Recurring batch in n8n, likely daily. Pulls active accounts,
+                    filters to pulse score 0 to 3, fires the enrichment and
+                    alert sequence. Also triggerable manually.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Processing</div>
+                  <div className="wf-col-content">
+                    <strong>3 stages</strong>
+                    1. Pull and Filter: queries Salesforce for active accounts
+                    at pulse 0 to 3, enriches with ZoomInfo for multi-threading
+                    contacts. 2. Alert: posts churn-risk alert to team channel
+                    with account name, risk level, renewal window, AM/CSM
+                    ownership, and 5 recommended contacts. 3. Audit Loop:
+                    checks acknowledgment after 4 days, re-nudges or closes
+                    based on response.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Outputs</div>
+                  <div className="wf-col-content">
+                    <strong>Alert + audit trail</strong>
+                    Churn-risk alert in team channel with contact quality
+                    assessment and multi-threading recommendations. 4-day audit
+                    check creates an acknowledgment record. AM/CSM confirms via
+                    reply or emoji.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="wf-footer">
+              <div className="wf-tools">
+                {["n8n", "Salesforce", "ZoomInfo", "Slack", "Claude Haiku"].map(
+                  (tool) => (
+                    <span key={tool} className="wf-tool">{tool}</span>
+                  )
+                )}
+              </div>
+              <div className="wf-meta">
+                <span className="wf-meta-item">
+                  <span className="wf-live-dot" style={{ background: "var(--alert)", boxShadow: "0 0 8px var(--glow-alert)" }} />
+                  <span className="val" style={{ color: "var(--alert)" }}>In progress · 75%</span>
                 </span>
               </div>
             </div>

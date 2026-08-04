@@ -446,8 +446,75 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 }
 
 /* =========================================================================
+   RENEWAL CHART
+   ========================================================================= */
+.renewal-chart {
+  margin-top: 56px;
+  padding: 28px 28px 20px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  background: var(--graphite);
+}
+.renewal-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.renewal-chart-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.renewal-chart-delta {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--signal);
+  letter-spacing: -0.02em;
+}
+.renewal-svg { width: 100%; display: block; }
+
+/* =========================================================================
    IN PRACTICE — operating system catalog
    ========================================================================= */
+.catalog-stats {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  margin-top: 52px;
+  flex-wrap: wrap;
+}
+.catalog-stat {
+  flex: 1 1 160px;
+  padding: 20px 24px;
+  border-right: 1px solid var(--hairline);
+}
+.catalog-stat:last-child { border-right: none; }
+.catalog-stat-val {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--signal);
+  line-height: 1;
+}
+.catalog-stat-val.is-alert { color: var(--alert); }
+.catalog-stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+@media (max-width: 680px) {
+  .catalog-stat { border-right: none; border-bottom: 1px solid var(--hairline); }
+  .catalog-stat:last-child { border-bottom: none; }
+}
 .motion-head { max-width: 680px; }
 .motion-head h2 { margin-top: 18px; }
 .motion-head .lede { margin-top: 20px; }
@@ -647,6 +714,219 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   border-radius: 50%;
   background: var(--signal);
   box-shadow: 0 0 8px var(--glow-signal);
+}
+
+.role-savings {
+  margin-top: 48px;
+  padding: 28px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  background: var(--graphite);
+}
+.role-savings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.role-savings-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.role-savings-total {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--signal);
+  letter-spacing: -0.02em;
+}
+.role-bars { display: flex; flex-direction: column; gap: 14px; }
+.role-bar-row {
+  display: grid;
+  grid-template-columns: 46px 1fr 56px;
+  align-items: center;
+  gap: 14px;
+}
+.role-bar-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+.role-bar-track {
+  height: 8px;
+  background: var(--graphite-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.role-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--signal), var(--signal-deep));
+  border-radius: 2px;
+}
+.role-bar-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--signal);
+  text-align: right;
+}
+
+/* =========================================================================
+   GOVERNANCE — intake and scaling system
+   ========================================================================= */
+.gov-head { max-width: 720px; }
+.gov-head h2 { margin-top: 18px; }
+.gov-head .lede { margin-top: 20px; }
+
+.gov-phases {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  overflow: hidden;
+}
+@media (max-width: 780px) { .gov-phases { grid-template-columns: 1fr; } }
+
+.gov-phase {
+  padding: 32px 28px;
+  border-right: 1px solid var(--hairline);
+  background: var(--obsidian);
+  position: relative;
+}
+.gov-phase:last-child { border-right: none; }
+@media (max-width: 780px) {
+  .gov-phase { border-right: none; border-bottom: 1px solid var(--hairline); }
+  .gov-phase:last-child { border-bottom: none; }
+}
+
+.gov-phase-index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--signal);
+  margin-bottom: 16px;
+}
+.gov-phase h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.gov-phase p { font-size: 15px; color: var(--ink-dim); line-height: 1.65; }
+.gov-phase p + p { margin-top: 10px; }
+
+.intake-pipeline {
+  margin-top: 56px;
+  padding: 28px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  background: var(--graphite);
+}
+.intake-pipeline-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 28px;
+}
+.intake-stages {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 100px;
+}
+.intake-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+}
+.intake-stage-bar {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(56,189,248,0.4), rgba(56,189,248,0.15));
+  border-radius: 2px 2px 0 0;
+  border: 1px solid rgba(56,189,248,0.2);
+  border-bottom: none;
+}
+.intake-stage-bar.is-live {
+  background: linear-gradient(180deg, var(--signal), var(--signal-deep));
+  border-color: var(--signal);
+  box-shadow: 0 0 18px var(--glow-signal);
+}
+.intake-stage-val {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: 600;
+  color: var(--ink-dim);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.intake-stage-val.is-live { color: var(--signal); }
+.intake-labels {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  border-top: 1px solid var(--hairline);
+  padding-top: 12px;
+}
+.intake-stage-name {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  line-height: 1.4;
+}
+.intake-stage-name.is-live { color: var(--signal); }
+
+.gov-intake-stats {
+  margin-top: 48px;
+  padding: 28px 32px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--graphite), var(--obsidian));
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.gov-intake-stat {
+  flex: 1 1 120px;
+  padding: 0 24px;
+  border-right: 1px solid var(--hairline);
+}
+.gov-intake-stat:first-child { padding-left: 0; }
+.gov-intake-stat:last-child { border-right: none; }
+.gov-intake-stat-val {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--signal);
+  line-height: 1;
+}
+.gov-intake-stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 5px;
+}
+@media (max-width: 680px) {
+  .gov-intake-stats { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .gov-intake-stat { padding: 0; border-right: none; }
 }
 
 /* =========================================================================

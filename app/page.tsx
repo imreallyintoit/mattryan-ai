@@ -1,5 +1,6 @@
 import PredictionLoop from "@/components/PredictionLoop";
 import Reveal from "@/components/Reveal";
+import RenewalChart from "@/components/RenewalChart";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
             <a href="#system">System</a>
             <a href="#proof">Proof</a>
             <a href="#practice">In practice</a>
+            <a href="#governance">Governance</a>
             <a href="#about">About</a>
             <a href="#contact" className="nav-cta">
               Get in touch →
@@ -197,6 +199,10 @@ export default function Home() {
             </Reveal>
           </div>
 
+          <Reveal delay={100}>
+            <RenewalChart />
+          </Reveal>
+
           {/* Pulse Score callout */}
           <Reveal className="pulse-callout" delay={120}>
             <div>
@@ -251,6 +257,27 @@ export default function Home() {
             </p>
           </Reveal>
 
+          <Reveal delay={60}>
+            <div className="catalog-stats">
+              <div className="catalog-stat">
+                <div className="catalog-stat-val">14</div>
+                <div className="catalog-stat-label">Live scaled workflows</div>
+              </div>
+              <div className="catalog-stat">
+                <div className="catalog-stat-val">~46 hrs</div>
+                <div className="catalog-stat-label">Saved per week</div>
+              </div>
+              <div className="catalog-stat">
+                <div className="catalog-stat-val">6</div>
+                <div className="catalog-stat-label">Roles covered</div>
+              </div>
+              <div className="catalog-stat">
+                <div className="catalog-stat-val is-alert">67</div>
+                <div className="catalog-stat-label">Submissions in pipeline</div>
+              </div>
+            </div>
+          </Reveal>
+
           <Reveal delay={80}>
             <div className="stage-bar">
               {[
@@ -259,7 +286,7 @@ export default function Home() {
                 { label: "Discovery", count: 2, active: false },
                 { label: "Demo & Proposal", count: 0, active: false },
                 { label: "Negotiation & Close", count: 0, active: false },
-                { label: "Onboarding", count: 2, active: false },
+                { label: "Onboarding", count: 3, active: false },
                 { label: "Adoption", count: 0, active: false },
                 { label: "Expansion", count: 0, active: false },
                 { label: "Renewal", count: 1, active: false },
@@ -420,6 +447,290 @@ export default function Home() {
                   <span className="wf-live-dot" style={{ background: "var(--alert)", boxShadow: "0 0 8px var(--glow-alert)" }} />
                   <span className="val" style={{ color: "var(--alert)" }}>In progress · 75%</span>
                 </span>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={200} className="workflow-card">
+            <div className="wf-header">
+              <div className="wf-title-row">
+                <div className="wf-icon">🎯</div>
+                <span className="wf-name">MEDDPICC Research &amp; Salesforce Updater</span>
+              </div>
+              <div className="wf-badges">
+                <span className="wf-badge is-stage">Discovery</span>
+                <span className="wf-badge">AE</span>
+                <span className="wf-badge">AM</span>
+              </div>
+            </div>
+            <div className="wf-desc">
+              Automates MEDDPICC field research and Salesforce updates for Account
+              Managers by mining Gong call transcripts, Salesforce history, and
+              account context. Eliminates the manual CRM hygiene work that
+              follows every discovery call.
+            </div>
+            <div className="wf-how">
+              <div className="wf-how-label">How it works</div>
+              <div className="wf-cols">
+                <div className="wf-col">
+                  <div className="wf-col-label">Triggered by</div>
+                  <div className="wf-col-content">
+                    <strong>On-demand or scheduled</strong>
+                    AM messages the agent with account or deal details. Also
+                    fires weekly on a schedule to scan recent Gong calls across
+                    the book.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Processing</div>
+                  <div className="wf-col-content">
+                    <strong>Signal extraction</strong>
+                    Mines Gong transcripts for MEDDPICC signals, cross-references
+                    Salesforce opportunity history, and uses Claude to structure
+                    findings into each MEDDPICC field.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Outputs</div>
+                  <div className="wf-col-content">
+                    <strong>Updated Salesforce fields</strong>
+                    MEDDPICC fields written back to the Salesforce opportunity.
+                    Summary posted to Slack so the rep sees exactly what changed
+                    and why.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="wf-footer">
+              <div className="wf-tools">
+                {["Salesforce", "Gong", "Slack", "Claude"].map((tool) => (
+                  <span key={tool} className="wf-tool">{tool}</span>
+                ))}
+              </div>
+              <div className="wf-meta">
+                <span className="wf-meta-item">
+                  <span className="val">~4 hrs/wk</span> saved per rep
+                </span>
+                <span className="wf-meta-item">
+                  <span className="wf-live-dot" />
+                  <span className="val">Live</span>
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={210}>
+            <div className="role-savings">
+              <div className="role-savings-header">
+                <span className="role-savings-label">Time saved per week · by role</span>
+                <span className="role-savings-total">~46 hrs total</span>
+              </div>
+              <div className="role-bars">
+                {[
+                  { role: "AE",  hours: 14, pct: 100 },
+                  { role: "AM",  hours: 10, pct: 71  },
+                  { role: "BDR", hours: 8,  pct: 57  },
+                  { role: "CSM", hours: 7,  pct: 50  },
+                  { role: "SC",  hours: 5,  pct: 36  },
+                  { role: "IC",  hours: 2,  pct: 14  },
+                ].map((r) => (
+                  <div key={r.role} className="role-bar-row">
+                    <span className="role-bar-name">{r.role}</span>
+                    <div className="role-bar-track">
+                      <div className="role-bar-fill" style={{ width: `${r.pct}%` }} />
+                    </div>
+                    <span className="role-bar-val">{r.hours} hrs</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={220} className="workflow-card">
+            <div className="wf-header">
+              <div className="wf-title-row">
+                <div className="wf-icon">🤝</div>
+                <span className="wf-name">SC to ICon Handoff Generator</span>
+              </div>
+              <div className="wf-badges">
+                <span className="wf-badge is-stage">Onboarding</span>
+                <span className="wf-badge">SC</span>
+                <span className="wf-badge">IC</span>
+              </div>
+            </div>
+            <div className="wf-desc">
+              Automatically pulls presales context from Salesforce, Gong, and
+              the SC Request object for newly-closed deals and assembles a
+              structured handoff brief for the implementation consultant. No
+              manual knowledge transfer, no lost context at the moment it
+              matters most.
+            </div>
+            <div className="wf-how">
+              <div className="wf-how-label">How it works</div>
+              <div className="wf-cols">
+                <div className="wf-col">
+                  <div className="wf-col-label">Triggered by</div>
+                  <div className="wf-col-content">
+                    <strong>Scheduled daily</strong>
+                    Scans Salesforce Onboarding records created in the prior
+                    24 hours for newly-closed deals that need a handoff brief.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Processing</div>
+                  <div className="wf-col-content">
+                    <strong>Context assembly</strong>
+                    Pulls SC Request object, Gong call summaries, and
+                    Salesforce deal history. Structures into a handoff format
+                    covering technical requirements, stakeholders, and
+                    agreed success criteria.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Outputs</div>
+                  <div className="wf-col-content">
+                    <strong>Handoff brief in Slack</strong>
+                    Structured brief delivered to the IC in Slack at deal
+                    close. Presales context preserved without a single
+                    manual handoff meeting.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="wf-footer">
+              <div className="wf-tools">
+                {["Salesforce", "Gong", "Slack", "Dust"].map((tool) => (
+                  <span key={tool} className="wf-tool">{tool}</span>
+                ))}
+              </div>
+              <div className="wf-meta">
+                <span className="wf-meta-item">
+                  <span className="val">~5 hrs/wk</span> saved
+                </span>
+                <span className="wf-meta-item">
+                  <span className="wf-live-dot" />
+                  <span className="val">Live</span>
+                </span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------- GOVERNANCE ---------------- */}
+      <section className="section" id="governance" style={{ background: "var(--obsidian)", borderBlock: "1px solid var(--hairline)" }}>
+        <div className="container">
+          <Reveal className="gov-head">
+            <span className="eyebrow">Governance</span>
+            <h2 className="display" style={{ marginTop: 18 }}>
+              The system that governs the system.
+            </h2>
+            <p className="lede" style={{ marginTop: 20 }}>
+              Prediction requires data infrastructure. Operationalizing AI
+              across a GTM org requires governance infrastructure. The intake
+              and triage system is how ideas from the field become maintained,
+              QA&apos;d workflows, and how the operating system stays coherent
+              as it scales.
+            </p>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="gov-phases">
+              <div className="gov-phase">
+                <div className="gov-phase-index">01 / ACCESS</div>
+                <h3>Open the door.</h3>
+                <p>
+                  Give every role a structured way to submit ideas. Without a
+                  front door, AI work happens in shadow corners: undocumented,
+                  single-owner, invisible to leadership until something breaks.
+                </p>
+                <p>
+                  Access is not just permissions. It is a cultural signal that
+                  the org is building this together, and that the field is the
+                  best source of what to build next.
+                </p>
+              </div>
+              <div className="gov-phase">
+                <div className="gov-phase-index">02 / INVENTORY</div>
+                <h3>Catalog what exists.</h3>
+                <p>
+                  Before you scale, you need to know what has already been
+                  built. Most organizations have more automation than they
+                  think, and most of it is fragile: one person owns it, no one
+                  else can maintain it, and it was never designed to scale.
+                </p>
+                <p>
+                  The inventory surfaces shadow IT, informal automations, and
+                  one-off experiments before they become technical debt. It is
+                  how you prevent the same thing from being built six times by
+                  six different people.
+                </p>
+              </div>
+              <div className="gov-phase">
+                <div className="gov-phase-index">03 / GOVERN</div>
+                <h3>Rebuild it to last.</h3>
+                <p>
+                  Not every submission should be built. Not every informal
+                  automation should survive review. The governance layer
+                  triages by priority and risk tier, assigns ownership, and
+                  rebuilds approved workflows in a maintained, QA&apos;d,
+                  champion-supported form.
+                </p>
+                <p>
+                  The output is a catalog the whole org can trust: tested in
+                  the field, documented, and handed to a champion who owns it
+                  going forward.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="intake-pipeline">
+              <div className="intake-pipeline-label">Intake pipeline · all submissions</div>
+              <div className="intake-stages">
+                {[
+                  { label: "Submitted",   val: 67,  h: 100, live: false },
+                  { label: "In review",   val: 22,  h: 66,  live: false },
+                  { label: "Approved",    val: 18,  h: 54,  live: false },
+                  { label: "In progress", val: 14,  h: 42,  live: false },
+                  { label: "Live",        val: 14,  h: 42,  live: true  },
+                  { label: "Declined",    val: 2,   h: 10,  live: false },
+                ].map((s) => (
+                  <div key={s.label} className="intake-stage">
+                    <div className={`intake-stage-val${s.live ? " is-live" : ""}`}>{s.val}</div>
+                    <div className={`intake-stage-bar${s.live ? " is-live" : ""}`} style={{ height: `${s.h}%` }} />
+                  </div>
+                ))}
+              </div>
+              <div className="intake-labels">
+                {["Submitted", "In review", "Approved", "In progress", "Live", "Declined"].map((l) => (
+                  <span key={l} className={`intake-stage-name${l === "Live" ? " is-live" : ""}`}>{l}</span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={160}>
+            <div className="gov-intake-stats">
+              <div className="gov-intake-stat">
+                <div className="gov-intake-stat-val">67</div>
+                <div className="gov-intake-stat-label">Submissions tracked</div>
+              </div>
+              <div className="gov-intake-stat">
+                <div className="gov-intake-stat-val">14</div>
+                <div className="gov-intake-stat-label">Live, scaled, maintained</div>
+              </div>
+              <div className="gov-intake-stat">
+                <div className="gov-intake-stat-val">P0–P3</div>
+                <div className="gov-intake-stat-label">Priority scoring on every idea</div>
+              </div>
+              <div className="gov-intake-stat">
+                <div className="gov-intake-stat-val">6</div>
+                <div className="gov-intake-stat-label">Roles with named champions</div>
+              </div>
+              <div className="gov-intake-stat">
+                <div className="gov-intake-stat-val">~46 hrs</div>
+                <div className="gov-intake-stat-label">Returned to sellers per week</div>
               </div>
             </div>
           </Reveal>

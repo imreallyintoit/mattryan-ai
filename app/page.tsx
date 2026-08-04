@@ -205,10 +205,15 @@ export default function Home() {
                 The Pulse Score
               </h3>
               <p>
-                A 0-to-8 health and product-engagement model, built with product
-                and data analytics, that reads adoption risk as a leading
-                indicator, triggering intervention before a customer goes
-                quiet. Prediction, made operational.
+                A score without underlying data is just a guess. Before the
+                Pulse Score could predict anything, we had to build the
+                instrumentation beneath it: product engagement telemetry,
+                support interaction signals, content consumption patterns, and
+                renewal-timing context, normalized and fed into a 0-to-8
+                composite model built with product and data analytics. That
+                upstream data work is what separates a predictive system from
+                a reactive dashboard. The score is the output. The architecture
+                is the point.
               </p>
             </div>
             <div className="pulse-meter">

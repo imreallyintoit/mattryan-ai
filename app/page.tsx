@@ -946,7 +946,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="story" delay={100}>
-            <h2 className="display">The engineer who runs the number.</h2>
+            <h2 className="display">The revenue architect.</h2>
             <span className="role">
               VP, Global Solutions &amp; Customer Success · G2
             </span>

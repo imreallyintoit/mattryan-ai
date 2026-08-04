@@ -16,7 +16,7 @@ export default function Home() {
               <circle cx="17" cy="17" r="2.5" fill="var(--alert)" className="nav-center-dot"/>
               <circle cx="17" cy="3" r="2" fill="var(--signal)" className="nav-orbit-dot"/>
             </svg>
-            matt ryan<span className="dot-ai">.ai</span>
+            mattryan<span className="dot-ai">.ai</span>
           </a>
           <div className="nav-links">
             <a href="#system">System</a>
@@ -1150,7 +1150,7 @@ export default function Home() {
       <footer className="footer">
         <div className="container footer-inner">
           <a href="#top" className="wordmark">
-            matt ryan<span className="dot-ai">.ai</span>
+            mattryan<span className="dot-ai">.ai</span>
           </a>
           <span className="footer-meta">
             The AI GTM Operating System · The Prediction Loop

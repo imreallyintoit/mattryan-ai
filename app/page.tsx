@@ -37,14 +37,15 @@ export default function Home() {
           <div>
             <span className="eyebrow">The AI GTM Operating System</span>
             <h1 className="display">
-              Go-to-market that <span className="highlight">predicts</span>,
-              not just reacts.
+              Your GTM finds out too late. This is what{" "}
+              <span className="highlight">being ahead</span> looks like.
             </h1>
             <p className="lede hero-lede">
-              Most revenue teams find out too late. I run go-to-market as a
-              predictive system: humans, agents, and digital experiences
-              orchestrated around the customer journey, seeing risk and
-              expansion 90 to 180 days before they show up in the number.
+              An AI operating system built on prediction: humans, agents,
+              and digital experiences orchestrated to surface risk and
+              expansion 90 days before they show up in the number. Designed
+              and proven inside a live GTM organization. This site presents
+              the full architecture.
             </p>
             <div className="hero-actions">
               <a href="#system" className="btn btn-primary">

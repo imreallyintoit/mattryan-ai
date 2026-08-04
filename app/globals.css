@@ -263,8 +263,18 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(5, 7, 10, 0.7);
+  background: rgba(5, 7, 10, 0.82);
   border-bottom: 1px solid var(--hairline);
+}
+.nav::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 360px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal), rgba(56, 189, 248, 0.25) 55%, transparent);
+  pointer-events: none;
 }
 .nav-inner {
   display: flex;
@@ -278,10 +288,32 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   font-size: 18px;
   letter-spacing: -0.01em;
   display: inline-flex;
-  align-items: baseline;
-  gap: 2px;
+  align-items: center;
+  gap: 10px;
 }
 .wordmark .dot-ai { color: var(--signal); }
+
+/* orbital nav mark */
+.nav-mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.nav-center-dot {
+  filter: drop-shadow(0 0 4px var(--glow-alert));
+}
+@keyframes nav-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.nav-orbit-dot {
+  transform-origin: 17px 17px;
+  animation: nav-orbit 9s linear infinite;
+  filter: drop-shadow(0 0 3px var(--glow-signal));
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-orbit-dot { animation: none; }
+}
 .nav-links { display: flex; gap: 28px; align-items: center; }
 .nav-links a {
   font-family: var(--font-mono);

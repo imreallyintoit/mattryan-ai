@@ -9,6 +9,13 @@ export default function Home() {
       <nav className="nav">
         <div className="container nav-inner">
           <a href="#top" className="wordmark">
+            <svg className="nav-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <circle cx="17" cy="17" r="14" stroke="var(--signal)" strokeWidth="0.75" fill="none" strokeOpacity="0.18" strokeDasharray="4 3.5"/>
+              <circle cx="17" cy="17" r="9.5" stroke="var(--signal)" strokeWidth="1" fill="none" strokeOpacity="0.45"/>
+              <circle cx="17" cy="17" r="5" stroke="var(--signal)" strokeWidth="1.5" fill="none"/>
+              <circle cx="17" cy="17" r="2.5" fill="var(--alert)" className="nav-center-dot"/>
+              <circle cx="17" cy="3" r="2" fill="var(--signal)" className="nav-orbit-dot"/>
+            </svg>
             matt ryan<span className="dot-ai">.ai</span>
           </a>
           <div className="nav-links">

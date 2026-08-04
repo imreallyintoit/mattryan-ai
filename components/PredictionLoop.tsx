@@ -8,10 +8,10 @@ export default function PredictionLoop() {
 
   // four stage positions (top, right, bottom, left)
   const stages = [
-    { x: cx, y: cy - r, label: "PREDICT" },
+    { x: cx, y: cy - r, label: "SIGNAL" },
     { x: cx + r, y: cy, label: "ORCHESTRATE" },
     { x: cx, y: cy + r, label: "ACT" },
-    { x: cx - r, y: cy, label: "LEARN" },
+    { x: cx - r, y: cy, label: "REFINE" },
   ];
 
   const loopPath = `M ${cx} ${cy - r}
@@ -21,7 +21,7 @@ export default function PredictionLoop() {
     A ${r} ${r} 0 0 1 ${cx} ${cy - r} Z`;
 
   return (
-    <svg viewBox="0 0 460 460" role="img" aria-label="The Prediction Loop: predict, orchestrate, act, learn">
+    <svg viewBox="0 0 460 460" role="img" aria-label="The Prediction Loop: signal, orchestrate, act, refine — SOAR">
       {/* outer + inner rings */}
       <circle className="orbit-ring" cx={cx} cy={cy} r={r + 26} />
       <circle className="orbit-ring inner" cx={cx} cy={cy} r={r} />

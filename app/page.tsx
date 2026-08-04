@@ -116,40 +116,67 @@ export default function Home() {
       <section className="section" id="system">
         <div className="container">
           <Reveal className="framework-head">
-            <span className="eyebrow">The Prediction Loop</span>
+            <span className="eyebrow">The Prediction Loop · SOAR</span>
             <h2 className="display">
               Prediction is the difference between managing churn and
               preventing it.
             </h2>
             <p className="lede">
               AI is not a chatbot bolted onto your funnel. It is a loop that
-              runs continuously across the customer journey: it predicts what
-              happens next, orchestrates the right motion, acts through people
-              and agents, and learns from the outcome. That loop is the engine
-              inside the operating system.
+              runs continuously across the customer journey: it surfaces the
+              signal before the number moves, orchestrates the right motion,
+              acts through people and agents, and refines from every outcome.
+              That loop is the engine inside the operating system.
             </p>
           </Reveal>
 
           <Reveal className="stages" delay={80}>
             <div className="stage">
-              <span className="stage-index">01 / PREDICT</span>
-              <h3>Predict</h3>
+              <svg className="stage-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="18" stroke="var(--signal)" strokeWidth="0.75" opacity="0.15"/>
+                <circle cx="22" cy="22" r="12" stroke="var(--signal)" strokeWidth="1" opacity="0.35"/>
+                <circle cx="22" cy="22" r="6" stroke="var(--signal)" strokeWidth="1.5" opacity="0.7"/>
+                <circle cx="22" cy="22" r="2.5" fill="var(--signal)"/>
+                <circle cx="22" cy="10" r="2" fill="var(--alert)"/>
+              </svg>
+              <span className="stage-index">01 / SIGNAL</span>
+              <h3>Signal</h3>
               <p>
                 Leading-indicator health and engagement scoring surfaces
-                adoption risk and expansion signal long before the renewal
-                conversation.
+                adoption risk and expansion opportunity long before the
+                renewal conversation.
               </p>
             </div>
             <div className="stage">
+              <svg className="stage-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="8" r="3" fill="var(--signal)"/>
+                <circle cx="22" cy="22" r="3.5" stroke="var(--signal)" strokeWidth="1.5"/>
+                <line x1="22" y1="11" x2="22" y2="18.5" stroke="var(--signal)" strokeWidth="1.5"/>
+                <circle cx="10" cy="36" r="2.5" fill="var(--signal)" opacity="0.55"/>
+                <circle cx="22" cy="36" r="2.5" fill="var(--signal)" opacity="0.55"/>
+                <circle cx="34" cy="36" r="2.5" fill="var(--signal)" opacity="0.55"/>
+                <line x1="19.5" y1="25" x2="11" y2="34" stroke="var(--signal)" strokeWidth="1" opacity="0.6"/>
+                <line x1="22" y1="25.5" x2="22" y2="33.5" stroke="var(--signal)" strokeWidth="1" opacity="0.6"/>
+                <line x1="24.5" y1="25" x2="33" y2="34" stroke="var(--signal)" strokeWidth="1" opacity="0.6"/>
+              </svg>
               <span className="stage-index">02 / ORCHESTRATE</span>
               <h3>Orchestrate</h3>
               <p>
-                The prediction routes work to the right layer: a human, an
+                The signal routes work to the right layer: a human, an
                 agent, or a digital experience, matched to account complexity
                 and value.
               </p>
             </div>
             <div className="stage is-alert">
+              <svg className="stage-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="16" stroke="var(--alert)" strokeWidth="1" opacity="0.3"/>
+                <circle cx="22" cy="22" r="9" stroke="var(--alert)" strokeWidth="1.5" opacity="0.6"/>
+                <circle cx="22" cy="22" r="3" fill="var(--alert)"/>
+                <line x1="22" y1="2" x2="22" y2="12" stroke="var(--alert)" strokeWidth="1" opacity="0.4"/>
+                <line x1="22" y1="32" x2="22" y2="42" stroke="var(--alert)" strokeWidth="1" opacity="0.4"/>
+                <line x1="2" y1="22" x2="12" y2="22" stroke="var(--alert)" strokeWidth="1" opacity="0.4"/>
+                <line x1="32" y1="22" x2="42" y2="22" stroke="var(--alert)" strokeWidth="1" opacity="0.4"/>
+              </svg>
               <span className="stage-index">03 / ACT</span>
               <h3>Act</h3>
               <p>
@@ -158,8 +185,14 @@ export default function Home() {
               </p>
             </div>
             <div className="stage">
-              <span className="stage-index">04 / LEARN</span>
-              <h3>Learn</h3>
+              <svg className="stage-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="16" stroke="var(--signal)" strokeWidth="0.75" opacity="0.2"/>
+                <path d="M 22 6 A 16 16 0 1 1 30 8" stroke="var(--signal)" strokeWidth="2" strokeLinecap="round"/>
+                <polygon points="30,8 23,5 26,13" fill="var(--signal)"/>
+                <circle cx="22" cy="22" r="2.5" fill="var(--signal)" opacity="0.55"/>
+              </svg>
+              <span className="stage-index">04 / REFINE</span>
+              <h3>Refine</h3>
               <p>
                 Every outcome sharpens the model. The system gets more
                 predictive with each cycle, compounding instead of resetting.
@@ -487,57 +520,110 @@ export default function Home() {
       <section className="section" id="practice">
         <div className="container">
           <Reveal className="motion-head">
-            <span className="eyebrow">In practice</span>
+            <span className="eyebrow">GTM Engineering · intake to deployment</span>
             <h2 className="display" style={{ marginTop: 18 }}>
-              The operating system, running.
+              Ideas from the field, engineered for production.
             </h2>
             <p className="lede" style={{ marginTop: 20 }}>
-              Every motion across the customer lifecycle has an agent. Organized
-              by sales stage and role, each handles a discrete job end-to-end.
+              Every agent here went through the same door: a structured intake,
+              a priority triage, an engineering build, a maintained deployment.
+              This is what professional AI operations looks like. Not individuals
+              running scripts from their own computers.
             </p>
           </Reveal>
 
           <Reveal delay={60}>
-            <div className="catalog-stats">
-              <div className="catalog-stat">
-                <div className="catalog-stat-val">14</div>
-                <div className="catalog-stat-label">Live scaled workflows</div>
-              </div>
-              <div className="catalog-stat">
-                <div className="catalog-stat-val">~46 hrs</div>
-                <div className="catalog-stat-label">Saved per week</div>
-              </div>
-              <div className="catalog-stat">
-                <div className="catalog-stat-val">6</div>
-                <div className="catalog-stat-label">Roles covered</div>
-              </div>
-              <div className="catalog-stat">
-                <div className="catalog-stat-val is-alert">67</div>
-                <div className="catalog-stat-label">Submissions in pipeline</div>
-              </div>
+            <div className="intake-flow-label">Intake pipeline</div>
+            <div className="intake-flow-steps">
+              {[
+                { val: "67", label: "Submitted",   mod: "" },
+                { val: "22", label: "In review",   mod: "" },
+                { val: "18", label: "Approved",    mod: "" },
+                { val: "14", label: "In progress", mod: "" },
+                { val: "14", label: "Live",        mod: "is-live" },
+                { val: "2",  label: "Declined",    mod: "is-out"  },
+              ].map(({ val, label, mod }) => (
+                <div key={label} className={`if-step${mod ? ` ${mod}` : ""}`}>
+                  <div className="if-val">{val}</div>
+                  <div className="if-label">{label}</div>
+                </div>
+              ))}
             </div>
           </Reveal>
 
           <Reveal delay={80}>
-            <div className="stage-bar">
+            <div className="jmap-label">Where agents deploy · customer journey</div>
+            <div className="jmap-track">
               {[
-                { label: "Prospecting", count: 2, active: true },
-                { label: "Qualification", count: 0, active: false },
-                { label: "Discovery", count: 2, active: false },
-                { label: "Demo & Proposal", count: 0, active: false },
-                { label: "Negotiation & Close", count: 0, active: false },
-                { label: "Onboarding", count: 3, active: false },
-                { label: "Adoption", count: 0, active: false },
-                { label: "Expansion", count: 0, active: false },
-                { label: "Renewal", count: 1, active: false },
-              ].map((s) => (
-                <div key={s.label} className={`stage-pill${s.active ? " active" : ""}`}>
-                  <span className="stage-pill-label">{s.label}</span>
-                  <span className="stage-pill-count">
-                    {s.count} {s.count === 1 ? "workflow" : "workflows"}
-                  </span>
+                { stage: "Prospecting",    count: 2, variant: "signal" },
+                { stage: "Qualification",  count: 0, variant: ""       },
+                { stage: "Discovery",      count: 2, variant: "signal" },
+                { stage: "Demo & Proposal",count: 0, variant: ""       },
+                { stage: "Close",          count: 0, variant: ""       },
+                { stage: "Onboarding",     count: 3, variant: "signal" },
+                { stage: "Adoption",       count: 0, variant: ""       },
+                { stage: "Expansion",      count: 0, variant: ""       },
+                { stage: "Renewal",        count: 1, variant: "alert"  },
+              ].map(({ stage, count, variant }) => (
+                <div key={stage} className={`jmap-stage${variant ? ` is-${variant}` : ""}`}>
+                  <div className="jmap-name">{stage}</div>
+                  {count > 0 ? (
+                    <>
+                      <div className="jmap-count">{count}</div>
+                      <div className="jmap-unit">{count === 1 ? "agent" : "agents"}</div>
+                      <div className="jmap-dots">
+                        {Array.from({ length: count }).map((_, i) => (
+                          <div key={i} className={`jmap-dot${variant === "alert" ? " is-alert" : ""}`} />
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="jmap-empty">Building</div>
+                  )}
                 </div>
               ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={100} className="insight-cards">
+            <div className="insight-card is-key">
+              <div className="insight-stat">21%</div>
+              <div className="insight-head">Submission-to-production rate</div>
+              <p className="insight-body">
+                14 of 67 ideas became maintained, production-grade agents. The
+                rest were triaged, deprioritized, or declined. Governance is the
+                filter.
+              </p>
+            </div>
+            <div className="insight-card">
+              <div className="insight-stat is-neutral">P0 to P3</div>
+              <div className="insight-head">Priority scoring on every idea</div>
+              <p className="insight-body">
+                Every submission is scored by impact, complexity, and risk before
+                engineering touches it. Ideas from the field. Accountability from
+                the team.
+              </p>
+            </div>
+            <div className="insight-card">
+              <div className="insight-stat is-neutral">~46 hrs</div>
+              <div className="insight-head">Returned to sellers per week</div>
+              <p className="insight-body">
+                Across 6 roles with named champions. Time freed from manual work,
+                redirected to the moments that need human judgment.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={110}>
+            <div className="role-coverage">
+              <div className="role-coverage-label">
+                Submissions across 6 roles · anyone can submit, not everyone ships
+              </div>
+              <div className="role-chips">
+                {["AE", "AM", "BDR", "CSM", "SC", "IC"].map((role) => (
+                  <span key={role} className="role-chip">{role}</span>
+                ))}
+              </div>
             </div>
           </Reveal>
 
@@ -865,11 +951,10 @@ export default function Home() {
               The system that governs the system.
             </h2>
             <p className="lede" style={{ marginTop: 20 }}>
-              Prediction requires data infrastructure. Operationalizing AI
-              across a GTM org requires governance infrastructure. The intake
-              and triage system is how ideas from the field become maintained,
-              QA&apos;d workflows, and how the operating system stays coherent
-              as it scales.
+              Scaling AI across a GTM org does not happen through enthusiasm.
+              It happens through a repeatable intake model: one front door,
+              one priority framework, one engineering team that builds and
+              maintains what the field submits. Three phases make it work.
             </p>
           </Reveal>
 
@@ -924,56 +1009,6 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={120}>
-            <div className="intake-pipeline">
-              <div className="intake-pipeline-label">Intake pipeline · all submissions</div>
-              <div className="intake-stages">
-                {[
-                  { label: "Submitted",   val: 67,  h: 100, live: false },
-                  { label: "In review",   val: 22,  h: 66,  live: false },
-                  { label: "Approved",    val: 18,  h: 54,  live: false },
-                  { label: "In progress", val: 14,  h: 42,  live: false },
-                  { label: "Live",        val: 14,  h: 42,  live: true  },
-                  { label: "Declined",    val: 2,   h: 10,  live: false },
-                ].map((s) => (
-                  <div key={s.label} className="intake-stage">
-                    <div className={`intake-stage-val${s.live ? " is-live" : ""}`}>{s.val}</div>
-                    <div className={`intake-stage-bar${s.live ? " is-live" : ""}`} style={{ height: `${s.h}%` }} />
-                  </div>
-                ))}
-              </div>
-              <div className="intake-labels">
-                {["Submitted", "In review", "Approved", "In progress", "Live", "Declined"].map((l) => (
-                  <span key={l} className={`intake-stage-name${l === "Live" ? " is-live" : ""}`}>{l}</span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={160}>
-            <div className="gov-intake-stats">
-              <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">67</div>
-                <div className="gov-intake-stat-label">Submissions tracked</div>
-              </div>
-              <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">14</div>
-                <div className="gov-intake-stat-label">Live, scaled, maintained</div>
-              </div>
-              <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">P0-P3</div>
-                <div className="gov-intake-stat-label">Priority scoring on every idea</div>
-              </div>
-              <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">6</div>
-                <div className="gov-intake-stat-label">Roles with named champions</div>
-              </div>
-              <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">~46 hrs</div>
-                <div className="gov-intake-stat-label">Returned to sellers per week</div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 

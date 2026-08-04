@@ -484,6 +484,13 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 }
 .stage p { font-size: 15px; color: var(--ink-dim); line-height: 1.6; }
 .stage.is-alert .stage-index { color: var(--alert); }
+.stage-icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.25rem;
+}
+.stage.is-alert .stage-icon-line { stroke: var(--alert); }
 
 /* =========================================================================
    LAYERS — humans / agents / digital
@@ -818,84 +825,160 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 .sentiment-viz svg { width: 100%; height: auto; display: block; }
 
 /* =========================================================================
-   IN PRACTICE — operating system catalog
+   IN PRACTICE — GTM Engineering operating model
    ========================================================================= */
-.catalog-stats {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--hairline);
-  border-radius: 3px;
-  margin-top: 52px;
-  flex-wrap: wrap;
-}
-.catalog-stat {
-  flex: 1 1 160px;
-  padding: 20px 24px;
-  border-right: 1px solid var(--hairline);
-}
-.catalog-stat:last-child { border-right: none; }
-.catalog-stat-val {
-  font-family: var(--font-display);
-  font-size: clamp(26px, 3vw, 34px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--signal);
-  line-height: 1;
-}
-.catalog-stat-val.is-alert { color: var(--alert); }
-.catalog-stat-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-top: 6px;
-}
-@media (max-width: 680px) {
-  .catalog-stat { border-right: none; border-bottom: 1px solid var(--hairline); }
-  .catalog-stat:last-child { border-bottom: none; }
-}
 .motion-head { max-width: 680px; }
 .motion-head h2 { margin-top: 18px; }
 .motion-head .lede { margin-top: 20px; }
 
-.stage-bar {
+/* Intake pipeline flow */
+.intake-flow-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 12px;
+  margin-top: 52px;
+}
+.intake-flow-steps {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
+}
+.intake-flow-steps::-webkit-scrollbar { display: none; }
+.if-step {
+  flex: 1;
+  min-width: 80px;
   border: 1px solid var(--hairline);
-  border-radius: 3px;
-  margin-top: 52px;
+  border-right: none;
+  padding: 18px 16px;
+  background: var(--obsidian);
 }
-.stage-bar::-webkit-scrollbar { display: none; }
-
-.stage-pill {
-  flex: 0 0 auto;
-  padding: 14px 22px;
-  border-right: 1px solid var(--hairline);
+.if-step:last-child { border-right: 1px solid var(--hairline); border-radius: 0 4px 4px 0; }
+.if-step:first-child { border-radius: 4px 0 0 4px; }
+.if-step.is-live { background: rgba(56, 189, 248, 0.05); border-color: var(--signal); }
+.if-step.is-out { background: rgba(239, 68, 68, 0.04); border-color: rgba(200, 60, 60, 0.35); }
+.if-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
 }
-.stage-pill:last-child { border-right: none; }
-
-.stage-pill-label {
+.if-step.is-live .if-val { color: var(--signal); }
+.if-step.is-out .if-val { color: rgba(220, 80, 80, 0.85); }
+.if-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  display: block;
-  white-space: nowrap;
+  margin-top: 6px;
 }
-.stage-pill-count {
+.if-step.is-live .if-label { color: var(--signal); opacity: 0.7; }
+
+/* Journey deployment map */
+.jmap-label {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-dim);
-  display: block;
-  margin-top: 4px;
+  margin-bottom: 12px;
+  margin-top: 44px;
+}
+.jmap-track {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.jmap-track::-webkit-scrollbar { display: none; }
+.jmap-stage {
+  flex: 1;
+  min-width: 88px;
+  border: 1px solid var(--hairline);
+  border-left: none;
+  border-top: 2px solid transparent;
+  padding: 14px 12px;
+  background: var(--obsidian);
+}
+.jmap-stage:first-child { border-left: 1px solid var(--hairline); border-radius: 4px 0 0 4px; }
+.jmap-stage:last-child { border-radius: 0 4px 4px 0; }
+.jmap-stage.is-signal { border-top-color: var(--signal); background: rgba(56, 189, 248, 0.04); }
+.jmap-stage.is-alert  { border-top-color: var(--alert);  background: rgba(245, 165, 36, 0.04); }
+.jmap-name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
   white-space: nowrap;
 }
-.stage-pill.active { background: var(--graphite); }
-.stage-pill.active .stage-pill-label { color: var(--signal); }
-.stage-pill.active .stage-pill-count { color: var(--ink); }
+.jmap-stage.is-signal .jmap-name { color: var(--signal); }
+.jmap-stage.is-alert  .jmap-name { color: var(--alert); }
+.jmap-count {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+.jmap-unit { font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
+.jmap-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.jmap-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); }
+.jmap-dot.is-alert { background: var(--alert); }
+.jmap-empty { font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.05em; }
+
+/* Insight cards */
+.insight-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 44px;
+}
+@media (max-width: 760px) { .insight-cards { grid-template-columns: 1fr; } }
+.insight-card {
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 22px 20px;
+  background: var(--obsidian);
+}
+.insight-card.is-key { border-color: var(--signal); background: rgba(56, 189, 248, 0.04); }
+.insight-stat {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--signal);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.insight-stat.is-neutral { color: var(--ink); }
+.insight-head { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.insight-body { font-size: 13px; color: var(--ink-dim); line-height: 1.65; }
+
+/* Role coverage */
+.role-coverage { margin-top: 36px; }
+.role-coverage-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 12px;
+}
+.role-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.role-chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 3px;
+  border: 1px solid var(--signal);
+  color: var(--signal);
+  background: rgba(56, 189, 248, 0.06);
+  letter-spacing: 0.06em;
+}
 
 .workflow-card {
   margin-top: 20px;

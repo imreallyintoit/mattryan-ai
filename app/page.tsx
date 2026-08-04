@@ -1015,6 +1015,17 @@ export default function Home() {
                   </span>
                 </span>
               </div>
+              <div className="tl-row">
+                <span className="tl-when">2007 to 2012</span>
+                <span className="tl-what">
+                  <strong>IBM · Managing Consultant, Global Business Services</strong>
+                  <span>
+                    Led global HR transformation and HCM technology deployments
+                    across enterprise clients. Built technical depth in integration
+                    strategy, ETL design, and large-scale system implementation.
+                  </span>
+                </span>
+              </div>
             </div>
 
             <div className="about-links">

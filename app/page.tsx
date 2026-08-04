@@ -203,23 +203,128 @@ export default function Home() {
             <RenewalChart />
           </Reveal>
 
-          {/* Pulse Score callout */}
+          {/* ---- Pulse Score: expanded ---- */}
+          <Reveal className="pulse-head" delay={60}>
+            <span className="eyebrow">The predictor</span>
+            <h3 className="display" style={{ marginTop: 14 }}>
+              The Pulse Score
+            </h3>
+            <p className="pulse-intro">
+              A score without underlying data is just a guess. Building a
+              truly predictive model requires investing in the signal
+              architecture beneath it first: product engagement telemetry,
+              customer interaction data, buyer demand signals, and
+              renewal-context metadata, normalized and fused into a composite
+              model. This is why agent building and data infrastructure are
+              the same project. The score is the output. The architecture is
+              the point.
+            </p>
+          </Reveal>
+
+          <Reveal className="pulse-arch" delay={80}>
+            <div className="pulse-arch-eyebrow">Signal architecture · three lenses</div>
+            <p className="pulse-arch-sub">
+              Each lens reads High or Low. Eight combinations. One named
+              diagnosis per account.
+            </p>
+            <div className="pulse-arch-grid">
+              <div className="pulse-layer">
+                <div className="pulse-layer-tag">Layer 1 · Product-Led</div>
+                <div className="pulse-layer-q">Are they using it?</div>
+                <div className="pulse-layer-role">Triggers the flag · primary</div>
+                <ul className="pulse-layer-list">
+                  {["Logins / visitor count", "Review generation rate", "Ads subscription", "Profile completeness", "CTA activation", "Performance Analytics", "Integration depth", "Feature discovery breadth"].map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pulse-layer is-csm">
+                <div className="pulse-layer-tag is-csm">Layer 2 · CSM-Led</div>
+                <div className="pulse-layer-q">Is the relationship alive?</div>
+                <div className="pulse-layer-role is-csm">Triggers the flag · secondary</div>
+                <ul className="pulse-layer-list">
+                  {["Conversation counts", "Meeting acceptance rate", "Multi-threading depth", "Executive engagement", "NPS trend", "Renewal-call sentiment", "Overall call sentiment"].map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pulse-layer is-roi">
+                <div className="pulse-layer-tag is-roi">Layer 3 · ROI &amp; Context</div>
+                <div className="pulse-layer-q">Are buyers responding?</div>
+                <div className="pulse-layer-role is-roi">Context only · no independent flag</div>
+                <ul className="pulse-layer-list">
+                  {["Leads generated from G2", "Pipeline influenced / attributed", "Review velocity trend", "Category share of voice", "AEO visibility & presence", "G2 profile traffic", "Referral traffic to customer site"].map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal className="pulse-matrix" delay={100}>
+            <div className="pulse-matrix-label">Interpretation matrix · diagnosis, not just a flag</div>
+            <div className="pulse-matrix-scroll">
+              <div className="pulse-matrix-table">
+                <div className="pulse-matrix-head">
+                  <span>Product</span>
+                  <span>CSM</span>
+                  <span>ROI</span>
+                  <span>Renewal</span>
+                  <span>Profile / action</span>
+                </div>
+                {[
+                  { p: true,  c: true,  r: true,  rate: "93%", profile: "Healthy: monitor",                   tier: "h" },
+                  { p: true,  c: false, r: true,  rate: "86%", profile: "Self-sufficient: light touch",        tier: "h" },
+                  { p: true,  c: true,  r: false, rate: "81%", profile: "Engaged, no ROI: investigate value",  tier: "m" },
+                  { p: false, c: true,  r: true,  rate: "77%", profile: "CSM-carried + ROI: coach adoption",   tier: "m" },
+                  { p: false, c: true,  r: false, rate: "75%", profile: "CSM-carried, fragile: escalate",      tier: "m" },
+                  { p: true,  c: false, r: false, rate: "75%", profile: "Silent self-serve: monitor",          tier: "m" },
+                  { p: false, c: false, r: true,  rate: "67%", profile: "Passive value: likely safe",          tier: "l" },
+                  { p: false, c: false, r: false, rate: "48%", profile: "True at-risk: top priority",          tier: "r" },
+                ].map(({ p, c, r, rate, profile, tier }, i) => (
+                  <div key={i} className={`pulse-matrix-row${tier === "r" ? " is-risk" : ""}`}>
+                    <span className={`plv ${p ? "hi" : "lo"}`}>{p ? "High" : "Low"}</span>
+                    <span className={`plv ${c ? "hi" : "lo"}`}>{c ? "High" : "Low"}</span>
+                    <span className={`plv ${r ? "hi" : "lo"}`}>{r ? "High" : "Low"}</span>
+                    <span className={`pulse-rate${tier === "r" ? " is-risk" : tier === "h" ? " is-high" : ""}`}>{rate}</span>
+                    <span className="pulse-profile">{profile}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="pulse-matrix-note">
+              Renewal falls cleanly from 93% to 48% across the eight profiles.
+              V1&apos;s single flag becomes eight actionable diagnoses.
+            </p>
+          </Reveal>
+
+          <Reveal className="pulse-v2-proof" delay={110}>
+            {[
+              { val: "83%",    label: "Churn caught, recall unchanged",      isAlert: false },
+              { val: "1 in 4", label: "False alarms removed",                isAlert: true  },
+              { val: "~$8M",   label: "ACV no longer chased unnecessarily",  isAlert: false },
+              { val: "0 → 8",  label: "Same scale, eight named diagnoses",   isAlert: false },
+            ].map(({ val, label, isAlert }) => (
+              <div key={label} className="pv2-stat">
+                <div className={`pv2-val${isAlert ? " is-alert" : ""}`}>{val}</div>
+                <div className="pv2-label">{label}</div>
+              </div>
+            ))}
+          </Reveal>
+
           <Reveal className="pulse-callout" delay={120}>
             <div>
-              <span className="eyebrow">The predictor</span>
+              <span className="eyebrow">Health interpretation</span>
               <h3 className="display" style={{ marginTop: 14 }}>
-                The Pulse Score
+                A score that explains itself.
               </h3>
               <p>
-                A score without underlying data is just a guess. Before the
-                Pulse Score could predict anything, we had to build the
-                instrumentation beneath it: product engagement telemetry,
-                support interaction signals, content consumption patterns, and
-                renewal-timing context, normalized and fed into a 0-to-8
-                composite model built with product and data analytics. That
-                upstream data work is what separates a predictive system from
-                a reactive dashboard. The score is the output. The architecture
-                is the point.
+                The 0-to-8 scale stays. What changes is the diagnosis. An
+                account at 3/8 used to mean at risk, act. Now it carries a
+                named profile: is product engagement low while no buyer
+                demand exists, or is the CSM relationship the only thread
+                holding? Those are different conversations, different
+                urgencies, different next steps.
               </p>
             </div>
             <div className="pulse-meter">
@@ -238,6 +343,99 @@ export default function Home() {
                 <span>ALERT AT 5</span>
                 <span>8 · HEALTHY</span>
               </div>
+            </div>
+          </Reveal>
+
+          <Reveal className="pulse-sentiment" delay={130}>
+            <div className="pulse-sentiment-text">
+              <span className="eyebrow">The missing signal</span>
+              <h3 className="display" style={{ marginTop: 14, fontSize: "clamp(22px, 2.6vw, 30px)" }}>
+                Customer words predict what usage data cannot.
+              </h3>
+              <p>
+                A customer who logs in every day but tells their team the
+                product is not working is a churn risk. A customer who barely
+                logs in but calls their CSM a strategic partner will renew.
+                Behavioral signals alone cannot distinguish those two accounts.
+              </p>
+              <p>
+                Gong call transcripts, NPS verbatims, support ticket language,
+                and G2 review text carry the actual words customers use to
+                describe their experience. Combined with product and ROI
+                signals, they turn a number into a diagnosis: not just whether
+                an account is at risk, but why, and what the conversation needs
+                to be.
+              </p>
+              <p>
+                This is where the roadmap goes next: renewal-call sentiment,
+                meeting acceptance trends, and multi-threading depth wired
+                directly into the score, so prediction sharpens with every
+                customer interaction.
+              </p>
+            </div>
+            <div className="sentiment-viz" aria-hidden="true">
+              <svg viewBox="0 0 270 240" xmlns="http://www.w3.org/2000/svg">
+                {[
+                  { y: 22,  label: "GONG TRANSCRIPTS", isAlert: false },
+                  { y: 64,  label: "G2 REVIEW TEXT",   isAlert: false },
+                  { y: 108, label: "NPS VERBATIMS",    isAlert: false },
+                  { y: 152, label: "SUPPORT TICKETS",  isAlert: false },
+                  { y: 196, label: "RENEWAL CALLS",    isAlert: true  },
+                ].map(({ y, label, isAlert }) => (
+                  <g key={label}>
+                    <rect
+                      x="2" y={y} width="148" height="28" rx="2"
+                      fill={isAlert ? "var(--alert)" : "var(--signal)"}
+                      fillOpacity="0.08"
+                      stroke={isAlert ? "var(--alert)" : "var(--signal)"}
+                      strokeOpacity="0.28"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="76" y={y + 18}
+                      textAnchor="middle"
+                      fontFamily="var(--font-mono)"
+                      fontSize="8.5"
+                      letterSpacing="1.2"
+                      fill={isAlert ? "var(--alert)" : "var(--signal)"}
+                    >
+                      {label}
+                    </text>
+                    <line
+                      x1="150" y1={y + 14} x2="192" y2="110"
+                      stroke={isAlert ? "var(--alert)" : "var(--signal)"}
+                      strokeWidth="1"
+                      strokeOpacity="0.35"
+                    />
+                  </g>
+                ))}
+                <rect
+                  x="192" y="90" width="76" height="40" rx="3"
+                  fill="var(--signal)"
+                  fillOpacity="0.1"
+                  stroke="var(--signal)"
+                  strokeWidth="1.5"
+                />
+                <text
+                  x="230" y="107"
+                  textAnchor="middle"
+                  fontFamily="var(--font-display)"
+                  fontSize="11"
+                  fontWeight="600"
+                  fill="var(--ink)"
+                >
+                  Prediction
+                </text>
+                <text
+                  x="230" y="122"
+                  textAnchor="middle"
+                  fontFamily="var(--font-mono)"
+                  fontSize="10"
+                  fill="var(--signal)"
+                >
+                  0 — 8
+                </text>
+              </svg>
             </div>
           </Reveal>
         </div>

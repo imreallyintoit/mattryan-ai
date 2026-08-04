@@ -174,6 +174,88 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
 
 /* =========================================================================
+   FOREWORD — orientation block between hero and content
+   ========================================================================= */
+.foreword {
+  background: var(--graphite);
+  border-bottom: 1px solid var(--hairline-strong);
+  padding-block: clamp(44px, 7vh, 80px);
+  position: relative;
+  z-index: 1;
+}
+.foreword-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+@media (max-width: 840px) { .foreword-inner { grid-template-columns: 1fr; gap: 36px; } }
+
+.foreword-heading {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.foreword-text {
+  font-size: clamp(15px, 1.7vw, 17px);
+  color: var(--ink-dim);
+  line-height: 1.7;
+  max-width: 46ch;
+}
+
+.foreword-guide {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hairline);
+}
+.fg-row {
+  display: grid;
+  grid-template-columns: 28px 110px 1fr;
+  align-items: baseline;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--hairline);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.fg-row:hover .fg-label { color: var(--signal); }
+.fg-row:hover .fg-num   { color: var(--signal); }
+.fg-row:focus-visible   { outline: 2px solid var(--signal); outline-offset: 2px; }
+
+.fg-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  transition: color 0.15s;
+}
+.fg-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.fg-desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+}
+@media (max-width: 560px) {
+  .fg-row {
+    grid-template-columns: 28px 1fr;
+    row-gap: 3px;
+  }
+  .fg-desc { grid-column: 2; }
+}
+
+/* =========================================================================
    NAV
    ========================================================================= */
 .nav {

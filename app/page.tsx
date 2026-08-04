@@ -70,6 +70,40 @@ export default function Home() {
         </div>
       </header>
 
+      {/* ---------------- FOREWORD / ORIENTATION ---------------- */}
+      <section className="foreword">
+        <div className="container">
+          <div className="foreword-inner">
+            <div className="foreword-prose">
+              <p className="foreword-heading">What you&apos;re looking at.</p>
+              <p className="foreword-text">
+                The AI GTM Operating System is a framework designed and built
+                inside a live GTM organization. This site shares it completely:
+                the architecture behind it, the results it produced, the
+                workflows running today, and the governance model that sustains
+                it at scale. Every section is grounded in something that was
+                actually built. The person who built it is at the bottom.
+              </p>
+            </div>
+            <nav className="foreword-guide" aria-label="Site sections">
+              {[
+                { num: "01", href: "#system",     label: "System",       desc: "The architecture: how the Prediction Loop runs as a continuous operating system across the customer journey." },
+                { num: "02", href: "#proof",       label: "Proof",        desc: "The outcomes: what this system produced inside a real GTM organization, with the data to support it." },
+                { num: "03", href: "#practice",    label: "In practice",  desc: "The motion: 14 live agentic workflows running across sales, success, and onboarding today." },
+                { num: "04", href: "#governance",  label: "Governance",   desc: "The foundation: the intake and triage system that keeps AI work coherent and scalable." },
+                { num: "05", href: "#about",       label: "About",        desc: "The builder: background, career, and the experience behind this framework." },
+              ].map(({ num, href, label, desc }) => (
+                <a key={href} href={href} className="fg-row">
+                  <span className="fg-num">{num}</span>
+                  <span className="fg-label">{label}</span>
+                  <span className="fg-desc">{desc}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </section>
+
       {/* ---------------- SYSTEM / FRAMEWORK ---------------- */}
       <section className="section" id="system">
         <div className="container">

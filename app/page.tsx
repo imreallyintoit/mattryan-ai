@@ -37,15 +37,15 @@ export default function Home() {
           <div>
             <span className="eyebrow">The AI GTM Operating System</span>
             <h1 className="display">
-              Your GTM finds out too late. This is what{" "}
-              <span className="highlight">being ahead</span> looks like.
+              Most revenue organizations run on lagging metrics. I built
+              one that runs on{" "}
+              <span className="highlight">leading signals</span>.
             </h1>
             <p className="lede hero-lede">
-              An AI operating system built on prediction: humans, agents,
-              and digital experiences orchestrated to surface risk and
-              expansion 90 days before they show up in the number. Designed
-              and proven inside a live GTM organization. This site presents
-              the full architecture.
+              An AI operating system that converts product signals, buyer
+              intent, and customer behavior into 90-day forward visibility
+              across churn, expansion, and the full customer journey.
+              Designed and proven inside a live GTM organization.
             </p>
             <div className="hero-actions">
               <a href="#system" className="btn btn-primary">

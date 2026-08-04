@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Matt Ryan — The AI GTM Operating System",
+  title: "Matt Ryan: The AI GTM Operating System",
   description:
     "Matt Ryan runs go-to-market as a predictive system: humans, agents, and digital experiences orchestrated around the customer journey. The AI GTM Operating System, powered by The Prediction Loop.",
   metadataBase: new URL("https://mattryan.ai"),
   openGraph: {
-    title: "Matt Ryan — The AI GTM Operating System",
+    title: "Matt Ryan: The AI GTM Operating System",
     description:
       "Go-to-market as a predictive system. Humans, agents, and digital experiences orchestrated around the customer journey.",
     url: "https://mattryan.ai",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matt Ryan — The AI GTM Operating System",
+    title: "Matt Ryan: The AI GTM Operating System",
     description:
       "Go-to-market as a predictive system, orchestrated around the customer journey.",
   },

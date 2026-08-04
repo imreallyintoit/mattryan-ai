@@ -13,6 +13,7 @@ export default function Home() {
           <div className="nav-links">
             <a href="#system">System</a>
             <a href="#proof">Proof</a>
+            <a href="#practice">In practice</a>
             <a href="#about">About</a>
             <a href="#contact" className="nav-cta">
               Get in touch →
@@ -32,7 +33,7 @@ export default function Home() {
             </h1>
             <p className="lede hero-lede">
               Most revenue teams find out too late. I run go-to-market as a
-              predictive system — humans, agents, and digital experiences
+              predictive system: humans, agents, and digital experiences
               orchestrated around the customer journey, seeing risk and
               expansion 90 to 180 days before they show up in the number.
             </p>
@@ -99,8 +100,8 @@ export default function Home() {
               <span className="stage-index">02 / ORCHESTRATE</span>
               <h3>Orchestrate</h3>
               <p>
-                The prediction routes work to the right layer — a human, an
-                agent, or a digital experience — matched to account complexity
+                The prediction routes work to the right layer: a human, an
+                agent, or a digital experience, matched to account complexity
                 and value.
               </p>
             </div>
@@ -128,7 +129,7 @@ export default function Home() {
               <span className="eyebrow">Layer 01</span>
               <h3>Humans</h3>
               <p>
-                Senior judgment aimed where it changes the outcome — complex
+                Senior judgment aimed where it changes the outcome: complex
                 accounts, executive relationships, the moments a model can flag
                 but not close.
               </p>
@@ -138,7 +139,7 @@ export default function Home() {
               <h3>Agents</h3>
               <p>
                 Agentic workflows across onboarding, adoption, support, and
-                review generation — delivering the motion at a scale headcount
+                review generation, delivering the motion at a scale headcount
                 never could.
               </p>
             </Reveal>
@@ -170,7 +171,7 @@ export default function Home() {
               <div className="num signal">46%</div>
               <div className="cap">
                 Improvement in renewal rates by treating churn as a product,
-                marketing, and success problem — not a revenue one.
+                marketing, and success problem. Not a revenue one.
               </div>
             </Reveal>
             <Reveal className="metric" delay={80}>
@@ -206,7 +207,7 @@ export default function Home() {
               <p>
                 A 0-to-8 health and product-engagement model, built with product
                 and data analytics, that reads adoption risk as a leading
-                indicator — and triggers intervention before a customer goes
+                indicator, triggering intervention before a customer goes
                 quiet. Prediction, made operational.
               </p>
             </div>
@@ -231,6 +232,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------------- IN PRACTICE ---------------- */}
+      <section className="section" id="practice">
+        <div className="container">
+          <Reveal className="motion-head">
+            <span className="eyebrow">In practice</span>
+            <h2 className="display" style={{ marginTop: 18 }}>
+              The operating system, running.
+            </h2>
+            <p className="lede" style={{ marginTop: 20 }}>
+              Every motion across the customer lifecycle has an agent. Organized
+              by sales stage and role, each handles a discrete job end-to-end.
+            </p>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="stage-bar">
+              {[
+                { label: "Prospecting", count: 2, active: true },
+                { label: "Qualification", count: 0, active: false },
+                { label: "Discovery", count: 2, active: false },
+                { label: "Demo & Proposal", count: 0, active: false },
+                { label: "Negotiation & Close", count: 0, active: false },
+                { label: "Onboarding", count: 2, active: false },
+                { label: "Adoption", count: 0, active: false },
+                { label: "Expansion", count: 0, active: false },
+                { label: "Renewal", count: 0, active: false },
+              ].map((s) => (
+                <div key={s.label} className={`stage-pill${s.active ? " active" : ""}`}>
+                  <span className="stage-pill-label">{s.label}</span>
+                  <span className="stage-pill-count">
+                    {s.count} {s.count === 1 ? "workflow" : "workflows"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={140} className="workflow-card">
+            <div className="wf-header">
+              <div className="wf-title-row">
+                <div className="wf-icon">⚡</div>
+                <span className="wf-name">BDR Weekly Pipeline</span>
+              </div>
+              <div className="wf-badges">
+                <span className="wf-badge is-stage">Prospecting</span>
+                <span className="wf-badge">BDR</span>
+              </div>
+            </div>
+            <div className="wf-desc">
+              Weekly scheduled pipeline that runs for every active BDR. Pulls each
+              rep&apos;s Salesforce book of business, scores accounts with a
+              composite model combining six SF engagement signals and G2 buyer
+              intent, enriches top-ranked accounts with contacts via ZoomInfo
+              (AMER) or Cognism (EMEA/APAC), assembles account intel from
+              ZoomInfo scoops and G2 profiles, drafts personalized outreach
+              sequences using Claude Haiku, and writes net-new contacts back to
+              Salesforce.
+            </div>
+            <div className="wf-how">
+              <div className="wf-how-label">How it works</div>
+              <div className="wf-cols">
+                <div className="wf-col">
+                  <div className="wf-col-label">Triggered by</div>
+                  <div className="wf-col-content">
+                    <strong>Scheduled</strong>
+                    Runs every Monday AM on schedule. One full pipeline run per
+                    active BDR. Also triggerable manually.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Processing</div>
+                  <div className="wf-col-content">
+                    <strong>3 stages</strong>
+                    1. Find and Score: pulls Salesforce accounts, scores with six
+                    SF engagement signals plus G2 intent, ranks into
+                    High/Medium/Low buckets. 2. Enrich Contacts: gap-fills with
+                    ZoomInfo (AMER) or Cognism (EMEA/APAC), fetches scoops and
+                    G2 profiles. 3. Build Outreach: feeds account intel into
+                    Claude Haiku to draft personalized sequences per contact.
+                  </div>
+                </div>
+                <div className="wf-col">
+                  <div className="wf-col-label">Outputs</div>
+                  <div className="wf-col-content">
+                    <strong>CSV + CRM write</strong>
+                    Ranked accounts with enriched contact data emailed to the
+                    BDR. Net-new contacts written back to Salesforce with
+                    AccountId, BDR as owner, LinkedIn URL, and ZoomInfo
+                    metadata.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="wf-footer">
+              <div className="wf-tools">
+                {["n8n", "Salesforce", "G2 API", "ZoomInfo", "Cognism", "Claude Haiku", "Gmail"].map(
+                  (tool) => (
+                    <span key={tool} className="wf-tool">{tool}</span>
+                  )
+                )}
+              </div>
+              <div className="wf-meta">
+                <span className="wf-meta-item">
+                  <span className="val">~4 hrs/wk</span> saved per rep
+                </span>
+                <span className="wf-meta-item">
+                  <span className="wf-live-dot" />
+                  <span className="val">Live</span>
+                </span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------------- ABOUT / STORY ---------------- */}
       <section className="section" id="about">
         <div className="container about-grid">
@@ -248,13 +364,13 @@ export default function Home() {
             </span>
             <p>
               I started as a software engineer. Twenty years later, I&apos;m
-              still the most technical voice in the executive room — fluent
+              still the most technical voice in the executive room, fluent
               enough to partner directly with product and engineering,
               commercial enough to own the number.
             </p>
             <p>
               That combination is the whole point. I build and re-architect
-              post-sales organizations around adoption, outcomes, and AI —
+              post-sales organizations around adoption, outcomes, and AI,
               moving teams up the customer lifecycle so retention, expansion,
               and new revenue <strong>compound instead of getting chased
               downstream</strong>.
@@ -264,14 +380,14 @@ export default function Home() {
               journey, human-led and agent-delivered. It rebuilt a broken
               retention motion, lifted renewal rates 46%, cut support operating
               costs 60%, and stood up new services revenue from zero. Before
-              that I built functions from the ground up at Slack — through
-              Salesforce&apos;s $27B acquisition — and scaled a Workday practice
+              that I built functions from the ground up at Slack, through
+              the Salesforce $27B acquisition, and scaled a Workday practice
               from a $10M acquisition toward a $120M global business.
             </p>
 
             <div className="timeline">
               <div className="tl-row">
-                <span className="tl-when">2024 — NOW</span>
+                <span className="tl-when">2024 to NOW</span>
                 <span className="tl-what">
                   <strong>G2 · VP, Global Solutions &amp; Customer Success</strong>
                   <span>
@@ -282,7 +398,7 @@ export default function Home() {
                 </span>
               </div>
               <div className="tl-row">
-                <span className="tl-when">2022 — 2024</span>
+                <span className="tl-when">2022 to 2024</span>
                 <span className="tl-what">
                   <strong>Upwork · VP, Enterprise Solutions</strong>
                   <span>
@@ -292,7 +408,7 @@ export default function Home() {
                 </span>
               </div>
               <div className="tl-row">
-                <span className="tl-when">2020 — 2022</span>
+                <span className="tl-when">2020 to 2022</span>
                 <span className="tl-what">
                   <strong>Slack (Salesforce) · Professional Services Leader</strong>
                   <span>
@@ -302,7 +418,7 @@ export default function Home() {
                 </span>
               </div>
               <div className="tl-row">
-                <span className="tl-when">2012 — 2020</span>
+                <span className="tl-when">2012 to 2020</span>
                 <span className="tl-what">
                   <strong>Alight / Strada · VP, Professional Services</strong>
                   <span>
@@ -335,7 +451,7 @@ export default function Home() {
             </h2>
             <p className="lede">
               I work with enterprise B2B SaaS teams putting AI at the center of
-              go-to-market — as a predictive system, not a pile of point tools.
+              go-to-market as a predictive system, not a pile of point tools.
             </p>
             <div className="contact-actions">
               <a href="mailto:matthew773@gmail.com" className="btn btn-primary">

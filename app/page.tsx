@@ -66,7 +66,7 @@ export default function Home() {
                 <span className="readout-label">Support cost cut</span>
               </div>
               <div className="readout-item">
-                <span className="readout-val alert">90–180d</span>
+                <span className="readout-val alert">90-180d</span>
                 <span className="readout-label">Risk seen early</span>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
               <div className="num signal">0→8</div>
               <div className="cap">
                 A predictive customer-health model giving a leading-indicator
-                view of risk 90–180 days ahead of renewal.
+                view of risk 90 to 180 days ahead of renewal.
               </div>
             </Reveal>
           </div>
@@ -475,7 +475,7 @@ export default function Home() {
                   fontSize="10"
                   fill="var(--signal)"
                 >
-                  0 — 8
+                  0 to 8
                 </text>
               </svg>
             </div>
@@ -961,7 +961,7 @@ export default function Home() {
                 <div className="gov-intake-stat-label">Live, scaled, maintained</div>
               </div>
               <div className="gov-intake-stat">
-                <div className="gov-intake-stat-val">P0–P3</div>
+                <div className="gov-intake-stat-val">P0-P3</div>
                 <div className="gov-intake-stat-label">Priority scoring on every idea</div>
               </div>
               <div className="gov-intake-stat">
@@ -980,7 +980,7 @@ export default function Home() {
       {/* ---------------- ABOUT / STORY ---------------- */}
       <section className="section" id="about">
         <div className="container about-grid">
-          {/* headshot placeholder — swap in Claude Code */}
+          {/* headshot placeholder, swap in Claude Code */}
           <Reveal>
             <div className="headshot">
               <img src="/headshot.png" alt="Matt Ryan" />

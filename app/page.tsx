@@ -249,8 +249,8 @@ export default function Home() {
             <Reveal className="metric" delay={0}>
               <div className="num signal">48%</div>
               <div className="cap">
-                Improvement in renewal rates by treating churn as a product,
-                marketing, and success problem. Not a revenue one.
+                Improvement in renewal rates by treating churn as a product
+                engineering, marketing, and GTM problem. Not a revenue one.
               </div>
             </Reveal>
             <Reveal className="metric" delay={80}>

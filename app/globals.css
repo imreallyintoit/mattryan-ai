@@ -578,10 +578,12 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 }
 .renewal-chart-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 18px;
+  gap: 12px;
 }
+.renewal-chart-title-group { display: flex; flex-direction: column; gap: 8px; }
 .renewal-chart-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -589,13 +591,23 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+.renewal-chart-legend { display: flex; gap: 16px; }
+.rc-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.06em; color: var(--signal);
+}
+.rc-legend-item.rc-legend-grr { color: var(--ink-dim); }
+.renewal-chart-deltas { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
 .renewal-chart-delta {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--signal);
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
+.renewal-chart-delta.is-dim { font-size: 14px; color: var(--ink-dim); }
 .renewal-svg { width: 100%; display: block; }
 
 /* =========================================================================

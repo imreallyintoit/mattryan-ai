@@ -1,30 +1,61 @@
-const points = [
-  { x: 50,  y: 136, q: "Q1 '24", val: "62%" },
-  { x: 126, y: 118, q: "Q2 '24", val: "67%" },
-  { x: 202, y: 94,  q: "Q3 '24", val: "74%" },
-  { x: 278, y: 66,  q: "Q4 '24", val: "82%" },
-  { x: 354, y: 45,  q: "Q1 '25", val: "88%" },
-  { x: 430, y: 34,  q: "Q2 '25", val: "91%" },
-  { x: 506, y: 32,  q: "Q4 '25", val: "91%" },
-  { x: 580, y: 30,  q: "Q2 '26", val: "92%" },
+// Data mapped from G2 fiscal quarters to calendar quarters
+// NRR = Net Revenue Retention (top line); GRR = Gross Revenue Retention (bottom line)
+const NRR = [
+  { x: 50,  y: 60,  q: "Q1 '24", val: "87.7%" },
+  { x: 116, y: 54,  q: "Q2 '24", val: "88.7%" },
+  { x: 182, y: 58,  q: "Q3 '24", val: "88.0%" },
+  { x: 248, y: 65,  q: "Q4 '24", val: "87.0%" },
+  { x: 314, y: 54,  q: "Q1 '25", val: "88.6%" },
+  { x: 380, y: 51,  q: "Q2 '25", val: "89.1%" },
+  { x: 446, y: 37,  q: "Q3 '25", val: "91.3%" },
+  { x: 512, y: 35,  q: "Q4 '25", val: "91.6%" },
+  { x: 578, y: 32,  q: "Q1 '26", val: "92.1%" },
+];
+
+const GRR = [
+  { x: 50,  y: 141, q: "Q1 '24", val: "75.0%" },
+  { x: 116, y: 135, q: "Q2 '24", val: "75.9%" },
+  { x: 182, y: 130, q: "Q3 '24", val: "76.7%" },
+  { x: 248, y: 127, q: "Q4 '24", val: "77.2%" },
+  { x: 314, y: 130, q: "Q1 '25", val: "76.7%" },
+  { x: 380, y: 128, q: "Q2 '25", val: "77.1%" },
+  { x: 446, y: 123, q: "Q3 '25", val: "77.8%" },
+  { x: 512, y: 112, q: "Q4 '25", val: "79.5%" },
+  { x: 578, y: 111, q: "Q1 '26", val: "79.7%" },
 ];
 
 const gridLines = [
-  { y: 143, label: "60%" },
-  { y: 108, label: "70%" },
-  { y: 73,  label: "80%" },
-  { y: 38,  label: "90%" },
+  { y: 147, label: "74%" },
+  { y: 109, label: "80%" },
+  { y: 71,  label: "86%" },
+  { y: 33,  label: "92%" },
 ];
 
-const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
-const fillPath = `${linePath} L 580 160 L 50 160 Z`;
+const nrrPath = NRR.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+const nrrFill = `${nrrPath} L 578 160 L 50 160 Z`;
+const grrPath = GRR.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
 
 export default function RenewalChart() {
   return (
     <div className="renewal-chart">
       <div className="renewal-chart-header">
-        <span className="renewal-chart-label">Renewal rate · quarterly</span>
-        <span className="renewal-chart-delta">+48% lift</span>
+        <div className="renewal-chart-title-group">
+          <span className="renewal-chart-label">GRR &amp; NRR · two-year trend</span>
+          <div className="renewal-chart-legend">
+            <span className="rc-legend-item">
+              <svg width="16" height="3" aria-hidden="true"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="var(--signal)" strokeWidth="2"/></svg>
+              NRR
+            </span>
+            <span className="rc-legend-item rc-legend-grr">
+              <svg width="16" height="3" aria-hidden="true"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="var(--ink-dim)" strokeWidth="2" strokeOpacity="0.6"/></svg>
+              GRR
+            </span>
+          </div>
+        </div>
+        <div className="renewal-chart-deltas">
+          <span className="renewal-chart-delta">NRR +3.7%</span>
+          <span className="renewal-chart-delta is-dim">GRR +4.2%</span>
+        </div>
       </div>
       <svg viewBox="0 0 630 190" xmlns="http://www.w3.org/2000/svg" className="renewal-svg" aria-hidden="true">
         {gridLines.map((g) => (
@@ -34,25 +65,31 @@ export default function RenewalChart() {
           </g>
         ))}
 
-        <path d={fillPath} fill="var(--signal)" fillOpacity="0.07" />
+        <path d={nrrFill} fill="var(--signal)" fillOpacity="0.06" />
 
-        <rect x="50" y="20" width="76" height="140" fill="var(--alert)" fillOpacity="0.04" />
+        <rect x="50" y="20" width="66" height="140" fill="var(--alert)" fillOpacity="0.03" />
 
-        <path d={linePath} fill="none" stroke="var(--signal)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-
-        {points.map((p) => (
-          <circle key={p.q} cx={p.x} cy={p.y} r="4" fill="var(--signal)" />
+        {/* GRR line */}
+        <path d={grrPath} fill="none" stroke="var(--ink-dim)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.55" />
+        {GRR.map((p) => (
+          <circle key={`g-${p.q}`} cx={p.x} cy={p.y} r="3" fill="var(--ink-dim)" fillOpacity="0.6" />
         ))}
 
-        {points.map((p) => (
+        {/* NRR line */}
+        <path d={nrrPath} fill="none" stroke="var(--signal)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        {NRR.map((p) => (
+          <circle key={`n-${p.q}`} cx={p.x} cy={p.y} r="4" fill="var(--signal)" />
+        ))}
+
+        {NRR.map((p) => (
           <text key={p.q} x={p.x} y="180" textAnchor="middle" fill="var(--ink-faint)" fontSize="10" fontFamily="var(--font-mono)">{p.q}</text>
         ))}
 
-        <line x1="126" y1="24" x2="126" y2="160" stroke="var(--alert)" strokeWidth="1" strokeDasharray="4 3" strokeOpacity="0.6" />
-        <text x="132" y="36" fill="var(--alert)" fontSize="10" fontFamily="var(--font-mono)" fillOpacity="0.9">System live</text>
+        <line x1="116" y1="24" x2="116" y2="160" stroke="var(--alert)" strokeWidth="1" strokeDasharray="4 3" strokeOpacity="0.6" />
+        <text x="122" y="36" fill="var(--alert)" fontSize="10" fontFamily="var(--font-mono)" fillOpacity="0.9">System live</text>
 
-        <text x="578" y="26" textAnchor="end" fill="var(--signal)" fontSize="12" fontFamily="var(--font-mono)" fontWeight="600">92%</text>
-        <text x="54" y="128" fill="var(--ink-faint)" fontSize="10" fontFamily="var(--font-mono)">62%</text>
+        <text x="578" y="26" textAnchor="end" fill="var(--signal)" fontSize="12" fontFamily="var(--font-mono)" fontWeight="600">92.1%</text>
+        <text x="578" y="107" textAnchor="end" fill="var(--ink-dim)" fontSize="10" fontFamily="var(--font-mono)" fillOpacity="0.7">79.7%</text>
       </svg>
     </div>
   );

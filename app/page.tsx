@@ -21,6 +21,7 @@ export default function Home() {
           <div className="nav-links">
             <a href="#system">System</a>
             <a href="#proof">Proof</a>
+            <a href="#activation">Activation</a>
             <a href="#practice">In practice</a>
             <a href="#governance">Governance</a>
             <a href="#about">About</a>
@@ -58,7 +59,7 @@ export default function Home() {
 
             <div className="readout">
               <div className="readout-item">
-                <span className="readout-val signal">46%</span>
+                <span className="readout-val signal">48%</span>
                 <span className="readout-label">Renewal-rate lift</span>
               </div>
               <div className="readout-item">
@@ -97,9 +98,10 @@ export default function Home() {
               {[
                 { num: "01", href: "#system",     label: "System",       desc: "The architecture: how the Prediction Loop runs as a continuous operating system across the customer journey." },
                 { num: "02", href: "#proof",       label: "Proof",        desc: "The outcomes: what this system produced inside a real GTM organization, with the data to support it." },
-                { num: "03", href: "#practice",    label: "In practice",  desc: "The motion: 14 live agentic workflows running across sales, success, and onboarding today." },
-                { num: "04", href: "#governance",  label: "Governance",   desc: "The foundation: the intake and triage system that keeps AI work coherent and scalable." },
-                { num: "05", href: "#about",       label: "About",        desc: "The builder: background, career, and the experience behind this framework." },
+                { num: "03", href: "#activation",  label: "Activation",   desc: "The human motion: why the first 30 days determine renewal, and the model built to win that window." },
+                { num: "04", href: "#practice",    label: "In practice",  desc: "The motion: 14 live agentic workflows running across sales, success, and onboarding today." },
+                { num: "05", href: "#governance",  label: "Governance",   desc: "The foundation: the intake and triage system that keeps AI work coherent and scalable." },
+                { num: "06", href: "#about",       label: "About",        desc: "The builder: background, career, and the experience behind this framework." },
               ].map(({ num, href, label, desc }) => (
                 <a key={href} href={href} className="fg-row">
                   <span className="fg-num">{num}</span>
@@ -245,7 +247,7 @@ export default function Home() {
 
           <div className="proof-grid">
             <Reveal className="metric" delay={0}>
-              <div className="num signal">46%</div>
+              <div className="num signal">48%</div>
               <div className="cap">
                 Improvement in renewal rates by treating churn as a product,
                 marketing, and success problem. Not a revenue one.
@@ -511,6 +513,96 @@ export default function Home() {
                   0 to 8
                 </text>
               </svg>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------- ACTIVATION ---------------- */}
+      <section className="section activation-section" id="activation">
+        <div className="container">
+          <Reveal>
+            <span className="eyebrow">Customer activation · the first 30 days</span>
+            <h2 className="display" style={{ marginTop: 18, maxWidth: "22ch" }}>
+              The customer who never activates won&apos;t renew.
+            </h2>
+            <p className="lede">
+              Activation is the single strongest predictor of renewal. Not
+              quarterly sentiment, not meeting cadence, not NPS. The behavior
+              in the first 30 days determines whether a customer reaches
+              renewal as an advocate or a churn risk. Every late-stage
+              intervention is a failure of early signal.
+            </p>
+          </Reveal>
+
+          <div className="act-stats">
+            <Reveal className="act-stat" delay={0}>
+              <div className="act-stat-val is-alert">70%</div>
+              <div className="act-stat-label">of new accounts exit the first 30 days without full activation</div>
+            </Reveal>
+            <Reveal className="act-stat" delay={60}>
+              <div className="act-stat-val">25pp</div>
+              <div className="act-stat-label">first-year churn premium over every subsequent renewal year</div>
+            </Reveal>
+            <Reveal className="act-stat is-cliff" delay={120}>
+              <div className="act-cliff-row">
+                <div className="act-cliff-side">
+                  <div className="act-cliff-val is-alert">57%</div>
+                  <div className="act-cliff-tag">Under 3 integrations</div>
+                </div>
+                <div className="act-cliff-arrow">&#8594;</div>
+                <div className="act-cliff-side">
+                  <div className="act-cliff-val is-signal">15%</div>
+                  <div className="act-cliff-tag">3+ integrations</div>
+                </div>
+              </div>
+              <div className="act-stat-label">churn rate by integration depth. The threshold is the signal.</div>
+            </Reveal>
+          </div>
+
+          <Reveal className="act-model" delay={80}>
+            <div className="act-model-label">The motion</div>
+            <p className="act-model-intro">
+              Group onboarding ran at 35% attendance and was retired. Every
+              customer now gets a named Onboarding Partner who owns the first
+              30 days end to end. The AE commission gate ensures activation
+              happens before the deal is truly closed. Full activation is
+              defined precisely: custom CTA live, 5+ reviews collected, ROI
+              dashboard connected.
+            </p>
+            <div className="act-timeline">
+              {[
+                { day: "Day 0",   label: "AE commission gate",         desc: "Kickoff scheduled before deal closes. AE identifies 3 key contacts pre-signature. 20% of AE payment at risk until activation confirmed within 60 days." },
+                { day: "Day 1",   label: "Onboarding Partner assigned", desc: "Named OP introduced by AE on kickoff call. Persona and role collected to personalize the journey. Correct contact confirmed." },
+                { day: "Day 7-21", label: "Stage-gated milestones",    desc: "Structured outreach at weeks 2, 3, and 4. Review tracker surfaces abandoned reviews for re-nudge. ROI connector initiated." },
+                { day: "Day 30",  label: "Full activation",            desc: "Custom CTA live. 5+ reviews generated. ROI dashboard connected. Pulse Score enters green range." },
+              ].map(({ day, label, desc }) => (
+                <div key={day} className="act-step">
+                  <div className="act-step-day">{day}</div>
+                  <div className="act-step-body">
+                    <div className="act-step-label">{label}</div>
+                    <div className="act-step-desc">{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal className="act-result" delay={100}>
+            <div className="act-result-label">First cohort results</div>
+            <div className="act-result-grid">
+              <div className="act-result-item">
+                <div className="act-result-val">4.5x</div>
+                <div className="act-result-desc">jump in fully activated products (8.6% to 39.1%)</div>
+              </div>
+              <div className="act-result-item">
+                <div className="act-result-val">52%</div>
+                <div className="act-result-desc">of OP accounts hit 5+ reviews vs. 19% baseline</div>
+              </div>
+              <div className="act-result-item">
+                <div className="act-result-val">+16pp</div>
+                <div className="act-result-desc">ROI connector adoption, from 31% to 47.8%</div>
+              </div>
             </div>
           </Reveal>
         </div>

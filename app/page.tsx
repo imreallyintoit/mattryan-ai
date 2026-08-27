@@ -295,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* ---------------- CONTACT ---------------- */}
-      <section className="section contact" id="contact">
+      <section className="section pf-section contact" id="contact">
         <div className="container">
           <Reveal>
             <span className="eyebrow">Let&apos;s build it</span>

@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 // switching to its short label so it never wraps.
 const links = [
   { href: "/", label: "Profile", short: "Profile", collapses: true },
-  { href: "/system", label: "The Operating System", short: "System", collapses: false },
+  { href: "/system", label: "The AI GTM Operating System", short: "System", collapses: false },
 ];
 
 export default function SiteNav() {

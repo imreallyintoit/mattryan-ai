@@ -309,7 +309,7 @@ export default function Home() {
               {
                 tag: "G2 · 2024 to now",
                 title: "Professional services from inception",
-                body: "Arrived to no implementation function, a broken onboarding experience, and retention at 50%. Designed and launched a services business that did not exist: offer architecture, pricing, delivery model, and comp, plus a global delivery model across three regions.",
+                body: "Arrived to no implementation function, a broken onboarding experience, and retention at 50%. Designed and launched a services business that did not exist: offer architecture, pricing, delivery model, and comp, plus a global delivery model across three regions, built into a world class Solutions and Customer Success organization.",
               },
               {
                 tag: "Slack / Salesforce · 2020 to 2022",
@@ -323,14 +323,25 @@ export default function Home() {
               },
               {
                 tag: "G2 · 2025",
-                title: "Commercial MCP strategy",
-                body: "Co-launched G2's model context protocol strategy, opening the company's data to agentic buyers and putting a new distribution surface in front of the roadmap.",
+                title: "Repositioning G2 for the agent economy",
+                body: "Co-launched G2's commercial model context protocol strategy and helped evolve G2's buyer market from software to agents, opening the company's data to agentic buyers and putting a new distribution surface in front of the roadmap.",
+                link: { href: "https://ai.g2.com", label: "ai.g2.com" },
               },
-            ].map(({ tag, title, body }) => (
+            ].map(({ tag, title, body, link }) => (
               <Reveal key={title} className="work-card" delay={100}>
                 <span className="work-tag">{tag}</span>
                 <h3>{title}</h3>
                 <p>{body}</p>
+                {link && (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-card-link"
+                  >
+                    {link.label} ↗
+                  </a>
+                )}
               </Reveal>
             ))}
           </div>

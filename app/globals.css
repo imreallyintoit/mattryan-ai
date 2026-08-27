@@ -1574,6 +1574,129 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 }
 .pf-about-body p strong { color: var(--ink); font-weight: 600; }
 
+/* logo rail — credibility strip under the hero. Every mark is forced to one
+   optical height and one muted white so mixed brands read as a single system.
+   Real assets get brightness(0) invert(1); the rest use a mono wordmark. */
+.logo-rail {
+  margin-top: 46px;
+  padding-top: 26px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+.logo-rail-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+.logo-rail-marks {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.6vw, 34px);
+  flex-wrap: wrap;
+}
+.co-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+}
+.co-logo img {
+  width: auto;
+  object-fit: contain;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.co-logo-text {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+  opacity: 0.75;
+  transition: opacity 0.2s, color 0.2s;
+}
+.logo-rail:hover .co-logo img { opacity: 0.8; }
+.logo-rail:hover .co-logo-text { opacity: 1; color: var(--ink); }
+
+/* lessons earned — the amber quote is the brand logic applied to a career
+   moment: the signal you needed to see early. */
+.lesson-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .lesson-grid { grid-template-columns: 1fr; }
+}
+.lesson-story p {
+  color: var(--ink-dim);
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+.lesson-quote {
+  position: relative;
+  padding: 30px 28px;
+  border: 1px solid rgba(245, 165, 36, 0.28);
+  border-radius: 4px;
+  background:
+    radial-gradient(80% 100% at 0% 0%, rgba(245, 165, 36, 0.07), transparent 65%),
+    var(--graphite);
+}
+.lesson-quote-mark { width: 40px; height: 40px; display: block; margin-bottom: 18px; }
+.lesson-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.2vw, 25px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.lesson-quote cite {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  color: var(--alert);
+  opacity: 0.85;
+}
+
+/* three operating principles */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 44px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  overflow: hidden;
+}
+@media (max-width: 720px) {
+  .principles { grid-template-columns: 1fr; }
+}
+.principle {
+  background: var(--graphite);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.principle-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.principle p { font-size: 15px; color: var(--ink-dim); line-height: 1.6; }
+
 /* expertise */
 .exp-grid {
   display: grid;

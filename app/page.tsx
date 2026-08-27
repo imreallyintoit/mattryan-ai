@@ -19,10 +19,11 @@ export default function Home() {
               <span className="highlight">one</span>.
             </h1>
             <p className="lede hero-lede">
-              I build and re-architect post-sales organizations around
-              adoption, outcomes, and AI. I started as a software engineer and
-              never stopped thinking like one, which is why the systems I build
-              hold up under a number.
+              I build and re-architect pre-sales, post-sales, and professional
+              services organizations, including forward deployed engineering
+              teams. I started as a software engineer and never stopped
+              thinking like one, which is why the systems I build hold up under
+              a number.
             </p>
             <div className="hero-actions">
               <Link href="/system" className="btn btn-primary">

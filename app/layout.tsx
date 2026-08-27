@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Matt Ryan",
   description:
-    "Matt Ryan builds and re-architects post-sales organizations around adoption, outcomes, and AI. VP, Global Solutions and Customer Success at G2, and the architect of the AI GTM Operating System.",
+    "Matt Ryan builds and re-architects pre-sales, post-sales, and professional services organizations, including forward deployed engineering teams. VP, Global Solutions and Customer Success at G2, and the architect of the AI GTM Operating System.",
   metadataBase: new URL("https://mattryan.ai"),
   openGraph: {
     title: "Matt Ryan",

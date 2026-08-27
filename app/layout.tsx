@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Matt Ryan: The AI GTM Operating System",
+  title: "Matt Ryan",
   description:
-    "Matt Ryan runs go-to-market as a predictive system: humans, agents, and digital experiences orchestrated around the customer journey. The AI GTM Operating System, powered by The Prediction Loop.",
+    "Matt Ryan builds and re-architects post-sales organizations around adoption, outcomes, and AI. VP, Global Solutions and Customer Success at G2, and the architect of the AI GTM Operating System.",
   metadataBase: new URL("https://mattryan.ai"),
   openGraph: {
-    title: "Matt Ryan: The AI GTM Operating System",
+    title: "Matt Ryan",
     description:
-      "Go-to-market as a predictive system. Humans, agents, and digital experiences orchestrated around the customer journey.",
+      "Revenue is an engineering problem. Twenty years of building post-sales systems around adoption, outcomes, and AI.",
     url: "https://mattryan.ai",
     siteName: "mattryan.ai",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matt Ryan: The AI GTM Operating System",
+    title: "Matt Ryan",
     description:
-      "Go-to-market as a predictive system, orchestrated around the customer journey.",
+      "Revenue is an engineering problem. Twenty years of building post-sales systems around adoption, outcomes, and AI.",
   },
 };
 

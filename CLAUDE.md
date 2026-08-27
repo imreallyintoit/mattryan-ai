@@ -45,12 +45,25 @@ keep the "risk seen early" idea legible.
 
 ## Structure
 
-Single page, `app/page.tsx`, sections in order:
-1. Hero — thesis + Prediction Loop visual
-2. System — The Prediction Loop (4 stages) + three layers (humans/agents/digital)
-3. Proof — G2 metrics + Pulse Score meter
-4. About — story-driven bio + timeline + LinkedIn/GitHub links
-5. Contact — email + LinkedIn CTA
+Two pages, sharing a nav and footer. Matt the person is the front door; the
+framework lives one click deeper.
+
+**`app/page.tsx` — the profile (home).** Matt's personal brand. Numbered
+sections carry the reading order:
+1. Hero — thesis line + headshot portrait + "Explore my work" CTA
+2. 01 About — story-driven bio
+3. 02 Expertise — four competencies
+4. 03 Selected work — featured card links to `/system`, plus four career projects
+5. 04 Career — the timeline
+6. Contact — email + LinkedIn CTA
+
+**`app/system/page.tsx` — the AI GTM Operating System.** The full framework:
+Hero, Foreword, System (SOAR), Proof, Activation, In practice, Governance,
+Contact. This page carries no bio; the profile page owns that.
+
+Shared: `components/SiteNav.tsx` (client component, highlights the active page
+via `usePathname`; labels switch to short forms on mobile with `aria-label`
+holding the full name) and `components/SiteFooter.tsx`.
 
 `components/Reveal.tsx` is a scroll-reveal wrapper (renders a `<div>` with the
 passed className — that's why grid children like `.metric` get their class via
@@ -58,18 +71,18 @@ passed className — that's why grid children like `.metric` get their class via
 
 ## The headshot
 
-Currently a styled placeholder in the About section (`app/page.tsx`, search
-`headshot`). To add the real photo:
-1. Put a portrait image (~4:5, min 800×1000) at `public/headshot.jpg`
-2. Uncomment the `<img src="/headshot.jpg" alt="Matt Ryan" />` line
-3. Delete the `.headshot-placeholder` div
+`public/headshot.png` — 500×500, transparent background, which is why it sits
+cleanly on the dark `.pf-portrait-frame` card. If you swap it, keep the
+transparent background or the square will read as a bright block on the dark
+page.
 
 ## Content that must stay accurate
 
-Matt's real numbers (46% renewal lift, $2.7M savings, $4M services revenue, 0–8
-Pulse Score, 90–180 day lead time) and career facts come from his resume. Don't
-invent new metrics. Links: LinkedIn `linkedin.com/in/matthewwryan`, GitHub
-`github.com/imreallyintoit`, email `matthew773@gmail.com`.
+Matt's real numbers (48% renewal lift, 60% support cost cut, $2.7M savings, $4M
+services revenue, 0–8 Pulse Score, 90–180 day lead time) and career facts come
+from his resume and the FY27 G2 churn BOD deck. Don't invent new metrics. Links:
+LinkedIn `linkedin.com/in/matthewwryan`, GitHub `github.com/imreallyintoit`,
+email `matthew773@gmail.com`.
 
 ## Deploy
 

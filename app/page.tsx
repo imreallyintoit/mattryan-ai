@@ -113,9 +113,10 @@ export default function Home() {
                 Then I bet on myself, left a thriving P&amp;L, and went to
                 Slack to stand up customer delivery, customer experience, and
                 technical consulting at the same time. We went public.
-                Salesforce acquired us for $27 billion. After driving
-                enterprise growth at Upwork under activist-shareholder
-                pressure, I came to G2, where everything converged: the
+                Salesforce acquired us for $27 billion. I drove enterprise
+                growth at Upwork next, then chose to join G2 when the
+                executive who first recruited me came back specifically to
+                bring me there. That is where everything converged: the
                 engineer, the consultant, and the services leader who scaled
                 under board pressure, all in one operating model with AI
                 running across the customer lifecycle.

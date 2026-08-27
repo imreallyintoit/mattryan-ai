@@ -39,11 +39,11 @@ export default function Home() {
               <span className="logo-rail-label">Built at</span>
               <div className="logo-rail-marks">
                 <CompanyLogo name="G2" slug="g2" />
-                <CompanyLogo name="Upwork" />
-                <CompanyLogo name="Slack" />
-                <CompanyLogo name="Salesforce" />
+                <CompanyLogo name="Upwork" slug="upwork" />
+                <CompanyLogo name="Slack" slug="slack" />
+                <CompanyLogo name="Salesforce" slug="salesforce" />
                 <CompanyLogo name="Workday" slug="workday" />
-                <CompanyLogo name="IBM" />
+                <CompanyLogo name="IBM" slug="ibm" />
               </div>
             </div>
           </div>

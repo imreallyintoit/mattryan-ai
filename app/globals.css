@@ -1451,15 +1451,39 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 .timeline { margin-top: 34px; border-top: 1px solid var(--hairline); }
 .tl-row {
   display: grid;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 56px 130px 1fr;
   gap: 20px;
+  align-items: flex-start;
   padding: 18px 0;
   border-bottom: 1px solid var(--hairline);
 }
-@media (max-width: 560px) { .tl-row { grid-template-columns: 1fr; gap: 4px; } }
+@media (max-width: 560px) {
+  .tl-row {
+    grid-template-columns: 56px 1fr;
+    grid-template-areas: "visual when" "visual what";
+    row-gap: 6px;
+  }
+  .tl-visual { grid-area: visual; }
+  .tl-when { grid-area: when; padding-top: 0; }
+  .tl-what { grid-area: what; }
+}
 .tl-when { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; padding-top: 3px; }
 .tl-what strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 3px; }
 .tl-what span { font-size: 14px; color: var(--ink-dim); }
+
+/* career timeline visual slot — a real photo where one exists (mono-photo
+   treatment), the company's own mark where it doesn't. Never a guess. */
+.tl-visual {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  background: var(--graphite);
+}
+.tl-visual.is-logo { display: flex; align-items: center; justify-content: center; padding: 12px; }
+.tl-visual.is-logo .co-logo { height: 100%; }
+.tl-visual.is-logo img { max-width: 100%; max-height: 100%; }
 
 .about-links { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
 .about-links a {

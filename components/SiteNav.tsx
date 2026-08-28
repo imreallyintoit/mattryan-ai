@@ -5,11 +5,13 @@ import { usePathname } from "next/navigation";
 
 // The wordmark already links home, so the Profile link is redundant on
 // narrow screens and collapses away. The system link always stays reachable,
-// switching to its short label so it never wraps.
+// switching to its short label so it never wraps. Numbers echo the 01/02/03
+// section coordinates used throughout the site, so the nav reads as part of
+// the same system rather than a generic menu.
 const links = [
-  { href: "/", label: "Profile", short: "Profile", collapses: true },
-  { href: "/speaking", label: "Speaking", short: "Speaking", collapses: false },
-  { href: "/system", label: "The AI GTM Operating System", short: "System", collapses: false },
+  { num: "01", href: "/", label: "Profile", short: "Profile", collapses: true },
+  { num: "02", href: "/speaking", label: "Speaking", short: "Speaking", collapses: false },
+  { num: "03", href: "/system", label: "The AI GTM Operating System", short: "System", collapses: false },
 ];
 
 export default function SiteNav() {
@@ -29,17 +31,19 @@ export default function SiteNav() {
           mattryan<span className="dot-ai">.ai</span>
         </Link>
         <div className="nav-links">
-          {links.map(({ href, label, short, collapses }) => (
+          {links.map(({ num, href, label, short, collapses }) => (
             <Link
               key={href}
               href={href}
               className={[
+                "nav-chip",
                 pathname === href ? "is-current" : "",
                 collapses ? "nav-collapses" : "",
-              ].filter(Boolean).join(" ") || undefined}
+              ].filter(Boolean).join(" ")}
               aria-current={pathname === href ? "page" : undefined}
               aria-label={label}
             >
+              <span className="nav-chip-num">{num}</span>
               <span className="nav-label-full">{label}</span>
               <span className="nav-label-short">{short}</span>
             </Link>

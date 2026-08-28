@@ -45,8 +45,8 @@ keep the "risk seen early" idea legible.
 
 ## Structure
 
-Two pages, sharing a nav and footer. Matt the person is the front door; the
-framework lives one click deeper.
+Three pages, sharing a nav and footer. Matt the person is the front door; the
+framework and the speaking history each live one click deeper.
 
 **`app/page.tsx` — the profile (home).** Matt's personal brand. Numbered
 sections carry the reading order:
@@ -61,9 +61,31 @@ sections carry the reading order:
 Hero, Foreword, System (SOAR), Proof, Activation, In practice, Governance,
 Contact. This page carries no bio; the profile page owns that.
 
+**`app/speaking/page.tsx` — speaking.** Numbered sections:
+1. Hero — thesis line + mono-treated stage photo + "Book a talk" CTA
+2. 01 Through the years — a five-photo career strip, 2006 to now, all in the
+   mono-photo treatment so wildly different cameras and eras read as one story
+3. 02 Speaking topics — eight bookable pillars, each backed by a real proof
+   point from the operating history
+4. 03 Speaking history — sessions actually delivered; the one entry with a
+   confirmed matching photo (Customer Success Summit) carries it inline
+5. 04 Formats and audiences
+6. Contact — same pattern as the other two pages
+
+Don't invent a speaking engagement or attach a photo to one it doesn't match.
+Every entry in `talks` and `photoStrip` in that file must trace to a real
+session or a real photo; if a new one is added without solid proof, leave the
+`photo`/`link` fields off rather than guessing.
+
 Shared: `components/SiteNav.tsx` (client component, highlights the active page
 via `usePathname`; labels switch to short forms on mobile with `aria-label`
 holding the full name) and `components/SiteFooter.tsx`.
+
+`.mono-photo` in `globals.css` is the site's one photo treatment: grayscale
+plus a cyan-tinted overlay, so any conference photo (different camera, era,
+lighting) reads as part of one system. Apply it to any new photo added
+anywhere on the site rather than leaving one photo in full color next to
+others in the treatment.
 
 `components/Reveal.tsx` is a scroll-reveal wrapper (renders a `<div>` with the
 passed className — that's why grid children like `.metric` get their class via

@@ -369,40 +369,41 @@ export default function Home() {
                   when: "2024 to NOW",
                   who: "G2 · VP, Global Solutions & Customer Success",
                   what: "Architected the AI GTM Operating System; built professional services from inception across three regions; co-launched G2's commercial MCP strategy.",
-                  visual: { type: "photo", src: "/speaking/g2-mym-2024.jpg" },
+                  logoSlug: "g2",
+                  logoName: "G2",
                 },
                 {
                   when: "2022 to 2024",
                   who: "Upwork · VP, Enterprise Solutions",
                   what: "Built the enterprise solution and post-sales model under activist-shareholder pressure on enterprise growth; drove 37% growth.",
-                  visual: { type: "logo", slug: "upwork", name: "Upwork" },
+                  logoSlug: "upwork",
+                  logoName: "Upwork",
                 },
                 {
                   when: "2020 to 2022",
                   who: "Slack (Salesforce) · Professional Services Leader",
                   what: "Stood up customer delivery, customer experience, and technical consulting simultaneously, hiring over 120 people. Through IPO and the $27B Salesforce acquisition. Named Slack Leader of the Year, 2022.",
-                  visual: { type: "logo", slug: "slack", name: "Slack" },
+                  logoSlug: "slack",
+                  logoName: "Slack",
                 },
                 {
                   when: "2012 to 2020",
                   who: "Alight / Strada · VP, Professional Services",
                   what: "Scaled a Workday HCM practice from a $10M acquisition with 60 consultants toward a business approaching $200M, through an Aon spin-off and Blackstone acquisition.",
-                  visual: { type: "logo", slug: "workday", name: "Workday" },
+                  logoSlug: "workday",
+                  logoName: "Workday",
                 },
                 {
                   when: "2007 to 2012",
                   who: "IBM · Managing Consultant, Global Business Services",
                   what: "Multi-year ERP and service model deployments for financial services, utilities, and heavily regulated industries. Lived in India over a year, built delivery teams in Poland and the Philippines, worked in nearly 40 countries.",
-                  visual: { type: "photo", src: "/speaking/career-2006-ibm.jpg" },
+                  logoSlug: "ibm",
+                  logoName: "IBM",
                 },
-              ].map(({ when, who, what, visual }) => (
+              ].map(({ when, who, what, logoSlug, logoName }) => (
                 <div key={when} className="tl-row">
-                  <div className={`tl-visual${visual.type === "photo" ? " mono-photo" : " is-logo"}`}>
-                    {visual.type === "photo" ? (
-                      <img src={visual.src} alt="" />
-                    ) : (
-                      <CompanyLogo name={visual.name!} slug={visual.slug} />
-                    )}
+                  <div className="tl-visual is-logo">
+                    <CompanyLogo name={logoName} slug={logoSlug} />
                   </div>
                   <span className="tl-when">{when}</span>
                   <span className="tl-what">

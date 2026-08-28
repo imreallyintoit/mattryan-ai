@@ -11,27 +11,22 @@ export const metadata = {
 const photoStrip = [
   {
     src: "/speaking/career-2006-ibm.jpg",
-    era: "2006",
     caption: "IBM Global Business Services. Early technical delivery, first time in front of a room.",
   },
   {
     src: "/speaking/career-workshop.jpg",
-    era: "Early career",
     caption: "Workshop facilitation on the road, the years spent building delivery teams across three continents.",
   },
   {
     src: "/speaking/csc-summit-bio.jpg",
-    era: "2025",
     caption: "Customer Success Summit, Chicago. Customer Success Collective.",
   },
   {
     src: "/speaking/g2-mym-2024.jpg",
-    era: "2024",
     caption: "G2 Mid-Year Meetup.",
   },
   {
     src: "/speaking/g2-stage-gesture.jpg",
-    era: "Now",
     caption: "G2, on the main stage.",
   },
 ];
@@ -193,12 +188,11 @@ export default function SpeakingPage() {
           </Reveal>
 
           <div className="photo-strip">
-            {photoStrip.map(({ src, era, caption }, i) => (
+            {photoStrip.map(({ src, caption }, i) => (
               <Reveal key={src} className="photo-strip-item" delay={60 + i * 40}>
                 <div className="mono-photo">
                   <img src={src} alt={caption} />
                 </div>
-                <div className="photo-strip-era">{era}</div>
                 <div className="photo-strip-caption">{caption}</div>
               </Reveal>
             ))}

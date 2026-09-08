@@ -15,7 +15,7 @@ export default function Home() {
           <div>
             <span className="eyebrow">Matt Ryan · Chicago</span>
             <h1 className="display">
-              Revenue is an engineering problem. I&apos;ve spent twenty years
+              Revenue is an engineering problem. I&apos;ve spent a career
               treating it like{" "}
               <span className="highlight">one</span>.
             </h1>

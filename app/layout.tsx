@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Matt Ryan",
     description:
-      "Revenue is an engineering problem. Twenty years of building post-sales systems around adoption, outcomes, and AI.",
+      "Revenue is an engineering problem. A career of building post-sales systems around adoption, outcomes, and AI.",
     url: "https://mattryan.ai",
     siteName: "mattryan.ai",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Matt Ryan",
     description:
-      "Revenue is an engineering problem. Twenty years of building post-sales systems around adoption, outcomes, and AI.",
+      "Revenue is an engineering problem. A career of building post-sales systems around adoption, outcomes, and AI.",
   },
 };
 

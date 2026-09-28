@@ -53,8 +53,8 @@ export default function RenewalChart() {
           </div>
         </div>
         <div className="renewal-chart-deltas">
-          <span className="renewal-chart-delta">NRR +3.7%</span>
-          <span className="renewal-chart-delta is-dim">GRR +4.2%</span>
+          <span className="renewal-chart-delta">NRR +3.7pp</span>
+          <span className="renewal-chart-delta is-dim">GRR +4.2pp</span>
         </div>
       </div>
       <svg viewBox="0 0 630 190" xmlns="http://www.w3.org/2000/svg" className="renewal-svg" aria-hidden="true">

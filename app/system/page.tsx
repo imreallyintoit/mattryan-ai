@@ -7,7 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 export const metadata = {
   title: "The AI GTM Operating System · Matt Ryan",
   description:
-    "A predictive operating system for go-to-market: the Prediction Loop, the Pulse Score, activation, live agentic workflows, and the governance model that sustains them.",
+    "Applied AI for enterprise AI adoption in go-to-market: the Prediction Loop, the Pulse Score, forward deployed engineering workflows, and the governance model that sustains them.",
 };
 
 export default function SystemPage() {
@@ -42,7 +42,7 @@ export default function SystemPage() {
 
             <div className="readout">
               <div className="readout-item">
-                <span className="readout-val signal">48%</span>
+                <span className="readout-val signal">46%</span>
                 <span className="readout-label">Renewal-rate lift</span>
               </div>
               <div className="readout-item">
@@ -54,6 +54,7 @@ export default function SystemPage() {
                 <span className="readout-label">Risk seen early</span>
               </div>
             </div>
+            <p className="permission-note">Shared with G2&apos;s permission.</p>
           </div>
 
           <div className="loop-stage">
@@ -229,7 +230,7 @@ export default function SystemPage() {
 
           <div className="proof-grid">
             <Reveal className="metric" delay={0}>
-              <div className="num signal">48%</div>
+              <div className="num signal">46%</div>
               <div className="cap">
                 Improvement in renewal rates by treating churn as a product
                 engineering, marketing, and GTM problem.
@@ -259,6 +260,7 @@ export default function SystemPage() {
           </div>
 
           <Reveal delay={100}>
+            <p className="permission-note">Shared with G2&apos;s permission.</p>
             <RenewalChart />
           </Reveal>
 
@@ -269,14 +271,13 @@ export default function SystemPage() {
               The Pulse Score
             </h3>
             <p className="pulse-intro">
-              A score without underlying data is just a guess. Building a
-              truly predictive model requires investing in the signal
-              architecture beneath it first: product engagement telemetry,
-              customer interaction data, buyer demand signals, and
-              renewal-context metadata, normalized and fused into a composite
-              model. This is why agent building and data infrastructure are
-              the same project. The score is the output. The architecture is
-              the point.
+              A score without the data underneath it is just a guess. The
+              real work is the signal architecture: product usage, customer
+              conversations, buyer demand, and renewal context, fused into
+              one model.
+            </p>
+            <p className="pulse-intro">
+              The score is the output. The architecture is the point.
             </p>
           </Reveal>
 
@@ -418,12 +419,10 @@ export default function SystemPage() {
                 Behavioral signals alone cannot distinguish those two accounts.
               </p>
               <p>
-                Gong call transcripts, NPS verbatims, support ticket language,
-                and G2 review text carry the actual words customers use to
-                describe their experience. Combined with product and ROI
-                signals, they turn a number into a diagnosis: not just whether
-                an account is at risk, but why, and what the conversation needs
-                to be.
+                Gong transcripts, NPS verbatims, support tickets, and G2
+                reviews carry the words customers actually use. Combined with
+                product and ROI signals, they turn a number into a diagnosis:
+                not just risk, but why, and what to do next.
               </p>
               <p>
                 This is where the roadmap goes next: renewal-call sentiment,
@@ -547,10 +546,8 @@ export default function SystemPage() {
             <p className="act-model-intro">
               Group onboarding ran at 35% attendance and was retired. Every
               customer now gets a named Onboarding Partner who owns the first
-              30 days end to end. The AE commission gate ensures activation
-              happens before the deal is truly closed. Full activation is
-              defined precisely: custom CTA live, 5+ reviews collected, ROI
-              dashboard connected.
+              30 days end to end. Full activation is defined precisely:
+              custom CTA live, 5+ reviews collected, ROI dashboard connected.
             </p>
             <div className="act-timeline">
               {[
@@ -722,8 +719,8 @@ export default function SystemPage() {
               sequences using Claude Haiku, and writes net-new contacts back to
               Salesforce.
             </div>
-            <div className="wf-how">
-              <div className="wf-how-label">How it works</div>
+            <details className="wf-how">
+              <summary className="wf-how-label">How it works</summary>
               <div className="wf-cols">
                 <div className="wf-col">
                   <div className="wf-col-label">Triggered by</div>
@@ -756,7 +753,7 @@ export default function SystemPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </details>
             <div className="wf-footer">
               <div className="wf-tools">
                 {["n8n", "Salesforce", "G2 API", "ZoomInfo", "Cognism", "Claude Haiku", "Gmail"].map(
@@ -793,18 +790,16 @@ export default function SystemPage() {
               Identifies at-risk customer accounts (pulse score 0 to 3), enriches
               them with Salesforce and ZoomInfo context, posts actionable
               churn-risk alerts to the relevant team channel, and audits for
-              acknowledgment or non-response over a 4-day window. Bridges the gap
-              until Catalyst v2 ships so CSMs and AMs can act on churn risk
-              immediately.
+              acknowledgment or non-response over a 4-day window.
             </div>
-            <div className="wf-how">
-              <div className="wf-how-label">How it works</div>
+            <details className="wf-how">
+              <summary className="wf-how-label">How it works</summary>
               <div className="wf-cols">
                 <div className="wf-col">
                   <div className="wf-col-label">Triggered by</div>
                   <div className="wf-col-content">
                     <strong>Scheduled</strong>
-                    Recurring batch in n8n, likely daily. Pulls active accounts,
+                    Runs daily in n8n. Pulls active accounts,
                     filters to pulse score 0 to 3, fires the enrichment and
                     alert sequence. Also triggerable manually.
                   </div>
@@ -833,7 +828,7 @@ export default function SystemPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </details>
             <div className="wf-footer">
               <div className="wf-tools">
                 {["n8n", "Salesforce", "ZoomInfo", "Slack", "Claude Haiku"].map(
@@ -845,7 +840,7 @@ export default function SystemPage() {
               <div className="wf-meta">
                 <span className="wf-meta-item">
                   <span className="wf-live-dot" style={{ background: "var(--alert)", boxShadow: "0 0 8px var(--glow-alert)" }} />
-                  <span className="val" style={{ color: "var(--alert)" }}>In progress · 75%</span>
+                  <span className="val" style={{ color: "var(--alert)" }}>In build</span>
                 </span>
               </div>
             </div>
@@ -868,8 +863,8 @@ export default function SystemPage() {
               account context. Eliminates the manual CRM hygiene work that
               follows every discovery call.
             </div>
-            <div className="wf-how">
-              <div className="wf-how-label">How it works</div>
+            <details className="wf-how">
+              <summary className="wf-how-label">How it works</summary>
               <div className="wf-cols">
                 <div className="wf-col">
                   <div className="wf-col-label">Triggered by</div>
@@ -899,7 +894,7 @@ export default function SystemPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </details>
             <div className="wf-footer">
               <div className="wf-tools">
                 {["Salesforce", "Gong", "Slack", "Claude"].map((tool) => (
@@ -964,8 +959,8 @@ export default function SystemPage() {
               manual knowledge transfer, no lost context at the moment it
               matters most.
             </div>
-            <div className="wf-how">
-              <div className="wf-how-label">How it works</div>
+            <details className="wf-how">
+              <summary className="wf-how-label">How it works</summary>
               <div className="wf-cols">
                 <div className="wf-col">
                   <div className="wf-col-label">Triggered by</div>
@@ -995,7 +990,7 @@ export default function SystemPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </details>
             <div className="wf-footer">
               <div className="wf-tools">
                 {["Salesforce", "Gong", "Slack", "Dust"].map((tool) => (
@@ -1038,46 +1033,32 @@ export default function SystemPage() {
                 <div className="gov-phase-index">01 / ACCESS</div>
                 <h3>Open the door.</h3>
                 <p>
-                  Give every role a structured way to submit ideas. Without a
-                  front door, AI work happens in shadow corners: undocumented,
-                  single-owner, invisible to leadership until something breaks.
-                </p>
-                <p>
-                  Access is not just permissions. It is a cultural signal that
-                  the org is building this together, and that the field is the
-                  best source of what to build next.
+                  Give every role a structured way to submit ideas, or AI work
+                  happens in shadow corners: undocumented, single-owner,
+                  invisible until something breaks. Access is a cultural
+                  signal that the field is the best source of what to build
+                  next.
                 </p>
               </div>
               <div className="gov-phase">
                 <div className="gov-phase-index">02 / INVENTORY</div>
                 <h3>Catalog what exists.</h3>
                 <p>
-                  Before you scale, you need to know what has already been
-                  built. Most organizations have more automation than they
-                  think, and most of it is fragile: one person owns it, no one
-                  else can maintain it, and it was never designed to scale.
-                </p>
-                <p>
-                  The inventory surfaces shadow IT, informal automations, and
-                  one-off experiments before they become technical debt. It is
-                  how you prevent the same thing from being built six times by
-                  six different people.
+                  Before you scale, you need to know what already exists.
+                  Most organizations have more automation than they think, and
+                  most of it is fragile, single-owner, and undocumented,
+                  which is how the same thing gets built six times by six
+                  different people.
                 </p>
               </div>
               <div className="gov-phase">
                 <div className="gov-phase-index">03 / GOVERN</div>
                 <h3>Rebuild it to last.</h3>
                 <p>
-                  Not every submission should be built. Not every informal
-                  automation should survive review. The governance layer
-                  triages by priority and risk tier, assigns ownership, and
-                  rebuilds approved workflows in a maintained, QA&apos;d,
-                  champion-supported form.
-                </p>
-                <p>
-                  The output is a catalog the whole org can trust: tested in
-                  the field, documented, and handed to a champion who owns it
-                  going forward.
+                  Not every submission should be built. The governance layer
+                  triages by priority and risk, assigns ownership, and rebuilds
+                  approved workflows into a tested, documented catalog the
+                  whole org can trust.
                 </p>
               </div>
             </div>
@@ -1092,15 +1073,15 @@ export default function SystemPage() {
           <Reveal>
             <span className="eyebrow">Let&apos;s build it</span>
             <h2 className="display" style={{ marginTop: 18 }}>
-              If your GTM finds out too late, that&apos;s a system problem.
+              Let&apos;s talk about AI in the enterprise.
             </h2>
             <p className="lede">
-              I work with enterprise B2B SaaS teams putting AI at the center of
-              go-to-market as a predictive system, not a pile of point tools.
+              I speak and write about what it actually takes to get AI
+              adopted inside complex organizations.
             </p>
             <div className="contact-actions">
               <a href="mailto:matthew773@gmail.com" className="btn btn-primary">
-                Start a conversation
+                Book a talk
               </a>
               <a
                 href="https://www.linkedin.com/in/matthewwryan/"

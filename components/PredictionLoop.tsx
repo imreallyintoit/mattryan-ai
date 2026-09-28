@@ -21,7 +21,7 @@ export default function PredictionLoop() {
     A ${r} ${r} 0 0 1 ${cx} ${cy - r} Z`;
 
   return (
-    <svg viewBox="0 0 460 460" role="img" aria-label="The Prediction Loop: signal, orchestrate, act, refine — SOAR">
+    <svg viewBox="0 0 460 460" role="img" aria-label="The Prediction Loop: signal, orchestrate, act, refine. SOAR.">
       {/* outer + inner rings */}
       <circle className="orbit-ring" cx={cx} cy={cy} r={r + 26} />
       <circle className="orbit-ring inner" cx={cx} cy={cy} r={r} />

@@ -4,9 +4,57 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import CompanyLogo from "@/components/CompanyLogo";
 
+export const metadata = {
+  title: "Matt Ryan · AI Adoption, Forward Deployed Engineering, and Customer Success",
+  description:
+    "Matt Ryan builds forward deployed engineering and post-sales teams for enterprise AI adoption. Applied AI leader and VP, Global Solutions at G2.",
+  openGraph: {
+    title: "Matt Ryan · AI Adoption, Forward Deployed Engineering, and Customer Success",
+    description:
+      "Matt Ryan builds forward deployed engineering and post-sales teams for enterprise AI adoption. Applied AI leader and VP, Global Solutions at G2.",
+  },
+  twitter: {
+    title: "Matt Ryan · AI Adoption, Forward Deployed Engineering, and Customer Success",
+    description:
+      "Matt Ryan builds forward deployed engineering and post-sales teams for enterprise AI adoption. Applied AI leader and VP, Global Solutions at G2.",
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Matt Ryan",
+  jobTitle: "VP, Global Solutions and Customer Success",
+  worksFor: {
+    "@type": "Organization",
+    name: "G2",
+  },
+  url: "https://mattryan.ai",
+  image: "https://mattryan.ai/headshot.png",
+  sameAs: [
+    "https://www.linkedin.com/in/matthewwryan/",
+    "https://github.com/imreallyintoit",
+  ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Indiana State University",
+  },
+  knowsAbout: [
+    "AI adoption",
+    "Forward deployed engineering",
+    "Customer success",
+    "Professional services",
+    "Model Context Protocol",
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <SiteNav />
 
       {/* ---------------- HERO ---------------- */}
@@ -20,11 +68,10 @@ export default function Home() {
               <span className="highlight">one</span>.
             </h1>
             <p className="lede hero-lede">
-              I build and re-architect pre-sales, post-sales, and professional
-              services organizations, including forward deployed engineering
-              teams. I started as a software engineer and never stopped
-              thinking like one, which is why the systems I build hold up under
-              a number.
+              I build the teams that get AI adopted inside complex
+              enterprises: forward deployed engineering, professional
+              services, and post-sales. I started as a software engineer and
+              still think like one.
             </p>
             <div className="hero-actions">
               <Link href="/system" className="btn btn-primary">
@@ -42,7 +89,10 @@ export default function Home() {
                 <CompanyLogo name="Upwork" slug="upwork" />
                 <CompanyLogo name="Slack" slug="slack" />
                 <CompanyLogo name="Salesforce" slug="salesforce" />
-                <CompanyLogo name="Workday" slug="workday" />
+                {/* TODO(Matt): no monochrome Alight logo asset exists yet.
+                    Renders as text via CompanyLogo's fallback until one is
+                    supplied in public/logos/. */}
+                <CompanyLogo name="Alight" />
                 <CompanyLogo name="IBM" slug="ibm" />
               </div>
             </div>
@@ -79,47 +129,31 @@ export default function Home() {
 
             <Reveal className="pf-about-body" delay={100}>
               <p>
-                I started as a software engineer, which gives me something most
-                people at my level do not have. I understand how software gets
-                built, how it breaks, and what it actually takes to implement
-                it inside a complex enterprise. That foundation shaped
-                everything that came after it.
+                I started as a software engineer. I still think like one: how
+                software gets built, how it breaks, and what it takes to get
+                it adopted inside a large enterprise.
               </p>
               <p>
-                I spent the first seventeen years of my career in consulting.
-                At IBM Global Business Services I ran multi-year ERP and
-                service model deployments for financial services, utilities,
-                and heavily regulated industries. I lived in India for over a
-                year, built delivery teams across Poland and the Philippines,
-                and worked in nearly 40 countries. Sales teams started pulling
-                me into their deals because I could sit across from a CIO and
-                speak credibly to what their investment would actually produce.{" "}
+                At IBM, I led multi-year ERP deployments in regulated
+                industries across nearly 40 countries. Sales teams pulled me
+                into deals because I could tell a CIO, honestly, what their
+                investment would produce.{" "}
                 <strong>I was the person who made the quota carrier
                 credible.</strong>
               </p>
               <p>
-                Private equity ownership is where I got my real education. I
-                spent nearly a decade scaling a Workday practice from a $10M
-                acquisition with 60 consultants into a business approaching
-                $200M, through an Aon spin-off into Alight Solutions and a
-                Blackstone acquisition. The board did not care about effort.
-                They cared whether the number was going up and whether the
-                business was becoming more valuable. Every decision I make
-                still runs through that lens:{" "}
-                <strong>what does this do to retention, to margin, and to the
-                story we are telling investors.</strong>
+                At Alight, under private equity ownership, I scaled a Workday
+                practice from a $10M acquisition to a business approaching
+                $200M. The board did not care about effort. It cared whether
+                the business was getting more valuable, and I still run every
+                decision through retention, margin, and the investor story.
               </p>
               <p>
-                Then I bet on myself, left a thriving P&amp;L, and went to
-                Slack to stand up customer delivery, customer experience, and
-                technical consulting at the same time. We went public.
-                Salesforce acquired us for $27 billion. I drove enterprise
-                growth at Upwork next, then chose to join G2 when the
-                executive who first recruited me came back specifically to
-                bring me there. That is where everything converged: the
-                engineer, the consultant, and the services leader who scaled
-                under board pressure, all in one operating model with AI
-                running across the customer lifecycle.
+                At Slack, I built a team of 65+ forward deployed technical
+                architects through the IPO and the $27B Salesforce
+                acquisition. Then came Upwork and G2, where everything
+                converged: one operating model with AI running across the
+                customer lifecycle.
               </p>
               <div className="about-links">
                 <a href="https://www.linkedin.com/in/matthewwryan/" target="_blank" rel="noopener noreferrer">
@@ -151,19 +185,14 @@ export default function Home() {
           <div className="lesson-grid">
             <Reveal className="lesson-story" delay={80}>
               <p>
-                Early in my career, as a young software engineer, I shipped
-                production code missing a single semicolon. What should have
-                deleted two rows of data instead wiped out more than 400,000
-                production employment records. It was entirely preventable.
-                We recovered the data. After the crisis passed, my manager
-                pulled me aside.
+                Early in my career, one misplaced semicolon cut a DELETE
+                statement off before its WHERE clause. Instead of two rows, it
+                wiped more than 400,000 production employment records. We
+                recovered everything. Then my manager pulled me aside.
               </p>
               <p>
-                That reframed the work permanently. I became rigorous about
-                postmortems, documentation, and system design. I did not want
-                to fix mistakes, I wanted to engineer them out of existence.
-                It is why every organization I have built since is designed
-                around the same three things.
+                Since then, I design organizations to engineer mistakes out,
+                not just fix them.
               </p>
             </Reveal>
 
@@ -185,15 +214,15 @@ export default function Home() {
             {[
               {
                 name: "Resilience",
-                body: "Systems and teams that hold under real load, not just on the happy path. Failure modes designed for before they are discovered.",
+                body: "Systems that hold under real load, with failure modes designed for in advance.",
               },
               {
                 name: "Repeatability",
-                body: "Delivery that does not depend on who is in the room. Frameworks, standards, and documentation over heroics.",
+                body: "Delivery that works no matter who is in the room.",
               },
               {
                 name: "Accountability",
-                body: "Named owners and measured outcomes, with postmortems that change the design instead of assigning blame.",
+                body: "Named owners, measured outcomes, and postmortems that change the design.",
               },
             ].map(({ name, body }) => (
               <Reveal key={name} className="principle" delay={140}>
@@ -223,23 +252,23 @@ export default function Home() {
             {[
               {
                 n: "01",
-                title: "Pre-sales and solution credibility",
-                body: "Sitting across from a CIO and speaking honestly to what an investment will produce. Solution engineering and technical pre-sales that make the quota carrier credible and set delivery up to succeed rather than inherit a promise it cannot keep.",
+                title: "Forward deployed engineering and services",
+                body: "Technical teams that work beside customers and turn what recurs into product. Built at Slack and G2.",
               },
               {
                 n: "02",
-                title: "Post-sales and lifecycle architecture",
-                body: "Rebuilding onboarding, retention, and expansion so revenue compounds. Activation designed as the leading indicator it actually is, not a checkbox after close.",
+                title: "AI across the customer lifecycle",
+                body: "Prediction, agents, and the data underneath them, running from onboarding to renewal.",
               },
               {
                 n: "03",
-                title: "Services and forward deployed engineering",
-                body: "Standing up professional services, technical consulting, and forward deployed engineering teams as real revenue lines with their own P&L, delivery model, and renewal economics.",
+                title: "Post-sales architecture",
+                body: "Onboarding, retention, and expansion designed so revenue compounds.",
               },
               {
                 n: "04",
-                title: "AI across the customer lifecycle",
-                body: "Predictive operating systems that run the full journey: signal architecture, agent orchestration, and the data infrastructure underneath the score.",
+                title: "Technical pre-sales",
+                body: "Honest answers to what an investment will produce, so delivery never inherits a promise it cannot keep.",
               },
             ].map(({ n, title, body }) => (
               <Reveal key={n} className="exp-card" delay={80}>
@@ -273,14 +302,12 @@ export default function Home() {
                 <span className="work-tag">G2 · 2024 to now</span>
                 <h3 className="display">The AI GTM Operating System</h3>
                 <p>
-                  A predictive operating system for go-to-market: the
-                  Prediction Loop, the Pulse Score, an activation model for the
-                  first 30 days, 14 live agentic workflows, and the governance
-                  function that keeps it all coherent. This is the full
-                  framework, documented end to end.
+                  A predictive system for go-to-market: the Pulse Score, a
+                  30-day activation model, and 14 live agentic workflows.
+                  Documented end to end.
                 </p>
                 <div className="work-feature-stats">
-                  <span><strong>48%</strong> renewal lift</span>
+                  <span><strong>46%</strong> renewal lift</span>
                   <span><strong>60%</strong> support cost cut</span>
                   <span><strong>90-180d</strong> risk lead time</span>
                 </div>
@@ -309,22 +336,22 @@ export default function Home() {
               {
                 tag: "G2 · 2024 to now",
                 title: "Professional services from inception",
-                body: "Arrived to no implementation function, a broken onboarding experience, and retention at 50%. Designed and launched a services business that did not exist: offer architecture, pricing, delivery model, and comp, plus a global delivery model across three regions, built into a world class Solutions and Customer Success organization.",
+                body: "I arrived to no implementation function and retention near 50%. I built the services business, pricing, and a delivery model across three regions.",
               },
               {
                 tag: "Slack / Salesforce · 2020 to 2022",
-                title: "Technical architecture, $100K to $11M",
-                body: "Turned a pilot into an $11M annual business and grew the team from 2 to 65 technical architects across three continents. Forward deployed work like Rivian's production line, where every vehicle had its own Slack channel wired to real-time alerting. Named Slack Leader of the Year, 2022.",
+                title: "Forward deployed engineering, $100K to $11M",
+                body: "Grew a pilot into an $11M annual business and a team of 65+ forward deployed architects on three continents. At Rivian, every vehicle on the production line had its own Slack channel wired to real-time alerts.",
               },
               {
                 tag: "Alight / Strada · 2012 to 2020",
                 title: "Workday practice, $10M to ~$200M",
-                body: "Built the implementation framework, delivery standards, and go-to-market from nothing, scaling from a $10M acquisition with 60 consultants through an Aon spin-off and a Blackstone acquisition. Enterprise contracts with UPS, Goldman Sachs, and Home Depot.",
+                body: "Built the delivery framework and go-to-market from a 60-person acquisition. Clients included UPS, Goldman Sachs, and Home Depot.",
               },
               {
                 tag: "G2 · 2025",
                 title: "Repositioning G2 for the agent economy",
-                body: "Co-launched G2's commercial model context protocol strategy and helped evolve G2's buyer market from software to agents, opening the company's data to agentic buyers and putting a new distribution surface in front of the roadmap.",
+                body: "Co-launched G2's commercial MCP strategy, opening G2's data to AI agents as buyers.",
                 link: { href: "https://ai.g2.com", label: "ai.g2.com" },
               },
             ].map(({ tag, title, body, link }) => (
@@ -348,11 +375,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- 05 CAREER ---------------- */}
-      <section className="section pf-section" id="career">
+      {/* ---------------- 05 THINGS I BUILD MYSELF ---------------- */}
+      <section className="section pf-section" id="build">
         <div className="container">
           <Reveal className="sec-head">
             <span className="sec-num">05</span>
+            <span className="sec-label">Things I build myself</span>
+          </Reveal>
+
+          <Reveal delay={60}>
+            <h2 className="display pf-sec-title">
+              Things I build myself.
+            </h2>
+            <p className="lede" style={{ marginTop: 0, marginBottom: 40 }}>
+              I lead teams that build with AI, and I build with it myself.
+            </p>
+          </Reveal>
+
+          <div className="work-grid is-single">
+            {[
+              {
+                tag: "Personal project",
+                title: "Infiniti",
+                body: "An app that preserves a person's stories, voice, and values so the people they love can keep hearing from them. I'm building it for my son. React, deployed on Vercel.",
+              },
+            ].map(({ tag, title, body }) => (
+              <Reveal key={title} className="work-card" delay={100}>
+                <span className="work-tag">{tag}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </Reveal>
+            ))}
+          </div>
+          {/* TODO(Matt): supply a demo or GitHub URL for Infiniti, and name
+              one or two more agents or tools you built yourself if you want
+              a second card here. */}
+        </div>
+      </section>
+
+      {/* ---------------- 06 CAREER ---------------- */}
+      <section className="section pf-section" id="career">
+        <div className="container">
+          <Reveal className="sec-head">
+            <span className="sec-num">06</span>
             <span className="sec-label">Career</span>
           </Reveal>
 
@@ -375,14 +440,14 @@ export default function Home() {
                 {
                   when: "2022 to 2024",
                   who: "Upwork · VP, Enterprise Solutions",
-                  what: "Built the enterprise solution and post-sales model under activist-shareholder pressure on enterprise growth; drove 37% growth.",
+                  what: "Built the enterprise solutions and post-sales model and contributed to 37% enterprise growth.",
                   logoSlug: "upwork",
                   logoName: "Upwork",
                 },
                 {
                   when: "2020 to 2022",
                   who: "Slack (Salesforce) · Professional Services Leader",
-                  what: "Stood up customer delivery, customer experience, and technical consulting simultaneously, hiring over 120 people. Through IPO and the $27B Salesforce acquisition. Named Slack Leader of the Year, 2022.",
+                  what: "Built customer delivery, customer experience, and a team of 65+ forward deployed technical architects. Through the IPO and the $27B Salesforce acquisition. Named Slack Leader of the Year, 2022.",
                   logoSlug: "slack",
                   logoName: "Slack",
                 },
@@ -390,8 +455,7 @@ export default function Home() {
                   when: "2012 to 2020",
                   who: "Alight / Strada · VP, Professional Services",
                   what: "Scaled a Workday HCM practice from a $10M acquisition with 60 consultants toward a business approaching $200M, through an Aon spin-off and Blackstone acquisition.",
-                  logoSlug: "workday",
-                  logoName: "Workday",
+                  logoName: "Alight",
                 },
                 {
                   when: "2007 to 2012",
@@ -399,6 +463,12 @@ export default function Home() {
                   what: "Multi-year ERP and service model deployments for financial services, utilities, and heavily regulated industries. Lived in India over a year, built delivery teams in Poland and the Philippines, worked in nearly 40 countries.",
                   logoSlug: "ibm",
                   logoName: "IBM",
+                },
+                {
+                  when: "2000 to 2007",
+                  who: "Baxter International · Software Engineer to Technology Project Manager",
+                  what: "Built enterprise HR and finance tools in Java and PeopleSoft. Technical lead on a PeopleSoft rollout across 55 countries.",
+                  logoName: "Baxter",
                 },
               ].map(({ when, who, what, logoSlug, logoName }) => (
                 <div key={when} className="tl-row">
@@ -423,15 +493,15 @@ export default function Home() {
           <Reveal>
             <span className="eyebrow">Let&apos;s build it</span>
             <h2 className="display" style={{ marginTop: 18 }}>
-              If your GTM finds out too late, that&apos;s a system problem.
+              Let&apos;s talk about AI in the enterprise.
             </h2>
             <p className="lede">
-              I work with enterprise B2B SaaS teams putting AI at the center of
-              go-to-market as a predictive system, not a pile of point tools.
+              I speak and write about what it actually takes to get AI
+              adopted inside complex organizations.
             </p>
             <div className="contact-actions">
               <a href="mailto:matthew773@gmail.com" className="btn btn-primary">
-                Start a conversation
+                Book a talk
               </a>
               <a
                 href="https://www.linkedin.com/in/matthewwryan/"

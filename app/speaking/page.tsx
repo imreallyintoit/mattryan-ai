@@ -5,7 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 export const metadata = {
   title: "Speaking · Matt Ryan · AI-Native Customer Success",
   description:
-    "Matt Ryan speaks on applied AI, forward deployed engineering, and enterprise AI adoption in customer success. Past sessions at ChurnZero, Pavilion, and the Customer Success Collective.",
+    "Matt Ryan speaks on AI-native customer success, predictive retention, MCP and AI agents, and forward deployed engineering. Sessions at ChurnZero ZERO-IN, Pavilion GTM, and the Customer Success Collective.",
 };
 
 const photoStrip = [
@@ -76,59 +76,192 @@ const topics = [
   },
 ];
 
-const talks = [
+type Engagement = {
+  event: string;
+  organizer?: string;
+  title: string;
+  subtitle?: string;
+  startDate: string; // ISO, e.g. "2026-11-18". Leave "" while published is false.
+  endDate?: string;
+  city: string;
+  format: "Keynote" | "Breakout" | "Spotlight" | "Workshop" | "Session" | "Panel";
+  formatNote?: string; // e.g. "also Day Chair"
+  snippet?: string;
+  quote?: string;
+  tag?: string; // e.g. "Selected competitively from open submissions"
+  image?: string;
+  link?: { label: string; href: string };
+  published: boolean;
+};
+
+// Upcoming vs. Delivered is derived from startDate against today's date at
+// build time (see the split below), not hardcoded, so a card moves groups on
+// its own after the next deploy. Don't publish a card whose date or title is
+// still a placeholder: flip `published` to true once the real value lands
+// here instead of guessing.
+const engagements: Engagement[] = [
   {
+    event: "Customer Success Summit Chicago 2026",
+    organizer: "Customer Success Collective",
+    title: "Human-Led, Agent-Delivered: Running Customer Success as an AI Operating System",
+    startDate: "2026-11-18",
+    endDate: "2026-11-19",
+    city: "Chicago, IL",
+    format: "Session",
+    snippet: "Every customer signal routed to the right owner, a CSM, an AI agent, or an automated play, with every outcome making the next decision smarter.",
+    published: true,
+  },
+  {
+    event: "ZERO-IN 2026 (ChurnZero)",
     title: "Your Health Score Is Already Too Late. AI Isn't.",
-    event: "ZERO-IN (ChurnZero)",
-    place: "Nashville",
-    date: "[Month Year]",
-    format: "Breakout with Q&A",
-    note: "Selected competitively from open submissions",
-    body: "Why traditional health scores are lagging indicators, and how to build an AI-native retention system instead. Covers why activation in the first 90 days is the foundation any predictive model depends on.",
+    startDate: "2026-11-05",
+    endDate: "2026-11-06",
+    city: "Nashville, TN",
+    format: "Breakout",
+    formatNote: "with Q&A",
+    tag: "Selected competitively from open submissions",
+    snippet: "Why traditional health scores are lagging indicators, and how to build an AI-native retention system that starts with the first 90 days.",
+    published: true,
   },
   {
-    title: "How to Turn Real-Time Buyer Signals Into Revenue",
-    event: "Pavilion GTM",
-    place: "New York",
-    date: "[Month Year]",
-    format: "Spotlight Stage",
-    body: "GTM teams do not have a data problem, they have an orchestration problem. This session walks a live buyer signal from detection through to action, via MCP into Slack and Salesforce.",
-    hook: "Where in your GTM motion is valuable buyer intent sitting unused today?",
+    event: "Pavilion GTM 2026",
+    title: "The Signal Arrived. Nothing Happened.",
+    subtitle: "How to turn real-time buyer signals into revenue",
+    startDate: "2026-09-30",
+    endDate: "2026-10-01",
+    city: "New York, NY",
+    format: "Spotlight",
+    snippet: "A live buyer signal walked from detection to action, through MCP into Salesforce and Slack, in about six minutes on stage.",
+    quote: "Where in your GTM motion is valuable buyer intent sitting unused today?",
+    published: true,
   },
   {
-    title: "The AI GTM Operating System",
-    event: "Chief Customer Officer Summit",
-    place: "Chicago",
-    date: "[Month Year]",
-    format: "Confirmed speaker",
-    body: "Next-generation CCO strategy: balancing AI-driven efficiency against enterprise retention. What changes when post-sales runs as an operating system rather than disconnected motions.",
-  },
-  {
+    event: "Customer Success Summit Chicago 2025",
+    organizer: "Customer Success Collective",
     title: "Preventing Churn Before It Starts: Predictive Analytics for Proactive Risk Management",
-    event: "Customer Success Summit (Customer Success Collective)",
-    place: "Chicago",
-    date: "[Month Year]",
-    format: "Keynote, also served as Day Chair",
-    photo: "/speaking/csc-summit-crowd.jpg",
-    body: "The watermelon effect as the silent killer of retention, green on the outside and red on the inside. The leaky boat theory: why investing in implementation and success planning in the first 90 days is the highest-leverage move available.",
-    hook: "Healthy dashboard. Churning customer. Let's fix that.",
+    startDate: "2025-11-19",
+    endDate: "2025-11-20",
+    city: "Chicago, IL",
+    format: "Keynote",
+    formatNote: "also Day Chair",
+    snippet: "How G2 rebuilt post-sales around a predictive health score that flags risk 90 to 180 days before renewal, lifting renewal rates 46%.",
+    quote: "Healthy dashboard. Churning customer. Let's fix that.",
+    image: "/speaking/csc-summit-crowd.jpg",
+    published: true,
   },
   {
-    title: "Forward Deployed Engineering: Building Slack Accelerator Apps",
+    event: "INFUSE Client Success Summit 2025",
+    title: "Presentation and Workshop: The G2 and INFUSE Partnership",
+    startDate: "2025-11-17",
+    endDate: "2025-11-19",
+    city: "Orlando, FL",
+    format: "Workshop",
+    snippet: "A presentation and hands-on workshop for global client success teams.",
+    published: true,
+  },
+  {
+    // Date unconfirmed (open question 3). Flip published to true once the
+    // year and city land here.
     event: "Dreamforce",
-    date: "[Month Year]",
+    title: "Forward Deployed Engineering: Building Slack Accelerator Apps",
+    startDate: "",
+    city: "",
     format: "Session",
-    body: "How Slack put technical consultants directly alongside enterprise customers and turned repeated custom-app requests into a productized catalog. The through-line to MCP and agent work is direct.",
+    snippet: "How Slack put technical consultants directly alongside enterprise customers and turned repeated custom-app requests into a productized catalog. The through-line to MCP and agent work is direct.",
     link: { href: "https://slack.com/resources/using-slack/accelerator-apps", label: "slack.com" },
+    published: false,
   },
   {
-    title: "M&A Strategy and the Legacy ERP Problem",
+    // Date unconfirmed (open question 3). Flip published to true once the
+    // year and city land here.
     event: "Workday Rising",
-    date: "[Month Year]",
+    title: "M&A Strategy and the Legacy ERP Problem",
+    startDate: "",
+    city: "",
     format: "Session",
-    body: "What happens to HCM and ERP architecture when companies merge, divest, or get carved out. How delivery standards determine whether a post-deal consolidation lands on schedule or bleeds margin for years.",
+    snippet: "What happens to HCM and ERP architecture when companies merge, divest, or get carved out. How delivery standards determine whether a post-deal consolidation lands on schedule or bleeds margin for years.",
+    published: false,
   },
 ];
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function parseISO(iso: string) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return { y, m, d };
+}
+
+function formatDateRange(startDate: string, endDate?: string) {
+  const s = parseISO(startDate);
+  if (!endDate || endDate === startDate) {
+    return `${MONTHS[s.m - 1]} ${s.d}, ${s.y}`;
+  }
+  const e = parseISO(endDate);
+  if (s.y === e.y && s.m === e.m) {
+    return `${MONTHS[s.m - 1]} ${s.d} to ${e.d}, ${e.y}`;
+  }
+  if (s.y === e.y) {
+    return `${MONTHS[s.m - 1]} ${s.d} to ${MONTHS[e.m - 1]} ${e.d}, ${e.y}`;
+  }
+  return `${MONTHS[s.m - 1]} ${s.d}, ${s.y} to ${MONTHS[e.m - 1]} ${e.d}, ${e.y}`;
+}
+
+const today = Date.now();
+const publishedEngagements = engagements.filter((e) => e.published);
+const byDateDesc = (a: Engagement, b: Engagement) =>
+  new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+const upcomingEngagements = publishedEngagements
+  .filter((e) => new Date(e.startDate).getTime() >= today)
+  .sort(byDateDesc);
+const deliveredEngagements = publishedEngagements
+  .filter((e) => new Date(e.startDate).getTime() < today)
+  .sort(byDateDesc);
+
+function EngagementCard({
+  engagement,
+  isUpcoming,
+}: {
+  engagement: Engagement;
+  isUpcoming: boolean;
+}) {
+  const { event, organizer, title, subtitle, startDate, endDate, city, format, formatNote, snippet, quote, tag, image, link } =
+    engagement;
+
+  return (
+    <Reveal className={`talk-card${image ? " has-photo" : ""}`} delay={100}>
+      {image && (
+        <div className="talk-photo mono-photo">
+          <img src={image} alt={`Matt Ryan speaking at ${event}`} />
+        </div>
+      )}
+      <div className="talk-card-body">
+        <span className="talk-event">{event}{organizer ? ` · ${organizer}` : ""}</span>
+        <h3>{title}</h3>
+        {subtitle && <div className="talk-subtitle">{subtitle}</div>}
+        <div className="talk-meta">
+          <span className="talk-date-city">{formatDateRange(startDate, endDate)} · {city}</span>
+          <span className="talk-badges">
+            {isUpcoming && <span className="wf-badge is-stage">Upcoming</span>}
+            <span className="wf-badge">{format}{formatNote ? ` · ${formatNote}` : ""}</span>
+          </span>
+        </div>
+        {tag && <div className="talk-note">{tag}</div>}
+        {snippet && <p>{snippet}</p>}
+        {quote && <div className="talk-hook">&ldquo;{quote}&rdquo;</div>}
+        {link && (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="work-card-link"
+          >
+            {link.label} ↗
+          </a>
+        )}
+      </div>
+    </Reveal>
+  );
+}
 
 export default function SpeakingPage() {
   return (
@@ -227,51 +360,49 @@ export default function SpeakingPage() {
         </div>
       </section>
 
-      {/* ---------------- 03 SPEAKING HISTORY ---------------- */}
-      <section className="section pf-section" id="history">
+      {/* ---------------- 03 ENGAGEMENTS ---------------- */}
+      <section className="section pf-section" id="engagements">
         <div className="container">
           <Reveal className="sec-head">
             <span className="sec-num">03</span>
-            <span className="sec-label">Speaking history</span>
+            <span className="sec-label">Engagements</span>
           </Reveal>
 
           <Reveal delay={60}>
             <h2 className="display pf-sec-title">
-              Sessions delivered.
+              On stage.
             </h2>
+            <p className="lede" style={{ marginTop: 0, marginBottom: 40 }}>
+              Upcoming sessions and talks delivered.
+            </p>
           </Reveal>
 
-          <div className="talk-grid">
-            {talks.map(({ title, event, place, date, format, note, body, hook, photo, link }) => (
-              <Reveal key={title} className={`talk-card${photo ? " has-photo" : ""}`} delay={100}>
-                {photo && (
-                  <div className="talk-photo mono-photo">
-                    <img src={photo} alt={`Matt Ryan speaking at ${event}`} />
-                  </div>
-                )}
-                <div className="talk-card-body">
-                  <div className="talk-meta">
-                    <span className="talk-event">{event}{place ? ` · ${place}` : ""}{date ? ` · ${date}` : ""}</span>
-                    <span className="talk-format">{format}</span>
-                  </div>
-                  <h3>{title}</h3>
-                  {note && <div className="talk-note">{note}</div>}
-                  <p>{body}</p>
-                  {hook && <div className="talk-hook">&ldquo;{hook}&rdquo;</div>}
-                  {link && (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-card-link"
-                    >
-                      {link.label} ↗
-                    </a>
-                  )}
-                </div>
+          {upcomingEngagements.length > 0 && (
+            <>
+              <Reveal delay={70} className="formats-col-label">Upcoming</Reveal>
+              <div className="talk-grid">
+                {upcomingEngagements.map((e) => (
+                  <EngagementCard key={e.event + e.title} engagement={e} isUpcoming />
+                ))}
+              </div>
+            </>
+          )}
+
+          {deliveredEngagements.length > 0 && (
+            <>
+              <Reveal
+                delay={70}
+                className={`formats-col-label${upcomingEngagements.length > 0 ? " has-group-above" : ""}`}
+              >
+                Delivered
               </Reveal>
-            ))}
-          </div>
+              <div className="talk-grid">
+                {deliveredEngagements.map((e) => (
+                  <EngagementCard key={e.event + e.title} engagement={e} isUpcoming={false} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

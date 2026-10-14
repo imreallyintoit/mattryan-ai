@@ -15,20 +15,24 @@ const photoStrip = [
     caption: "IBM Global Business Services. Early technical delivery, first time in front of a room.",
   },
   {
-    src: "/speaking/career-workshop.jpg",
-    caption: "Workshop facilitation on the road, the years spent building delivery teams across three continents.",
+    src: "/speaking/career-aon-hewitt.jpg",
+    caption: "Aon Hewitt, the HR consulting practice that later spun off into Alight.",
   },
   {
-    src: "/speaking/csc-summit-bio.jpg",
+    src: "/speaking/csc-summit-stage.jpg",
     caption: "Customer Success Summit, Chicago. Customer Success Collective.",
   },
   {
-    src: "/speaking/g2-mym-2024.jpg",
+    src: "/speaking/g2-mid-year-meetup.jpg",
     caption: "G2 Mid-Year Meetup.",
   },
   {
-    src: "/speaking/g2-stage-gesture.jpg",
+    src: "/speaking/g2-stage-explain.jpg",
     caption: "G2, on the main stage.",
+  },
+  {
+    src: "/speaking/g2-r4r-panel.jpg",
+    caption: "G2 revenue leadership offsite. Looking back on twenty years in the room.",
   },
 ];
 
@@ -182,6 +186,7 @@ const rawEngagements: RawEngagement[] = [
     startDate: "2019-10-14",
     city: "Orlando, FL",
     era: "Workday era",
+    image: "/speaking/workday-rising-2019.jpg",
   },
   {
     event: "Workday Rising 2018",
@@ -191,6 +196,7 @@ const rawEngagements: RawEngagement[] = [
     startDate: "2018-10-01",
     city: "Las Vegas, NV",
     era: "Workday era",
+    image: "/speaking/workday-rising-2018.jpg",
   },
   {
     event: "Workday Rising 2016",
@@ -403,6 +409,12 @@ export default function SpeakingPage() {
 
           <div className="formats-grid">
             <Reveal className="formats-col" delay={60}>
+              <div className="formats-photo mono-photo">
+                <img
+                  src="/speaking/workshop-enterprise-review.jpg"
+                  alt="Matt Ryan leading a working session on enterprise adoption challenges"
+                />
+              </div>
               <div className="formats-col-label">Formats available</div>
               <ul className="formats-list">
                 {[

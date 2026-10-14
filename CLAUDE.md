@@ -100,10 +100,9 @@ default; don't force it open or convert it back to a plain div.
    mono-photo treatment so wildly different cameras and eras read as one story
 3. 02 Speaking topics — six bookable pillars, each one sentence plus one
    proof line from the operating history
-4. 03 Speaking history — sessions actually delivered, each with a
-   `[Month Year]` placeholder date until Matt supplies the real ones; the one
-   entry with a confirmed matching photo (Customer Success Summit) carries it
-   inline
+4. 03 Engagements (anchor `#engagements`) — Upcoming and Delivered groups,
+   newest first in each; the one entry with a confirmed matching photo
+   (Customer Success Summit 2025) carries it inline
 5. 04 Formats and audiences
 6. Contact — same pattern as the other two pages
 
@@ -111,10 +110,18 @@ default; don't force it open or convert it back to a plain div.
 PDF saying so) — swap it for the real one-sheet when Matt supplies it, don't
 just relink elsewhere.
 
-Don't invent a speaking engagement or attach a photo to one it doesn't match.
-Every entry in `talks` and `photoStrip` in that file must trace to a real
-session or a real photo; if a new one is added without solid proof, leave the
-`photo`/`link` fields off rather than guessing.
+**Engagements is data-driven, not hardcoded markup.** The `engagements:
+Engagement[]` array near the top of the file is the single source; Upcoming
+vs. Delivered is derived by comparing each entry's `startDate` against the
+date at build time, so a card moves groups on its own after the next
+deploy — don't hand-split them into two arrays. Every entry needs a
+`published: boolean`. If a real date, city, or title isn't confirmed yet,
+set `published: false` with a short comment saying what's missing, rather
+than rendering a placeholder like `[CONFIRM]` or guessing a value — Matt
+flips the flag once he supplies the real one. Don't invent a speaking
+engagement or attach a `photo`/`image` to one it doesn't match; every entry
+in `engagements` and `photoStrip` must trace to a real session or a real
+photo.
 
 Shared: `components/SiteNav.tsx` (client component, highlights the active page
 via `usePathname`; labels switch to short forms on mobile with `aria-label`

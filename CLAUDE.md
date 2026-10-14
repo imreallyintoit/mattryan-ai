@@ -100,9 +100,10 @@ default; don't force it open or convert it back to a plain div.
    mono-photo treatment so wildly different cameras and eras read as one story
 3. 02 Speaking topics — six bookable pillars, each one sentence plus one
    proof line from the operating history
-4. 03 Engagements (anchor `#engagements`) — Upcoming and Delivered groups,
-   newest first in each; the one entry with a confirmed matching photo
-   (Customer Success Summit 2025) carries it inline
+4. 03 Engagements (anchor `#engagements`) — a vertical timeline grouped by
+   year, newest first, with an era filter chip row (All, G2, Upwork, Slack,
+   Workday era, PeopleSoft era); the one entry with a confirmed matching
+   photo (Customer Success Summit Chicago 2025) carries it inline
 5. 04 Formats and audiences
 6. Contact — same pattern as the other two pages
 
@@ -110,18 +111,20 @@ default; don't force it open or convert it back to a plain div.
 PDF saying so) — swap it for the real one-sheet when Matt supplies it, don't
 just relink elsewhere.
 
-**Engagements is data-driven, not hardcoded markup.** The `engagements:
-Engagement[]` array near the top of the file is the single source; Upcoming
-vs. Delivered is derived by comparing each entry's `startDate` against the
-date at build time, so a card moves groups on its own after the next
-deploy — don't hand-split them into two arrays. Every entry needs a
-`published: boolean`. If a real date, city, or title isn't confirmed yet,
-set `published: false` with a short comment saying what's missing, rather
-than rendering a placeholder like `[CONFIRM]` or guessing a value — Matt
-flips the flag once he supplies the real one. Don't invent a speaking
-engagement or attach a `photo`/`image` to one it doesn't match; every entry
-in `engagements` and `photoStrip` must trace to a real session or a real
-photo.
+**Engagements is data-driven, not hardcoded markup.** The `rawEngagements:
+RawEngagement[]` array in `app/speaking/page.tsx` is the single source, all
+17 entries rendered unconditionally. All date math, year grouping, the
+newest-first sort within each year, and the Upcoming flag, happens once in
+that Server Component by comparing each entry's `startDate` (ISO) against
+`todayISO` as plain strings, then gets baked into `engagementsByYear` and
+handed down as props. `components/EngagementsTimeline.tsx` is a "use client"
+component that only owns the era filter's `useState`; it has no date logic
+of its own, so there's nothing to disagree with the server-rendered HTML
+during hydration. Don't invent a speaking engagement or attach an `image`
+to one it doesn't match; every entry in `rawEngagements` and `photoStrip`
+must trace to a real session or a real photo. If a future entry's date,
+city, or title isn't confirmed yet, leave it out of the array rather than
+rendering a placeholder like `[CONFIRM]` or guessing a value.
 
 Shared: `components/SiteNav.tsx` (client component, highlights the active page
 via `usePathname`; labels switch to short forms on mobile with `aria-label`

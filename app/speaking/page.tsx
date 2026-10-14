@@ -1,11 +1,12 @@
 import Reveal from "@/components/Reveal";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import EngagementsTimeline, { type EngagementItem, type YearGroup } from "@/components/EngagementsTimeline";
 
 export const metadata = {
   title: "Speaking · Matt Ryan · AI-Native Customer Success",
   description:
-    "Matt Ryan speaks on AI-native customer success, predictive retention, MCP and AI agents, and forward deployed engineering. Sessions at ChurnZero ZERO-IN, Pavilion GTM, and the Customer Success Collective.",
+    "Matt Ryan speaks on AI-native customer success, predictive retention, MCP and AI agents, and enterprise platforms. Sessions at ChurnZero ZERO-IN, Pavilion GTM, Customer Success Summit, Workday Rising and Oracle OpenWorld.",
 };
 
 const photoStrip = [
@@ -76,192 +77,200 @@ const topics = [
   },
 ];
 
-type Engagement = {
+type RawEngagement = {
   event: string;
-  organizer?: string;
   title: string;
-  subtitle?: string;
-  startDate: string; // ISO, e.g. "2026-11-18". Leave "" while published is false.
-  endDate?: string;
+  description: string;
+  dates: string; // display string, e.g. "Nov 18 to 19, 2026"
+  startDate: string; // ISO, used for sorting, year grouping, and the Upcoming badge
   city: string;
-  format: "Keynote" | "Breakout" | "Spotlight" | "Workshop" | "Session" | "Panel";
-  formatNote?: string; // e.g. "also Day Chair"
-  snippet?: string;
-  quote?: string;
-  tag?: string; // e.g. "Selected competitively from open submissions"
+  era: "G2" | "Upwork" | "Slack" | "Workday era" | "PeopleSoft era";
   image?: string;
-  link?: { label: string; href: string };
-  published: boolean;
 };
 
-// Upcoming vs. Delivered is derived from startDate against today's date at
-// build time (see the split below), not hardcoded, so a card moves groups on
-// its own after the next deploy. Don't publish a card whose date or title is
-// still a placeholder: flip `published` to true once the real value lands
-// here instead of guessing.
-const engagements: Engagement[] = [
+// All 17 confirmed engagements, newest first within each year. Year grouping
+// and the Upcoming badge are both derived from startDate below rather than
+// hardcoded, so this list is the only thing to edit for a new talk.
+const rawEngagements: RawEngagement[] = [
   {
     event: "Customer Success Summit Chicago 2026",
-    organizer: "Customer Success Collective",
     title: "Human-Led, Agent-Delivered: Running Customer Success as an AI Operating System",
+    description: "Every customer signal routed to the right owner, a CSM, an AI agent or an automated play, with every outcome making the next decision smarter.",
+    dates: "Nov 18 to 19, 2026",
     startDate: "2026-11-18",
-    endDate: "2026-11-19",
     city: "Chicago, IL",
-    format: "Session",
-    snippet: "Every customer signal routed to the right owner, a CSM, an AI agent, or an automated play, with every outcome making the next decision smarter.",
-    published: true,
+    era: "G2",
   },
   {
     event: "ZERO-IN 2026 (ChurnZero)",
     title: "Your Health Score Is Already Too Late. AI Isn't.",
+    description: "Green dashboard, churning customer. How G2 replaced lagging health scores with an AI-native retention system that acts before a CSM notices.",
+    dates: "Nov 5 to 6, 2026",
     startDate: "2026-11-05",
-    endDate: "2026-11-06",
     city: "Nashville, TN",
-    format: "Breakout",
-    formatNote: "with Q&A",
-    tag: "Selected competitively from open submissions",
-    snippet: "Why traditional health scores are lagging indicators, and how to build an AI-native retention system that starts with the first 90 days.",
-    published: true,
+    era: "G2",
   },
   {
     event: "Pavilion GTM 2026",
     title: "The Signal Arrived. Nothing Happened.",
-    subtitle: "How to turn real-time buyer signals into revenue",
+    description: "How to turn real-time buyer signals into revenue, with a live demo from signal to personalized outreach through MCP.",
+    dates: "Sep 30 to Oct 1, 2026",
     startDate: "2026-09-30",
-    endDate: "2026-10-01",
     city: "New York, NY",
-    format: "Spotlight",
-    snippet: "A live buyer signal walked from detection to action, through MCP into Salesforce and Slack, in about six minutes on stage.",
-    quote: "Where in your GTM motion is valuable buyer intent sitting unused today?",
-    published: true,
+    era: "G2",
   },
   {
     event: "Customer Success Summit Chicago 2025",
-    organizer: "Customer Success Collective",
     title: "Preventing Churn Before It Starts: Predictive Analytics for Proactive Risk Management",
+    description: "How G2 rebuilt post-sales around a predictive health score that flags risk 90 to 180 days before renewal, lifting renewal rates 46%.",
+    dates: "Nov 19 to 20, 2025",
     startDate: "2025-11-19",
-    endDate: "2025-11-20",
     city: "Chicago, IL",
-    format: "Keynote",
-    formatNote: "also Day Chair",
-    snippet: "How G2 rebuilt post-sales around a predictive health score that flags risk 90 to 180 days before renewal, lifting renewal rates 46%.",
-    quote: "Healthy dashboard. Churning customer. Let's fix that.",
+    era: "G2",
     image: "/speaking/csc-summit-crowd.jpg",
-    published: true,
   },
   {
-    event: "INFUSE Client Success Summit 2025",
-    title: "Presentation and Workshop: The G2 and INFUSE Partnership",
-    startDate: "2025-11-17",
-    endDate: "2025-11-19",
+    event: "SIA Collaboration in the Gig Economy 2023",
+    title: "Inside the Match: How AI Is Rewiring Talent Matching",
+    description: "Which signals predict a successful engagement, where bias creeps in, and why the best AI matching keeps a human in the loop.",
+    dates: "Sep 19 to 21, 2023",
+    startDate: "2023-09-19",
+    city: "Dallas, TX",
+    era: "Upwork",
+  },
+  {
+    event: "Upwork Work Without Limits 2023",
+    title: "Executive Panel: Building AI Capability Faster Than You Can Hire It",
+    description: "How executives brought in independent AI specialists to run first pilots in weeks instead of quarters.",
+    dates: "Aug 28 to 30, 2023",
+    startDate: "2023-08-28",
+    city: "Half Moon Bay, CA",
+    era: "Upwork",
+  },
+  {
+    event: "SIA CWS Summit North America 2022",
+    title: "Your VMS Wasn't Built for Freelancers: Rethinking Contingent Programs for the Marketplace Era",
+    description: "How to make marketplace talent work alongside your VMS, with compliance built in and one view of total spend.",
+    dates: "Sep 19 to 20, 2022",
+    startDate: "2022-09-19",
+    city: "Dallas, TX",
+    era: "Upwork",
+  },
+  {
+    event: "Upwork Work Without Limits 2022",
+    title: "Customer Panel: Making Freelance Talent Part of How We Work",
+    description: "Enterprise leaders on turning independent talent from a one-off fix into a standing part of the workforce.",
+    dates: "Aug 15 to 17, 2022",
+    startDate: "2022-08-15",
+    city: "Chicago, IL",
+    era: "Upwork",
+  },
+  {
+    event: "Slack Frontiers 2021",
+    title: "One Channel per Vehicle: Building a Factory Quality System in Slack",
+    description: "How accelerator apps took a manufacturer's quality process onto Slack, one channel per vehicle, at production scale.",
+    dates: "Nov 16 to 17, 2021",
+    startDate: "2021-11-16",
+    city: "Virtual",
+    era: "Slack",
+  },
+  {
+    event: "Workday Rising 2019",
+    title: "Machine Learning Meets Payroll: Catching Errors Before Employees Do",
+    description: "Applying anomaly detection to Workday HR and payroll data to flag problems before the payroll run closes.",
+    dates: "Oct 14 to 17, 2019",
+    startDate: "2019-10-14",
     city: "Orlando, FL",
-    format: "Workshop",
-    snippet: "A presentation and hands-on workshop for global client success teams.",
-    published: true,
+    era: "Workday era",
   },
   {
-    // Date unconfirmed (open question 3). Flip published to true once the
-    // year and city land here.
-    event: "Dreamforce",
-    title: "Forward Deployed Engineering: Building Slack Accelerator Apps",
-    startDate: "",
-    city: "",
-    format: "Session",
-    snippet: "How Slack put technical consultants directly alongside enterprise customers and turned repeated custom-app requests into a productized catalog. The through-line to MCP and agent work is direct.",
-    link: { href: "https://slack.com/resources/using-slack/accelerator-apps", label: "slack.com" },
-    published: false,
+    event: "Workday Rising 2018",
+    title: "Building on Workday: Custom Apps and APIs with the Workday Cloud Platform",
+    description: "Building lightweight apps directly on Workday so new workflows inherit its security, audit trail and upgrades.",
+    dates: "Oct 1 to 4, 2018",
+    startDate: "2018-10-01",
+    city: "Las Vegas, NV",
+    era: "Workday era",
   },
   {
-    // Date unconfirmed (open question 3). Flip published to true once the
-    // year and city land here.
-    event: "Workday Rising",
-    title: "M&A Strategy and the Legacy ERP Problem",
-    startDate: "",
-    city: "",
-    format: "Session",
-    snippet: "What happens to HCM and ERP architecture when companies merge, divest, or get carved out. How delivery standards determine whether a post-deal consolidation lands on schedule or bleeds margin for years.",
-    published: false,
+    event: "Workday Rising 2016",
+    title: "Go-Live Is Day One: Running Workday as a Living System",
+    description: "Treating Workday's two major releases a year as a product roadmap, so adoption keeps climbing after go-live.",
+    dates: "Sep 26 to 29, 2016",
+    startDate: "2016-09-26",
+    city: "Chicago, IL",
+    era: "Workday era",
+  },
+  {
+    event: "Workday Rising 2014",
+    title: "Only What Changed: Event-Driven Integrations at Enterprise Scale",
+    description: "Sending downstream systems only what changed, and handling backdated and future-dated changes correctly.",
+    dates: "Nov 3 to 6, 2014",
+    startDate: "2014-11-03",
+    city: "San Francisco, CA",
+    era: "Workday era",
+  },
+  {
+    event: "Workday Rising 2012",
+    title: "From PeopleSoft to Workday: What Not to Bring With You",
+    description: "A migration playbook: which customizations to retire, which data to clean, and how not to rebuild your old system.",
+    dates: "Week of Nov 5, 2012",
+    startDate: "2012-11-06",
+    city: "Las Vegas, NV",
+    era: "Workday era",
+  },
+  {
+    event: "Oracle OpenWorld 2010",
+    title: "Hybrid HR: PeopleSoft at the Core, Talent in the Cloud",
+    description: "Keep the system that pays your people and move the rest to the cloud, with a framework for what stays and what moves.",
+    dates: "Sep 19 to 23, 2010",
+    startDate: "2010-09-19",
+    city: "San Francisco, CA",
+    era: "PeopleSoft era",
+  },
+  {
+    event: "Oracle OpenWorld 2006",
+    title: "Upgrade Now, Fuse Later",
+    description: "Separating payroll integration from core HR so vendors, countries and acquisitions can plug in without starting over.",
+    dates: "Oct 22 to 26, 2006",
+    startDate: "2006-10-22",
+    city: "San Francisco, CA",
+    era: "PeopleSoft era",
+  },
+  {
+    event: "PeopleSoft Connect 2003",
+    title: "One Template, 55 Countries",
+    description: "How Baxter took a single global PeopleSoft HCM design to every corner of its business.",
+    dates: "Week of Sep 15, 2003",
+    startDate: "2003-09-15",
+    city: "Anaheim, CA",
+    era: "PeopleSoft era",
   },
 ];
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+// Upcoming is computed once, here, from today's date at build time, by
+// comparing ISO date strings directly (they sort lexicographically the same
+// as chronologically, so no Date parsing or timezone handling is needed).
+// The result is baked into plain data and handed to the client component,
+// which does no date math of its own, so there is nothing for hydration to
+// disagree with between the build-time render and the browser.
+const todayISO = new Date().toISOString().slice(0, 10);
 
-function parseISO(iso: string) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return { y, m, d };
-}
-
-function formatDateRange(startDate: string, endDate?: string) {
-  const s = parseISO(startDate);
-  if (!endDate || endDate === startDate) {
-    return `${MONTHS[s.m - 1]} ${s.d}, ${s.y}`;
+const engagementsByYear: YearGroup[] = (() => {
+  const byYear = new Map<number, EngagementItem[]>();
+  for (const raw of rawEngagements) {
+    const year = Number(raw.startDate.slice(0, 4));
+    const item: EngagementItem = { ...raw, isUpcoming: raw.startDate > todayISO };
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year)!.push(item);
   }
-  const e = parseISO(endDate);
-  if (s.y === e.y && s.m === e.m) {
-    return `${MONTHS[s.m - 1]} ${s.d} to ${e.d}, ${e.y}`;
+  for (const items of byYear.values()) {
+    items.sort((a, b) => (a.startDate > b.startDate ? -1 : 1));
   }
-  if (s.y === e.y) {
-    return `${MONTHS[s.m - 1]} ${s.d} to ${MONTHS[e.m - 1]} ${e.d}, ${e.y}`;
-  }
-  return `${MONTHS[s.m - 1]} ${s.d}, ${s.y} to ${MONTHS[e.m - 1]} ${e.d}, ${e.y}`;
-}
-
-const today = Date.now();
-const publishedEngagements = engagements.filter((e) => e.published);
-const byDateDesc = (a: Engagement, b: Engagement) =>
-  new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-const upcomingEngagements = publishedEngagements
-  .filter((e) => new Date(e.startDate).getTime() >= today)
-  .sort(byDateDesc);
-const deliveredEngagements = publishedEngagements
-  .filter((e) => new Date(e.startDate).getTime() < today)
-  .sort(byDateDesc);
-
-function EngagementCard({
-  engagement,
-  isUpcoming,
-}: {
-  engagement: Engagement;
-  isUpcoming: boolean;
-}) {
-  const { event, organizer, title, subtitle, startDate, endDate, city, format, formatNote, snippet, quote, tag, image, link } =
-    engagement;
-
-  return (
-    <Reveal className={`talk-card${image ? " has-photo" : ""}`} delay={100}>
-      {image && (
-        <div className="talk-photo mono-photo">
-          <img src={image} alt={`Matt Ryan speaking at ${event}`} />
-        </div>
-      )}
-      <div className="talk-card-body">
-        <span className="talk-event">{event}{organizer ? ` · ${organizer}` : ""}</span>
-        <h3>{title}</h3>
-        {subtitle && <div className="talk-subtitle">{subtitle}</div>}
-        <div className="talk-meta">
-          <span className="talk-date-city">{formatDateRange(startDate, endDate)} · {city}</span>
-          <span className="talk-badges">
-            {isUpcoming && <span className="wf-badge is-stage">Upcoming</span>}
-            <span className="wf-badge">{format}{formatNote ? ` · ${formatNote}` : ""}</span>
-          </span>
-        </div>
-        {tag && <div className="talk-note">{tag}</div>}
-        {snippet && <p>{snippet}</p>}
-        {quote && <div className="talk-hook">&ldquo;{quote}&rdquo;</div>}
-        {link && (
-          <a
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="work-card-link"
-          >
-            {link.label} ↗
-          </a>
-        )}
-      </div>
-    </Reveal>
-  );
-}
+  return [...byYear.entries()]
+    .sort((a, b) => b[0] - a[0])
+    .map(([year, items]) => ({ year, items }));
+})();
 
 export default function SpeakingPage() {
   return (
@@ -366,43 +375,21 @@ export default function SpeakingPage() {
           <Reveal className="sec-head">
             <span className="sec-num">03</span>
             <span className="sec-label">Engagements</span>
+            <a href="mailto:matthew773@gmail.com" className="sec-head-link">
+              Book a talk →
+            </a>
           </Reveal>
 
           <Reveal delay={60}>
             <h2 className="display pf-sec-title">
-              On stage.
+              Twenty years on stage.
             </h2>
             <p className="lede" style={{ marginTop: 0, marginBottom: 40 }}>
-              Upcoming sessions and talks delivered.
+              From PeopleSoft and Workday to Slack, Upwork and G2.
             </p>
           </Reveal>
 
-          {upcomingEngagements.length > 0 && (
-            <>
-              <Reveal delay={70} className="formats-col-label">Upcoming</Reveal>
-              <div className="talk-grid">
-                {upcomingEngagements.map((e) => (
-                  <EngagementCard key={e.event + e.title} engagement={e} isUpcoming />
-                ))}
-              </div>
-            </>
-          )}
-
-          {deliveredEngagements.length > 0 && (
-            <>
-              <Reveal
-                delay={70}
-                className={`formats-col-label${upcomingEngagements.length > 0 ? " has-group-above" : ""}`}
-              >
-                Delivered
-              </Reveal>
-              <div className="talk-grid">
-                {deliveredEngagements.map((e) => (
-                  <EngagementCard key={e.event + e.title} engagement={e} isUpcoming={false} />
-                ))}
-              </div>
-            </>
-          )}
+          <EngagementsTimeline groups={engagementsByYear} />
         </div>
       </section>
 

@@ -85,15 +85,34 @@ export default function Home() {
             <div className="logo-rail">
               <span className="logo-rail-label">Built at</span>
               <div className="logo-rail-marks">
-                <CompanyLogo name="G2" slug="g2" />
-                <CompanyLogo name="Upwork" slug="upwork" />
-                <CompanyLogo name="Slack" slug="slack" />
-                <CompanyLogo name="Salesforce" slug="salesforce" />
-                {/* TODO(Matt): no monochrome Alight logo asset exists yet.
-                    Renders as text via CompanyLogo's fallback until one is
-                    supplied in public/logos/. */}
-                <CompanyLogo name="Alight" />
+                {/* Left to right follows the actual career timeline below,
+                    oldest to newest, ending with G2 today. */}
                 <CompanyLogo name="IBM" slug="ibm" />
+                {/* No monochrome Alight logo asset exists yet, so this slot
+                    crossfades between the "Alight" text fallback and a mono
+                    Workday mark: Matt ran Alight's Workday HCM practice as a
+                    Workday implementation partner, he never worked at
+                    Workday itself. */}
+                <span
+                  className="co-logo co-logo-crossfade"
+                  aria-label="Alight, a Workday implementation partner"
+                >
+                  <span className="cf-layer cf-alight" aria-hidden="true">
+                    <span className="co-logo-text">Alight</span>
+                  </span>
+                  <span className="cf-layer cf-workday" aria-hidden="true">
+                    <img src="/logos/workday-mono.png" alt="" />
+                    <span className="cf-partner-label">Partner</span>
+                  </span>
+                </span>
+                <span className="logo-pulse">
+                  <CompanyLogo name="Slack" slug="slack" />
+                </span>
+                <span className="logo-pulse">
+                  <CompanyLogo name="Salesforce" slug="salesforce" />
+                </span>
+                <CompanyLogo name="Upwork" slug="upwork" />
+                <CompanyLogo name="G2" slug="g2" />
               </div>
             </div>
           </div>

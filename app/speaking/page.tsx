@@ -186,7 +186,6 @@ const rawEngagements: RawEngagement[] = [
     startDate: "2019-10-14",
     city: "Orlando, FL",
     era: "Workday era",
-    image: "/speaking/workday-rising-2019.jpg",
   },
   {
     event: "Workday Rising 2018",

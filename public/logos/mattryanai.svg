@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 36" fill="none" width="200" height="36">
+  <!-- Wordmark -->
+  <text x="0" y="24" fill="#F8FAFC" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.04em">
+    mattryan
+  </text>
+  <!-- Technical Monospace Accent -->
+  <text x="96" y="24" fill="#38BDF8" font-family="'Geist Mono', 'JetBrains Mono', monospace" font-size="20" font-weight="500" letter-spacing="-0.01em">
+    .ai
+  </text>
+</svg>

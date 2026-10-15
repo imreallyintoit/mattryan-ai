@@ -288,7 +288,7 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   align-items: center;
   gap: 10px;
 }
-.wordmark-logo { height: 20px; width: auto; display: block; }
+.wordmark-logo { height: 27px; width: auto; display: block; }
 
 /* orbital nav mark */
 .nav-mark {
@@ -412,7 +412,7 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   }
   .nav-chip.nav-collapses { display: none; }
   .wordmark { gap: 6px; }
-  .wordmark-logo { height: 17px; }
+  .wordmark-logo { height: 22px; }
   .nav-mark { width: 28px; height: 28px; }
 }
 @media (max-width: 400px) {
@@ -2503,7 +2503,7 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 16px;
 }
-.footer .wordmark-logo { height: 18px; }
+.footer .wordmark-logo { height: 24px; }
 .footer-meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; }
 .footer-social { display: flex; gap: 20px; }
 .footer-social a { font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); letter-spacing: 0.06em; }

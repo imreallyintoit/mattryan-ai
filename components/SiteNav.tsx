@@ -28,7 +28,7 @@ export default function SiteNav() {
             <circle cx="17" cy="17" r="2.5" fill="var(--alert)" className="nav-center-dot"/>
             <circle cx="17" cy="3" r="2" fill="var(--signal)" className="nav-orbit-dot"/>
           </svg>
-          mattryan<span className="dot-ai">.ai</span>
+          <img src="/logos/mattryanai.svg" alt="mattryan.ai" className="wordmark-logo" />
         </Link>
         <div className="nav-links">
           {links.map(({ num, href, label, short, collapses }) => (

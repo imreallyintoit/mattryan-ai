@@ -165,7 +165,15 @@ placeholder like `[CONFIRM]` or guessing a value.
 
 Shared: `components/SiteNav.tsx` (client component, highlights the active page
 via `usePathname`; labels switch to short forms on mobile with `aria-label`
-holding the full name) and `components/SiteFooter.tsx`.
+holding the full name) and `components/SiteFooter.tsx`. Both render the
+wordmark as `public/logos/mattryanai.svg` (an `<img>`, sized via
+`.wordmark-logo` in globals.css) rather than styled text; the SVG's own
+colors are hardcoded to the site's `--ink`/`--signal` values, the same
+reasoning as `app/icon.svg`, since CSS variables aren't reachable inside an
+asset loaded through `src`. The nav additionally prefixes it with the
+orbital mark (`.nav-mark`, inline SVG so it does use the page's CSS
+variables); the footer shows the wordmark alone, no orbital mark, matching
+how it looked before this asset existed.
 
 `.mono-photo` in `globals.css` is the site's one photo treatment: grayscale,
 an SVG feTurbulence film-grain layer, and a cyan-tinted overlay, so any

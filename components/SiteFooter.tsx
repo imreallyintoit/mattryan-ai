@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer className="footer">
       <div className="container footer-inner">
         <Link href="/" className="wordmark">
-          mattryan<span className="dot-ai">.ai</span>
+          <img src="/logos/mattryanai.svg" alt="mattryan.ai" className="wordmark-logo" />
         </Link>
         <span className="footer-meta">
           The AI GTM Operating System · The Prediction Loop

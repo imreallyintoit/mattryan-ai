@@ -97,19 +97,25 @@ export default function Home() {
                   className="co-logo co-logo-crossfade"
                   aria-label="Alight, a Workday implementation partner"
                 >
-                  <span className="cf-layer cf-alight" aria-hidden="true">
+                  <span className="cf-layer" aria-hidden="true">
                     <span className="co-logo-text">Alight</span>
                   </span>
-                  <span className="cf-layer cf-workday" aria-hidden="true">
-                    <img src="/logos/workday-mono.png" alt="" />
+                  <span className="cf-layer" aria-hidden="true">
+                    <img src="/logos/workday-mono.png" alt="" height={24} />
                     <span className="cf-partner-label">Partner</span>
                   </span>
                 </span>
-                <span className="logo-pulse">
-                  <CompanyLogo name="Slack" slug="slack" />
-                </span>
-                <span className="logo-pulse">
-                  <CompanyLogo name="Salesforce" slug="salesforce" />
+                {/* Slack was acquired by Salesforce during this era (2020 to
+                    2022 on the career timeline below), so this slot
+                    crossfades between the two instead of showing both
+                    independently. */}
+                <span className="co-logo co-logo-crossfade" aria-label="Slack and Salesforce">
+                  <span className="cf-layer" aria-hidden="true">
+                    <img src="/logos/slack-mono.svg" alt="" height={26} />
+                  </span>
+                  <span className="cf-layer" aria-hidden="true">
+                    <img src="/logos/salesforce-mono.png" alt="" height={30} />
+                  </span>
                 </span>
                 <CompanyLogo name="Upwork" slug="upwork" />
                 <CompanyLogo name="G2" slug="g2" />

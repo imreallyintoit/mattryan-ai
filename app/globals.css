@@ -1751,9 +1751,12 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 .logo-rail:hover .co-logo img { opacity: 0.8; }
 .logo-rail:hover .co-logo-text { opacity: 1; color: var(--ink); }
 
-/* Alight/Workday crossfade: both layers share one grid cell so the slot
-   sizes to the larger of the two instead of collapsing, the way two
-   absolutely positioned layers would. */
+/* Crossfade slot: two logo-rail entries sharing one position, used where one
+   company stands in for another (Alight/Workday, Slack/Salesforce). Both
+   layers share one grid cell so the slot sizes to the larger of the two
+   instead of collapsing, the way two absolutely positioned layers would.
+   Layers crossfade by position (first, then second), not by name, so the
+   same pair of keyframes works for any pair dropped into this slot. */
 .co-logo-crossfade {
   display: inline-grid;
   align-items: center;
@@ -1764,12 +1767,9 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   align-items: center;
   gap: 6px;
 }
-.co-logo-crossfade .cf-alight { animation: cf-alight 9s ease-in-out infinite; }
-.co-logo-crossfade .cf-workday {
-  animation: cf-workday 9s ease-in-out infinite;
-}
-.co-logo-crossfade .cf-workday img {
-  height: 20px;
+.co-logo-crossfade .cf-layer:first-child { animation: cf-show 9s ease-in-out infinite; }
+.co-logo-crossfade .cf-layer:last-child { animation: cf-hide 9s ease-in-out infinite; }
+.co-logo-crossfade .cf-layer img {
   width: auto;
   object-fit: contain;
   opacity: 0.55;
@@ -1781,23 +1781,15 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   text-transform: uppercase;
   color: var(--ink-faint);
 }
-@keyframes cf-alight {
+@keyframes cf-show {
   0%, 38% { opacity: 1; }
   50%, 88% { opacity: 0; }
   100% { opacity: 1; }
 }
-@keyframes cf-workday {
+@keyframes cf-hide {
   0%, 38% { opacity: 0; }
   50%, 88% { opacity: 1; }
   100% { opacity: 0; }
-}
-
-/* Slack and Salesforce pulse on the same timing (no delay offset between
-   them), so they read as fading "equally" rather than alternating. */
-.logo-pulse .co-logo img { animation: logo-fade-pulse 5s ease-in-out infinite; }
-@keyframes logo-fade-pulse {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 0.15; }
 }
 
 /* lessons earned — the amber quote is the brand logic applied to a career

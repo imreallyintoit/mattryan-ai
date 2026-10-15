@@ -80,20 +80,26 @@ sections carry the reading order:
 
 The career timeline and the hero's "Built at" logo rail both use
 `CompanyLogo` — pass a `slug` for a real logo asset, omit it for a plain-text
-fallback chip. Matt ran Alight's Workday HCM practice as a Workday
-implementation partner; he never worked at Workday itself, and the career
-timeline's Alight row states that explicitly in its own text ("VP,
-Professional Services"), so it stays plain-text only, no Workday logo. The
-hero rail's Alight slot has no room for that context, so it crossfades
-between the "Alight" text fallback and a mono Workday mark labeled
-"Partner" (`.co-logo-crossfade` in globals.css) to make the partner
-relationship legible at a glance instead of implying Matt worked at Workday.
-Keep that distinction if either section changes: spelled out in prose on the
-timeline, crossfade-with-a-partner-label in the rail, a bare Workday logo in
-neither place. The rail is ordered left to right as a career timeline too,
-oldest to newest, ending with G2 today; Slack and Salesforce pulse their
-opacity on the same timing (no delay offset) so they read as fading equally
-rather than alternating.
+fallback chip. The rail is ordered left to right as a career timeline too,
+oldest to newest, ending with G2 today: IBM, Alight, Slack/Salesforce,
+Upwork, G2.
+
+Two of those five slots are `.co-logo-crossfade` (globals.css): two logos
+sharing one position, each wrapped in a `cf-layer` span, crossfading by
+position (first layer, then second) on a shared 9s loop rather than by name,
+so the same pair of keyframes drives any pair dropped into this pattern.
+Slack/Salesforce crossfades because Salesforce acquired Slack during that
+era on the career timeline (2020 to 2022) and showing both independently
+overstated it as two separate jobs. Alight crossfades between the "Alight"
+text fallback and a mono Workday mark labeled "Partner" for a different
+reason: Matt ran Alight's Workday HCM practice as a Workday implementation
+partner, he never worked at Workday itself. The career timeline's Alight row
+states that explicitly in its own text ("VP, Professional Services"), so it
+stays plain-text only, no Workday logo there; the rail's Alight slot has no
+room for that context, so the crossfade's "Partner" label carries it
+instead. Keep that distinction if either section changes: spelled out in
+prose on the timeline, crossfade-with-a-partner-label in the rail, a bare
+Workday logo in neither place.
 
 **`app/system/page.tsx` — the AI GTM Operating System.** The full framework:
 Hero, Foreword, System (SOAR), Proof, Activation, In practice, Governance,

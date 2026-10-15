@@ -208,6 +208,15 @@ Don't conflate the two or "fix" the matrix to make a repo-wide search for 48%
 return zero; the matrix's numbers are real, if you touch them, verify with
 Matt first.
 
+## Analytics
+
+`app/layout.tsx` renders `<GoogleAnalytics gaId="G-08RW7TDK58" />` from
+`@next/third-parties/google`, as a sibling of `<body>` inside `<html>` (the
+pattern that package's docs call for) so it loads on every route, including
+`/speaking/one-sheet`. Don't hand-roll the gtag.js `<script>` tags instead;
+this package is the officially supported way to wire gtag.js into a Next.js
+App Router site and already handles SPA route-change pageviews.
+
 ## SEO / metadata
 
 Every route has its own `metadata` export (title, description, matching

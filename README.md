@@ -91,3 +91,29 @@ CLAUDE.md         — brief for Claude Code: intent + design rules
 
 See `CLAUDE.md` before making design changes — it explains the two-signal color
 logic and what to protect.
+
+---
+
+## Speaker one-sheet
+
+`app/speaking/one-sheet/page.tsx` is the source of truth for the PDF at
+`public/matt-ryan-speaker-one-sheet.pdf`. Edit that route, not the PDF
+directly, then regenerate:
+
+```bash
+npm run build && npm run start   # production server, so fonts/images match what ships
+npm run one-sheet                # in a second terminal, captures /speaking/one-sheet to PDF
+```
+
+Regenerate and commit the new PDF whenever:
+
+- A talk, topic, or figure changes on `/speaking` (signature talks and stages
+  come from the shared `lib/speaking-data.ts`, so the two surfaces can't drift
+  on data, but copy that's hardcoded directly in the one-sheet route, like the
+  bio and the past-stages line, needs a manual edit).
+- An event passes (an "Upcoming" tag would otherwise sit frozen in the PDF).
+  The next events where that matters: Pavilion GTM 2026 (Sep 30 to Oct 1),
+  ZERO-IN 2026 (Nov 5 to 6), Customer Success Summit Chicago 2026 (Nov 18 to
+  19).
+- A new event is booked.
+- The headshot or title changes.

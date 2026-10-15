@@ -96,44 +96,65 @@ default; don't force it open or convert it back to a plain div.
 1. Hero — thesis line + mono-treated stage photo + "Book a talk" CTA, plus a
    "Download speaker one-sheet" button (same button repeats near the closing
    CTA) linking to `/matt-ryan-speaker-one-sheet.pdf`
-2. 01 Through the years — a five-photo career strip, 2006 to now, all in the
+2. 01 Through the years — a six-photo career strip, 2006 to now, all in the
    mono-photo treatment so wildly different cameras and eras read as one story
 3. 02 Speaking topics — six bookable pillars, each one sentence plus one
    proof line from the operating history
 4. 03 Engagements (anchor `#engagements`) — a vertical timeline grouped by
    year, newest first, with an era filter chip row (All, G2, Upwork, Slack,
-   Workday era, PeopleSoft era); the one entry with a confirmed matching
-   photo (Customer Success Summit Chicago 2025) carries it inline
-5. 04 Formats and audiences
+   Workday era, PeopleSoft era); entries with a confirmed matching photo
+   (Customer Success Summit Chicago 2025, Workday Rising 2018) carry it inline
+5. 04 Formats and audiences, with a small photo of a real working session
+   next to the formats list
 6. Contact — same pattern as the other two pages
 
-`public/matt-ryan-speaker-one-sheet.pdf` is a placeholder (a minimal valid
-PDF saying so) — swap it for the real one-sheet when Matt supplies it, don't
-just relink elsewhere.
+**`app/speaking/one-sheet/page.tsx` — the speaker one-sheet, not a page a
+visitor is meant to find.** It renders at a fixed US Letter size (`.sheet` in
+globals.css, the "SPEAKER ONE-SHEET" section) and has no `SiteNav` or
+`SiteFooter` import, which is enough to keep it chrome-free since those are
+opted into per page on this site rather than rendered by the root layout.
+Its metadata sets `robots: { index: false, follow: false }` and it's left out
+of `app/sitemap.ts` on purpose. `npm run one-sheet` (see README.md's "Speaker
+one-sheet" section) captures this route with Playwright and overwrites
+`public/matt-ryan-speaker-one-sheet.pdf`; edit the route and regenerate,
+never hand-edit the PDF. The build script calls the underlying Chrome
+DevTools Protocol `Page.printToPDF` with `generateTaggedPDF: true` directly
+rather than Playwright's `page.pdf()`, which is required for the contact
+links to come through as clickable PDF link annotations. Don't add a
+pdf-lib (or similar) metadata-setting pass after capture: a load and resave
+through pdf-lib strips this PDF's link annotations even with no changes
+made, which was confirmed by testing a true no-op round trip, so PDF title
+and author metadata are left unset rather than traded for working links.
 
-**Engagements is data-driven, not hardcoded markup.** The `rawEngagements:
-RawEngagement[]` array in `app/speaking/page.tsx` is the single source, all
-17 entries rendered unconditionally. All date math, year grouping, the
-newest-first sort within each year, and the Upcoming flag, happens once in
-that Server Component by comparing each entry's `startDate` (ISO) against
-`todayISO` as plain strings, then gets baked into `engagementsByYear` and
-handed down as props. `components/EngagementsTimeline.tsx` is a "use client"
-component that only owns the era filter's `useState`; it has no date logic
-of its own, so there's nothing to disagree with the server-rendered HTML
-during hydration. Don't invent a speaking engagement or attach an `image`
-to one it doesn't match; every entry in `rawEngagements` and `photoStrip`
-must trace to a real session or a real photo. If a future entry's date,
-city, or title isn't confirmed yet, leave it out of the array rather than
-rendering a placeholder like `[CONFIRM]` or guessing a value.
+**Engagements and the six speaking topics are data-driven, not hardcoded
+markup, and shared with the one-sheet.** `lib/speaking-data.ts` exports
+`topics` and `rawEngagements: RawEngagement[]`; both `app/speaking/page.tsx`
+and `app/speaking/one-sheet/page.tsx` import from there so the two surfaces
+can't drift on a talk title, date, or figure. All 17 engagements render
+unconditionally. All date math, year grouping, the newest-first sort within
+each year, and the Upcoming flag, happens once in the speaking page's Server
+Component by comparing each entry's `startDate` (ISO) against `todayISO` as
+plain strings, then gets baked into `engagementsByYear` and handed down as
+props. `components/EngagementsTimeline.tsx` is a "use client" component that
+only owns the era filter's `useState`; it has no date logic of its own, so
+there's nothing to disagree with the server-rendered HTML during hydration.
+The one-sheet's Stages section reuses the same startDate-vs-today convention
+for its own Upcoming tag, computed from the four newest entries in
+`rawEngagements`. Don't invent a speaking engagement or attach an `image` to
+one it doesn't match; every entry in `rawEngagements` and `photoStrip` must
+trace to a real session or a real photo. If a future entry's date, city, or
+title isn't confirmed yet, leave it out of the array rather than rendering a
+placeholder like `[CONFIRM]` or guessing a value.
 
 Shared: `components/SiteNav.tsx` (client component, highlights the active page
 via `usePathname`; labels switch to short forms on mobile with `aria-label`
 holding the full name) and `components/SiteFooter.tsx`.
 
-`.mono-photo` in `globals.css` is the site's one photo treatment: grayscale
-plus a cyan-tinted overlay, so any conference photo (different camera, era,
-lighting) reads as part of one system. Apply it to any new photo added
-anywhere on the site rather than leaving one photo in full color next to
+`.mono-photo` in `globals.css` is the site's one photo treatment: grayscale,
+an SVG feTurbulence film-grain layer, and a cyan-tinted overlay, so any
+conference photo (different camera, era, lighting) reads as part of one
+system and none of them reads as AI-generated. Apply it to any new photo
+added anywhere on the site rather than leaving one photo in full color next to
 others in the treatment.
 
 `components/Reveal.tsx` is a scroll-reveal wrapper (renders a `<div>` with the

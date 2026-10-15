@@ -2217,12 +2217,6 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   aspect-ratio: 4 / 5;
   border: 1px solid var(--hairline);
   border-radius: 3px;
-  margin-bottom: 12px;
-}
-.photo-strip-caption {
-  font-size: 13px;
-  color: var(--ink-dim);
-  line-height: 1.5;
 }
 
 /* speaking topics grid */

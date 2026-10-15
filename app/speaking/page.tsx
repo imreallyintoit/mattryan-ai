@@ -340,7 +340,6 @@ export default function SpeakingPage() {
                 <div className="mono-photo">
                   <img src={src} alt={caption} />
                 </div>
-                <div className="photo-strip-caption">{caption}</div>
               </Reveal>
             ))}
           </div>

@@ -89,33 +89,19 @@ export default function Home() {
                     oldest to newest, ending with G2 today. */}
                 <CompanyLogo name="IBM" slug="ibm" />
                 {/* No monochrome Alight logo asset exists yet, so this slot
-                    crossfades between the "Alight" text fallback and a mono
-                    Workday mark: Matt ran Alight's Workday HCM practice as a
-                    Workday implementation partner, he never worked at
-                    Workday itself. */}
-                <span
-                  className="co-logo co-logo-crossfade"
-                  aria-label="Alight, a Workday implementation partner"
-                >
-                  <span className="cf-layer" aria-hidden="true">
-                    <span className="co-logo-text">Alight</span>
-                  </span>
-                  <span className="cf-layer" aria-hidden="true">
-                    <img src="/logos/workday-mono.png" alt="" height={24} />
-                    <span className="cf-partner-label">Partner</span>
-                  </span>
+                    shows the "Alight" text fallback with a caption: Matt ran
+                    Alight's Workday HCM practice as a Workday implementation
+                    partner, he never worked at Workday itself. */}
+                <span className="co-logo co-logo-stack">
+                  <span className="co-logo-text">Alight</span>
+                  <span className="co-logo-caption">Workday Partner</span>
                 </span>
-                {/* Slack was acquired by Salesforce during this era (2020 to
-                    2022 on the career timeline below), so this slot
-                    crossfades between the two instead of showing both
-                    independently. */}
-                <span className="co-logo co-logo-crossfade" aria-label="Slack and Salesforce">
-                  <span className="cf-layer" aria-hidden="true">
-                    <img src="/logos/slack-mono.svg" alt="" height={26} />
-                  </span>
-                  <span className="cf-layer" aria-hidden="true">
-                    <img src="/logos/salesforce-mono.png" alt="" height={30} />
-                  </span>
+                {/* Salesforce acquired Slack during this era (2020 to 2022 on
+                    the career timeline below), so this slot captions the
+                    Slack mark instead of showing both logos independently. */}
+                <span className="co-logo co-logo-stack">
+                  <img src="/logos/slack-mono.svg" alt="Slack" height={26} />
+                  <span className="co-logo-caption">Owned by Salesforce</span>
                 </span>
                 <CompanyLogo name="Upwork" slug="upwork" />
                 <CompanyLogo name="G2" slug="g2" />

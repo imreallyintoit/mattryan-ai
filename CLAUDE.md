@@ -84,22 +84,21 @@ fallback chip. The rail is ordered left to right as a career timeline too,
 oldest to newest, ending with G2 today: IBM, Alight, Slack/Salesforce,
 Upwork, G2.
 
-Two of those five slots are `.co-logo-crossfade` (globals.css): two logos
-sharing one position, each wrapped in a `cf-layer` span, crossfading by
-position (first layer, then second) on a shared 9s loop rather than by name,
-so the same pair of keyframes drives any pair dropped into this pattern.
-Slack/Salesforce crossfades because Salesforce acquired Slack during that
-era on the career timeline (2020 to 2022) and showing both independently
-overstated it as two separate jobs. Alight crossfades between the "Alight"
-text fallback and a mono Workday mark labeled "Partner" for a different
-reason: Matt ran Alight's Workday HCM practice as a Workday implementation
-partner, he never worked at Workday itself. The career timeline's Alight row
-states that explicitly in its own text ("VP, Professional Services"), so it
-stays plain-text only, no Workday logo there; the rail's Alight slot has no
-room for that context, so the crossfade's "Partner" label carries it
-instead. Keep that distinction if either section changes: spelled out in
-prose on the timeline, crossfade-with-a-partner-label in the rail, a bare
-Workday logo in neither place.
+Two of those five slots are `.co-logo-stack` (globals.css): a logo with a
+small caption underneath instead of a second logo, a static two-row layout
+with no animation, since an earlier crossfade-between-two-logos version of
+this (swapped on a timer) didn't behave on mobile. Slack is captioned "Owned
+by Salesforce" because Salesforce acquired Slack during that era on the
+career timeline (2020 to 2022) and showing both logos independently
+overstated it as two separate jobs. Alight is captioned "Workday Partner"
+for a different reason: Matt ran Alight's Workday HCM practice as a Workday
+implementation partner, he never worked at Workday itself. The career
+timeline's Alight row states that explicitly in its own text ("VP,
+Professional Services"), so it stays plain-text only, no Workday logo there;
+the rail's Alight slot has no room for that context, so the caption carries
+it instead. Keep that distinction if either section changes: spelled out in
+prose on the timeline, "Workday Partner" caption in the rail, a bare Workday
+logo in neither place.
 
 **`app/system/page.tsx` — the AI GTM Operating System.** The full framework:
 Hero, Foreword, System (SOAR), Proof, Activation, In practice, Governance,

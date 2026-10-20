@@ -1748,45 +1748,23 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
 .logo-rail:hover .co-logo img { opacity: 0.8; }
 .logo-rail:hover .co-logo-text { opacity: 1; color: var(--ink); }
 
-/* Crossfade slot: two logo-rail entries sharing one position, used where one
-   company stands in for another (Alight/Workday, Slack/Salesforce). Both
-   layers share one grid cell so the slot sizes to the larger of the two
-   instead of collapsing, the way two absolutely positioned layers would.
-   Layers crossfade by position (first, then second), not by name, so the
-   same pair of keyframes works for any pair dropped into this slot. */
-.co-logo-crossfade {
-  display: inline-grid;
-  align-items: center;
+/* Stacked slot: a logo-rail entry with a small caption underneath instead of
+   animating, used where one company needs a one-line gloss (Alight's
+   Workday partnership, Slack's Salesforce ownership). Plain two-row layout,
+   no moving parts, so it behaves the same at every viewport width. */
+.co-logo-stack {
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  gap: 4px;
 }
-.co-logo-crossfade .cf-layer {
-  grid-area: 1 / 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.co-logo-crossfade .cf-layer:first-child { animation: cf-show 9s ease-in-out infinite; }
-.co-logo-crossfade .cf-layer:last-child { animation: cf-hide 9s ease-in-out infinite; }
-.co-logo-crossfade .cf-layer img {
-  width: auto;
-  object-fit: contain;
-  opacity: 0.55;
-}
-.cf-partner-label {
+.co-logo-caption {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
-}
-@keyframes cf-show {
-  0%, 38% { opacity: 1; }
-  50%, 88% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes cf-hide {
-  0%, 38% { opacity: 0; }
-  50%, 88% { opacity: 1; }
-  100% { opacity: 0; }
+  white-space: nowrap;
 }
 
 /* lessons earned — the amber quote is the brand logic applied to a career

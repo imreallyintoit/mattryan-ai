@@ -35,6 +35,67 @@ function RibbonIcon({ size }: { size: number }) {
   );
 }
 
+// Small, quiet stand-in motifs for the four "Things I build myself" blocks
+// that don't have a real screenshot or photo yet, in the same thin-stroke
+// line art as RibbonIcon above and the rest of the site's decorative SVGs.
+// Swap each one out for a real image once Matt supplies it (see the
+// .is-placeholder TODO near the build-grid markup below).
+function InfinityIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 16" fill="none" aria-hidden="true">
+      <path
+        d="M6.4 3C3.4 3 1.5 5.3 1.5 8s1.9 5 4.9 5c3.4 0 4.7-5 8.2-5s4.9 2.3 4.9 5-1.9 5-4.9 5c-3.4 0-4.7-5-8.2-5"
+        stroke="var(--ink-faint)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function SportIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="7" cy="4.5" r="2" stroke="var(--ink-faint)" strokeWidth="1.4" />
+      <path
+        d="M7 6.5 L7 13 M7 8.5 L4 10.5 M7 8.5 L10 7.5 M7 13 L4 19.5 M7 13 L13 15.5 L16 17"
+        stroke="var(--ink-faint)"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="18" cy="18" r="2.2" fill="var(--ink-faint)" />
+    </svg>
+  );
+}
+function TentIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M3 20 L12 5 L21 20 M12 5 L12 20 M9.5 20 L12 14.5 L14.5 20"
+        stroke="var(--ink-faint)"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function MicrophoneIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="9" y="3" width="6" height="10" rx="3" stroke="var(--ink-faint)" strokeWidth="1.4" />
+      <path
+        d="M6 11a6 6 0 0 0 12 0 M12 17 L12 21 M8.5 21 L15.5 21"
+        stroke="var(--ink-faint)"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export const metadata = {
   title: "Matt Ryan · AI Adoption, Forward Deployed Engineering, and Customer Success",
   description:
@@ -437,30 +498,30 @@ export default function Home() {
                 tag: "Personal project",
                 title: "Infiniti",
                 body: "Infiniti preserves a person's stories, voice, and values so the people they love can keep hearing from them. A Life Chronicler captures memories through daily prompts, and a Legacy Keeper lets family talk with what was captured, with the person deciding what's kept and who can hear it. I'm building it for my son as a full stack prototype with integrations into headless AI sites.",
-                imageHint: "Product screenshot pending",
-                imageAlt: "Infiniti app screen showing a daily prompt asking the user to share a family story.",
+                imageAlt: "Infinity symbol, standing in for Infiniti until a real product screenshot is ready.",
+                Icon: InfinityIcon,
               },
               {
                 tag: "Personal project",
                 title: "Youthy",
                 body: "Youthy is a single portal for youth sports news, programs, and camp enrollment, built because registration deadlines are scattered across dozens of sites. It aggregates those sources and pushes due dates to the parent signing up, so a missed date never turns into a waitlist or a lost season. It's a full stack platform I'm trialing locally with families.",
-                imageHint: "Push notification pending",
-                imageAlt: "Phone notification from Youthy reminding a parent that a youth soccer registration deadline closes soon.",
+                imageAlt: "A child playing a sport, standing in for Youthy until a real product screenshot is ready.",
+                Icon: SportIcon,
               },
               {
                 tag: "Community",
                 title: "Pack 5 Wilmette",
                 body: "Pack 5 runs on a fully autonomous system I built to manage its events, website, and fundraising. Leaders create an event once and agents handle the announcements, RSVPs, reminders, and site updates, so knowledge stays with the pack even as families age out. Volunteers get their time back to spend with the kids.",
                 link: { href: "https://www.pack5wilmette.org", label: "pack5wilmette.org" },
-                imageHint: "Site screenshot pending",
-                imageAlt: "Pack 5 Wilmette website showing upcoming Cub Scout events.",
+                imageAlt: "A camping tent, standing in for Pack 5 Wilmette until a real site screenshot is ready.",
+                Icon: TentIcon,
               },
               {
                 tag: "Civic advisory",
                 title: "AI for local government",
                 body: "I serve as the AI expert advising the Village of Wilmette on where AI can improve local government. The work spans agentic workflows, permit approvals, and financial and treasury management, all designed for faster resident service with humans approving every decision that matters. Small staffs, public money, and high trust make it the best test of responsible AI.",
-                imageHint: "Village Hall photo pending",
-                imageAlt: "Wilmette Village Hall exterior on a clear day.",
+                imageAlt: "A microphone and stand, standing in for public meetings until a real photo of Wilmette Village Hall is ready.",
+                Icon: MicrophoneIcon,
               },
               {
                 tag: "Volunteer advisory",
@@ -468,22 +529,14 @@ export default function Home() {
                 title: "Breast Cancer Research Foundation",
                 body: "I volunteer as an AI advisor to BCRF, helping improve the payment tools behind donations so more of every gift reaches research. It's the same work I do every day, applied to a mission I care about for the women in my family who have been affected by breast cancer.",
                 link: { href: "https://www.bcrf.org", label: "bcrf.org" },
-                isRibbon: true,
                 imageAlt: "Pink ribbon symbol for breast cancer research.",
+                Icon: RibbonIcon,
               },
-            ].map(({ tag, tagIcon, title, body, link, imageHint, imageAlt, isRibbon }, i) => (
+            ].map(({ tag, tagIcon, title, body, link, imageAlt, Icon }, i) => (
               <Reveal key={title} className="build-card" delay={80 + i * 40}>
-                {isRibbon ? (
-                  <div className="build-card-image is-ribbon" role="img" aria-label={imageAlt}>
-                    <RibbonIcon size={72} />
-                  </div>
-                ) : (
-                  <div className="build-card-image is-placeholder" role="img" aria-label={imageAlt}>
-                    <span className="build-ph-ticks" aria-hidden="true" />
-                    <span className="build-ph-label">Image pending</span>
-                    <span className="build-ph-hint">{imageHint}</span>
-                  </div>
-                )}
+                <div className="build-card-image is-icon" role="img" aria-label={imageAlt}>
+                  <Icon size={56} />
+                </div>
                 <div className="build-card-body">
                   <span className="build-tag">
                     {tagIcon && <RibbonIcon size={13} />}
@@ -505,11 +558,15 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          {/* TODO(Matt): swap each .build-card-image.is-placeholder for a real
-              <img loading="lazy" width={...} height={...} src="/....webp">
-              using the imageAlt text already wired up as the alt attribute.
-              The Breast Cancer Research Foundation block uses a real built
-              asset (RibbonIcon) already, not a placeholder. */}
+          {/* TODO(Matt): each .build-card-image.is-icon is a small stand-in
+              motif (InfinityIcon, SportIcon, TentIcon, MicrophoneIcon, all
+              defined near the top of this file), not a real photo. Swap each
+              one for a real <img loading="lazy" width={...} height={...}
+              src="/....webp"> using the imageAlt text already wired up as
+              the alt attribute once Matt supplies the image. The Breast
+              Cancer Research Foundation block's RibbonIcon is the one
+              exception meant to stay: it's a real built asset, not a
+              placeholder. */}
         </div>
       </section>
 

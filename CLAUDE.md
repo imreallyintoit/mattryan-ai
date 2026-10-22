@@ -79,22 +79,27 @@ sections carry the reading order:
    Breast Cancer Research Foundation (volunteer advisory). `.build-grid` uses
    `repeat(auto-fit, minmax(260px, 1fr))` rather than a fixed column count so
    five cards, an odd number, reflow cleanly at any width instead of leaving
-   a dead cell. Four of the five cards still need a real photo or screenshot:
-   they render `.build-card-image.is-placeholder`, a dashed-border frame with
-   an "Image pending" label and a hint of what belongs there (reusing the
-   profile page's existing `.headshot-placeholder` visual language), `alt`
-   text already written and wired to the placeholder's `aria-label` so
-   swapping in a real `<img loading="lazy" width height src="....webp">`
-   (per the quality floor: lazy loaded, WebP or AVIF, explicit dimensions to
-   avoid layout shift) only means replacing the placeholder markup, not the
-   copy. The fifth card, BCRF, already has its real image: `RibbonIcon` (top
-   of `app/page.tsx`), a breast cancer awareness ribbon drawn in the site's
-   own thin-stroke line art rather than the 🎗️ emoji, which renders yellow on
-   most devices. It's reused small next to that card's label and large as
-   the card's image, one shape at two sizes. It uses `--bcrf-pink`, the
-   site's one deliberate exception to the signal/alert two-color system: a
-   real-world symbol color, not a UI accent, so don't reach for it anywhere
-   else and don't let `--bcrf-pink` drift toward being a third site accent.
+   a dead cell. All five cards render `.build-card-image.is-icon`: a single
+   small (56px), quiet, thin-stroke motif centered on a flat `--obsidian`
+   field, no frame or caption, standing in for a real photo or screenshot
+   until Matt supplies one. Each card's icon component lives near the top of
+   `app/page.tsx` (`InfinityIcon` for Infiniti, `SportIcon` for Youthy,
+   `TentIcon` for Pack 5, `MicrophoneIcon` for the civic advisory, and
+   `RibbonIcon`, reused small next to the BCRF card's label too) and is
+   chosen to evoke the block without depicting anything literal (no
+   identifiable people, no specific screenshots) it would have to later
+   contradict. `imageAlt` on each card is already written and wired to the
+   icon wrapper's `aria-label`, so swapping an icon for a real
+   `<img loading="lazy" width height src="....webp">` (per the quality
+   floor: lazy loaded, WebP or AVIF, explicit dimensions to avoid layout
+   shift) only means replacing that one card's markup, not its copy or alt
+   text. `RibbonIcon` is the one exception meant to stay permanently: a
+   breast cancer awareness ribbon drawn in the site's own line art rather
+   than the 🎗️ emoji, which renders yellow on most devices, using
+   `--bcrf-pink`, the site's one deliberate exception to the signal/alert
+   two-color system (a real-world symbol color, not a UI accent) — don't
+   reach for `--bcrf-pink` anywhere else, and don't let it drift toward
+   being a third site accent.
 7. 06 Career — the timeline, including the Baxter International entry
 8. Contact — email + LinkedIn CTA
 

@@ -73,8 +73,28 @@ sections carry the reading order:
    one-line principles
 4. 03 Expertise — four competencies, forward deployed engineering first
 5. 04 Selected work — featured card links to `/system`, plus four career projects
-6. 05 Things I build myself — personal projects (currently just Infiniti);
-   `.work-grid.is-single` keeps a lone card from leaving a dead grid cell
+6. 05 Things I build myself — five image-topped `.build-card`s (`.build-grid`
+   in globals.css): Infiniti and Youthy (personal projects), Pack 5 Wilmette
+   and the Village of Wilmette AI advisory (community and civic), and the
+   Breast Cancer Research Foundation (volunteer advisory). `.build-grid` uses
+   `repeat(auto-fit, minmax(260px, 1fr))` rather than a fixed column count so
+   five cards, an odd number, reflow cleanly at any width instead of leaving
+   a dead cell. Four of the five cards still need a real photo or screenshot:
+   they render `.build-card-image.is-placeholder`, a dashed-border frame with
+   an "Image pending" label and a hint of what belongs there (reusing the
+   profile page's existing `.headshot-placeholder` visual language), `alt`
+   text already written and wired to the placeholder's `aria-label` so
+   swapping in a real `<img loading="lazy" width height src="....webp">`
+   (per the quality floor: lazy loaded, WebP or AVIF, explicit dimensions to
+   avoid layout shift) only means replacing the placeholder markup, not the
+   copy. The fifth card, BCRF, already has its real image: `RibbonIcon` (top
+   of `app/page.tsx`), a breast cancer awareness ribbon drawn in the site's
+   own thin-stroke line art rather than the 🎗️ emoji, which renders yellow on
+   most devices. It's reused small next to that card's label and large as
+   the card's image, one shape at two sizes. It uses `--bcrf-pink`, the
+   site's one deliberate exception to the signal/alert two-color system: a
+   real-world symbol color, not a UI accent, so don't reach for it anywhere
+   else and don't let `--bcrf-pink` drift toward being a third site accent.
 7. 06 Career — the timeline, including the Baxter International entry
 8. Contact — email + LinkedIn CTA
 

@@ -33,6 +33,12 @@
   --glow-signal: rgba(56, 189, 248, 0.35);
   --glow-alert: rgba(245, 165, 36, 0.4);
 
+  /* The one deliberate exception to the two-signal system: breast cancer
+     awareness pink, used only by the BCRF ribbon icon in "Things I build
+     myself." It is a real-world symbol color, not a UI accent, so it does
+     not compete with --signal/--alert anywhere else on the site. */
+  --bcrf-pink: #f3a8c4;
+
   /* Type */
   --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
@@ -1984,6 +1990,94 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   margin-top: 2px;
 }
 .work-card-link:hover { text-decoration: underline; }
+
+/* "Things I build myself" — image-topped cards. auto-fit/minmax instead of
+   a fixed column count so five cards (an odd number) reflow cleanly at any
+   width instead of leaving a dead cell the way a fixed 2-column grid would. */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.build-card {
+  background: var(--graphite);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.build-card-image {
+  aspect-ratio: 4 / 3;
+  border-bottom: 1px solid var(--hairline);
+}
+.build-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.build-card-image.is-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px;
+  background: var(--obsidian);
+}
+.build-ph-ticks {
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed var(--hairline-strong);
+  border-radius: 2px;
+}
+.build-ph-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  z-index: 1;
+}
+.build-ph-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  opacity: 0.7;
+  z-index: 1;
+}
+.build-card-image.is-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(70% 60% at 50% 45%, rgba(243, 168, 196, 0.08), transparent 70%),
+    var(--obsidian);
+}
+.build-card-body {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.build-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.build-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.build-card-body p { font-size: 15px; color: var(--ink-dim); line-height: 1.6; }
 
 /* =========================================================================
    CONTACT

@@ -4,6 +4,37 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import CompanyLogo from "@/components/CompanyLogo";
 
+// A breast cancer awareness ribbon, drawn in the site's own thin-stroke line
+// art rather than the yellow-rendering ribbon emoji. Used both small next to
+// the BCRF block's label and large as that block's card image: one shape,
+// two sizes, so there is nothing to keep in sync between them.
+function RibbonIcon({ size }: { size: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 28"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 2 C 8 2 6 5 7 8 C 7.6 9.8 9.4 10.6 11 10 L 7 25"
+        stroke="var(--bcrf-pink)"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 2 C 16 2 18 5 17 8 C 16.4 9.8 14.6 10.6 13 10 L 17 25"
+        stroke="var(--bcrf-pink)"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export const metadata = {
   title: "Matt Ryan · AI Adoption, Forward Deployed Engineering, and Customer Success",
   description:
@@ -399,28 +430,90 @@ export default function Home() {
               Things I build myself.
             </h2>
             <p className="lede" style={{ marginTop: 0, marginBottom: 40 }}>
-              I lead teams that build with AI, and I build with it myself.
+              I lead teams that build with AI, and I build with it myself,
+              for my family and my community.
             </p>
           </Reveal>
 
-          <div className="work-grid is-single">
+          <div className="build-grid">
             {[
               {
                 tag: "Personal project",
                 title: "Infiniti",
-                body: "An app that preserves a person's stories, voice, and values so the people they love can keep hearing from them. I'm building it for my son. React, deployed on Vercel.",
+                body: "Infiniti preserves a person's stories, voice, and values so the people they love can keep hearing from them. A Life Chronicler captures memories through daily prompts, and a Legacy Keeper lets family talk with what was captured, with the person deciding what's kept and who can hear it. I'm building it for my son as a full stack prototype with integrations into headless AI sites.",
+                imageHint: "Product screenshot pending",
+                imageAlt: "Infiniti app screen showing a daily prompt asking the user to share a family story.",
               },
-            ].map(({ tag, title, body }) => (
-              <Reveal key={title} className="work-card" delay={100}>
-                <span className="work-tag">{tag}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
+              {
+                tag: "Personal project",
+                title: "Youthy",
+                body: "Youthy is a single portal for youth sports news, programs, and camp enrollment, built because registration deadlines are scattered across dozens of sites. It aggregates those sources and pushes due dates to the parent signing up, so a missed date never turns into a waitlist or a lost season. It's a full stack platform I'm trialing locally with families.",
+                imageHint: "Push notification pending",
+                imageAlt: "Phone notification from Youthy reminding a parent that a youth soccer registration deadline closes soon.",
+              },
+              {
+                tag: "Community",
+                title: "Pack 5 Wilmette",
+                body: "Pack 5 runs on a fully autonomous system I built to manage its events, website, and fundraising. Leaders create an event once and agents handle the announcements, RSVPs, reminders, and site updates, so knowledge stays with the pack even as families age out. Volunteers get their time back to spend with the kids.",
+                link: { href: "https://www.pack5wilmette.org", label: "pack5wilmette.org" },
+                imageHint: "Site screenshot pending",
+                imageAlt: "Pack 5 Wilmette website showing upcoming Cub Scout events.",
+              },
+              {
+                tag: "Civic advisory",
+                title: "AI for local government",
+                body: "I serve as the AI expert advising the Village of Wilmette on where AI can improve local government. The work spans agentic workflows, permit approvals, and financial and treasury management, all designed for faster resident service with humans approving every decision that matters. Small staffs, public money, and high trust make it the best test of responsible AI.",
+                imageHint: "Village Hall photo pending",
+                imageAlt: "Wilmette Village Hall exterior on a clear day.",
+              },
+              {
+                tag: "Volunteer advisory",
+                tagIcon: true,
+                title: "Breast Cancer Research Foundation",
+                body: "I volunteer as an AI advisor to BCRF, helping improve the payment tools behind donations so more of every gift reaches research. It's the same work I do every day, applied to a mission I care about for the women in my family who have been affected by breast cancer.",
+                link: { href: "https://www.bcrf.org", label: "bcrf.org" },
+                isRibbon: true,
+                imageAlt: "Pink ribbon symbol for breast cancer research.",
+              },
+            ].map(({ tag, tagIcon, title, body, link, imageHint, imageAlt, isRibbon }, i) => (
+              <Reveal key={title} className="build-card" delay={80 + i * 40}>
+                {isRibbon ? (
+                  <div className="build-card-image is-ribbon" role="img" aria-label={imageAlt}>
+                    <RibbonIcon size={72} />
+                  </div>
+                ) : (
+                  <div className="build-card-image is-placeholder" role="img" aria-label={imageAlt}>
+                    <span className="build-ph-ticks" aria-hidden="true" />
+                    <span className="build-ph-label">Image pending</span>
+                    <span className="build-ph-hint">{imageHint}</span>
+                  </div>
+                )}
+                <div className="build-card-body">
+                  <span className="build-tag">
+                    {tagIcon && <RibbonIcon size={13} />}
+                    {tag}
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                  {link && (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-card-link"
+                    >
+                      {link.label} ↗
+                    </a>
+                  )}
+                </div>
               </Reveal>
             ))}
           </div>
-          {/* TODO(Matt): supply a demo or GitHub URL for Infiniti, and name
-              one or two more agents or tools you built yourself if you want
-              a second card here. */}
+          {/* TODO(Matt): swap each .build-card-image.is-placeholder for a real
+              <img loading="lazy" width={...} height={...} src="/....webp">
+              using the imageAlt text already wired up as the alt attribute.
+              The Breast Cancer Research Foundation block uses a real built
+              asset (RibbonIcon) already, not a placeholder. */}
         </div>
       </section>
 

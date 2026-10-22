@@ -217,8 +217,10 @@ page.
 Matt's real numbers (46% renewal lift, 60% support cost cut, $2.7M savings, $4M
 services revenue, 0–8 Pulse Score, 90–180 day lead time) and career facts come
 from his resume and the FY27 G2 churn BOD deck. Don't invent new metrics. Links:
-LinkedIn `linkedin.com/in/matthewwryan`, GitHub `github.com/imreallyintoit`,
-email `matthew773@gmail.com`.
+LinkedIn `linkedin.com/in/matthewwryan`, email `matthew773@gmail.com`. Matt
+asked for his GitHub profile link removed site-wide (it no longer appears in
+the footer, the profile page's About links, or the Person JSON-LD `sameAs`
+array); don't re-add a GitHub link anywhere without asking him first.
 
 The Pulse Score interpretation matrix on `/system` (the eight-profile table)
 separately shows a "48%" and a "93% to 48%" range — that's an unrelated

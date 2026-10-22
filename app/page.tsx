@@ -64,7 +64,6 @@ const personJsonLd = {
   image: "https://mattryan.ai/headshot.png",
   sameAs: [
     "https://www.linkedin.com/in/matthewwryan/",
-    "https://github.com/imreallyintoit",
   ],
   alumniOf: {
     "@type": "CollegeOrUniversity",
@@ -200,9 +199,6 @@ export default function Home() {
               <div className="about-links">
                 <a href="https://www.linkedin.com/in/matthewwryan/" target="_blank" rel="noopener noreferrer">
                   LinkedIn ↗
-                </a>
-                <a href="https://github.com/imreallyintoit" target="_blank" rel="noopener noreferrer">
-                  GitHub ↗
                 </a>
               </div>
             </Reveal>

@@ -128,15 +128,17 @@ logo in neither place.
 **`app/system/page.tsx` — the AI GTM Operating System.** The full framework:
 Hero, Foreword, System (SOAR), Proof, Activation, In practice, Governance,
 Contact. This page carries no bio; the profile page owns that. "Shared with
-G2's permission." runs under the hero stats and again above the GRR/NRR
-chart — keep both notes if you touch that content. The four workflow cards'
-"How it works" breakdown is a `<details>`/`<summary>` (`.wf-how`), closed by
-default; don't force it open or convert it back to a plain div.
+G2's permission." runs under the hero stats; there used to be a second copy
+above a GRR/NRR chart in Proof, but Matt asked to remove that chart (and its
+now-unused `components/RenewalChart.tsx`) entirely, so that's the only copy
+left. The four workflow cards' "How it works" breakdown is a
+`<details>`/`<summary>` (`.wf-how`), closed by default; don't force it open
+or convert it back to a plain div.
 
-Proof opens with the "49% to 80%" BRR story before its four stat cards and
-the GRR/NRR chart: intro paragraph, a four-item bridge explaining how the
-three layers worked together, `<BrrStoryChart />`, then a closing line. The
-chart (`components/BrrStoryChart.tsx`, data in `data/brrStory.ts`) draws an
+Proof opens with the "49% to 80%" BRR story before its four stat cards:
+intro paragraph, a four-item bridge explaining how the three layers worked
+together, `<BrrStoryChart />`, then a closing line. The chart
+(`components/BrrStoryChart.tsx`, data in `data/brrStory.ts`) draws an
 illustrative (not measured) Catmull-Rom curve through six eras via SVG,
 plus six HTML columns (stacking as cards below 900px) each with a title,
 dates, an impact stat, a three-segment layer mix bar, and Humans/Agents and

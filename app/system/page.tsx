@@ -1,6 +1,5 @@
 import PredictionLoop from "@/components/PredictionLoop";
 import Reveal from "@/components/Reveal";
-import RenewalChart from "@/components/RenewalChart";
 import BrrStoryChart from "@/components/BrrStoryChart";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
@@ -337,16 +336,6 @@ export default function SystemPage() {
               </div>
             </Reveal>
           </div>
-
-          <Reveal delay={100}>
-            <p className="permission-note">Shared with G2&apos;s permission.</p>
-            <RenewalChart />
-            <p className="chart-note">
-              GRR and NRR shown by quarter. Booked renewal rate (BRR), used
-              in the story above, measures renewals booked against renewals
-              due.
-            </p>
-          </Reveal>
 
           {/* ---- Pulse Score: expanded ---- */}
           <Reveal className="pulse-head" delay={60}>

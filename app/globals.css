@@ -774,16 +774,6 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   max-width: 48ch;
 }
 
-.chart-note {
-  margin-top: 14px;
-  max-width: 60ch;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  color: var(--ink-faint);
-}
-
 /* =========================================================================
    PROOF — metrics + Pulse Score
    ========================================================================= */
@@ -843,50 +833,6 @@ h3.display { font-size: clamp(22px, 2.6vw, 30px); }
   font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint);
   letter-spacing: 0.1em;
 }
-
-/* =========================================================================
-   RENEWAL CHART
-   ========================================================================= */
-.renewal-chart {
-  margin-top: 56px;
-  padding: 28px 28px 20px;
-  border: 1px solid var(--hairline-strong);
-  border-radius: 3px;
-  background: var(--graphite);
-}
-.renewal-chart-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 18px;
-  gap: 12px;
-}
-.renewal-chart-title-group { display: flex; flex-direction: column; gap: 8px; }
-.renewal-chart-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-.renewal-chart-legend { display: flex; gap: 16px; }
-.rc-legend-item {
-  display: flex; align-items: center; gap: 6px;
-  font-family: var(--font-mono); font-size: 10px;
-  letter-spacing: 0.06em; color: var(--signal);
-}
-.rc-legend-item.rc-legend-grr { color: var(--ink-dim); }
-.renewal-chart-deltas { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-.renewal-chart-delta {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--signal);
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-.renewal-chart-delta.is-dim { font-size: 14px; color: var(--ink-dim); }
-.renewal-svg { width: 100%; display: block; }
 
 /* =========================================================================
    PULSE SCORE — expanded section

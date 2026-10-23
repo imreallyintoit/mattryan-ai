@@ -1,6 +1,7 @@
 import PredictionLoop from "@/components/PredictionLoop";
 import Reveal from "@/components/Reveal";
 import RenewalChart from "@/components/RenewalChart";
+import BrrStoryChart from "@/components/BrrStoryChart";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -42,8 +43,8 @@ export default function SystemPage() {
 
             <div className="readout">
               <div className="readout-item">
-                <span className="readout-val signal">46%</span>
-                <span className="readout-label">Renewal-rate lift</span>
+                <span className="readout-val signal">49% to 80%</span>
+                <span className="readout-label">Booked renewal rate</span>
               </div>
               <div className="readout-item">
                 <span className="readout-val signal">60%</span>
@@ -81,7 +82,7 @@ export default function SystemPage() {
             <nav className="foreword-guide" aria-label="Page sections">
               {[
                 { num: "01", href: "#system",     label: "System",       desc: "The architecture: how the Prediction Loop runs as a continuous operating system across the customer journey." },
-                { num: "02", href: "#proof",       label: "Proof",        desc: "The outcomes: what this system produced inside a real GTM organization, with the data to support it." },
+                { num: "02", href: "#proof",       label: "Proof",        desc: "The outcomes: how booked renewal rate went from 49% to 80%, and the data behind it." },
                 { num: "03", href: "#activation",  label: "Activation",   desc: "The human motion: why the first 30 days determine renewal, and the model built to win that window." },
                 { num: "04", href: "#practice",    label: "In practice",  desc: "The motion: 14 live agentic workflows running across sales, success, and onboarding today." },
                 { num: "05", href: "#governance",  label: "Governance",   desc: "The foundation: the intake and triage system that keeps AI work coherent and scalable." },
@@ -195,6 +196,10 @@ export default function SystemPage() {
                 accounts, executive relationships, the moments a model can flag
                 but not close.
               </p>
+              <p className="layer-at-g2">
+                At G2: named onboarding partners, CSM-owned business reviews,
+                and a weekly Pulse review for every leader.
+              </p>
             </Reveal>
             <Reveal className="layer-card" delay={100}>
               <span className="eyebrow">Layer 02</span>
@@ -203,6 +208,10 @@ export default function SystemPage() {
                 Agentic workflows across onboarding, adoption, support, and
                 review generation, delivering the motion at a scale headcount
                 never could.
+              </p>
+              <p className="layer-at-g2">
+                At G2: churn-risk alerts and renewal risk briefs delivered to
+                account teams a quarter before renewal.
               </p>
             </Reveal>
             <Reveal className="layer-card" delay={200}>
@@ -213,6 +222,10 @@ export default function SystemPage() {
                 low-complexity journeys end to end, freeing the other two
                 layers for what they do best.
               </p>
+              <p className="layer-at-g2">
+                At G2: review campaigns, lifecycle nurtures, and a self-serve
+                support front door carrying the long tail.
+              </p>
             </Reveal>
           </div>
         </div>
@@ -221,6 +234,71 @@ export default function SystemPage() {
       {/* ---------------- PROOF ---------------- */}
       <section className="section proof" id="proof">
         <div className="container">
+          {/* ---- The 49% to 80% story ---- */}
+          <Reveal className="brr-story-head">
+            <span className="eyebrow">The story</span>
+            <h2 className="display" style={{ marginTop: 18 }}>
+              From 49% to 80%.
+            </h2>
+            <p className="lede">
+              When I joined G2 in March 2024, booked renewal rate was 49%.
+              Churn was something we reported after it happened. Two and a
+              half years later it is 80%. It did not come from more
+              headcount. It came from routing every account to the right mix
+              of humans, agents, and digital experiences, and letting the
+              signal decide which one acts.
+            </p>
+          </Reveal>
+
+          <div className="brr-layers-bridge">
+            <Reveal className="brr-bridge-item" delay={0}>
+              <h4>Signal decides the layer</h4>
+              <p>
+                The Pulse Score and account value decide who acts: high-value,
+                complex accounts go to a human, mid-market cohorts go
+                digital-first, and the long tail is automated. In G2&apos;s
+                planning this was the cohort &quot;dartboard&quot;: human-led
+                at the center, digital-first in the middle rings, AI-led on
+                the outside.
+              </p>
+            </Reveal>
+            <Reveal className="brr-bridge-item" delay={60}>
+              <h4>Agents put the signal in front of people</h4>
+              <p>
+                Risk alerts, renewal risk briefs, and multithreading contacts
+                arrive in the account team&apos;s Slack channel a quarter
+                before renewal, so humans spend their time acting instead of
+                hunting.
+              </p>
+            </Reveal>
+            <Reveal className="brr-bridge-item" delay={120}>
+              <h4>Digital carries what does not need a person</h4>
+              <p>
+                Review campaigns, lifecycle nurtures, self-serve support, and
+                in-product guidance handle the low-complexity journeys, which
+                is what freed human capacity for the accounts that needed it.
+              </p>
+            </Reveal>
+            <Reveal className="brr-bridge-item" delay={180}>
+              <h4>Every outcome refines the model</h4>
+              <p>
+                Saves, losses, and churn interviews feed back into the score.
+                This is the Refine step of the Prediction Loop.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={100}>
+            <BrrStoryChart />
+          </Reveal>
+
+          <Reveal delay={60}>
+            <p className="brr-closing-line">
+              Humans fixed the front of the journey. Agents moved the warning
+              earlier. Digital carried the long tail.
+            </p>
+          </Reveal>
+
           <Reveal>
             <span className="eyebrow">Built, not theorized</span>
             <h2 className="display" style={{ marginTop: 18, maxWidth: "16ch" }}>
@@ -229,11 +307,12 @@ export default function SystemPage() {
           </Reveal>
 
           <div className="proof-grid">
-            <Reveal className="metric" delay={0}>
-              <div className="num signal">46%</div>
+            <Reveal className="metric is-wide-num" delay={0}>
+              <div className="num signal">49% to 80%</div>
               <div className="cap">
-                Improvement in renewal rates by treating churn as a product
-                engineering, marketing, and GTM problem.
+                Booked renewal rate since March 2024, by treating churn as a
+                product, marketing, and GTM engineering problem instead of a
+                renewal-desk problem.
               </div>
             </Reveal>
             <Reveal className="metric" delay={80}>
@@ -262,6 +341,11 @@ export default function SystemPage() {
           <Reveal delay={100}>
             <p className="permission-note">Shared with G2&apos;s permission.</p>
             <RenewalChart />
+            <p className="chart-note">
+              GRR and NRR shown by quarter. Booked renewal rate (BRR), used
+              in the story above, measures renewals booked against renewals
+              due.
+            </p>
           </Reveal>
 
           {/* ---- Pulse Score: expanded ---- */}
@@ -512,7 +596,8 @@ export default function SystemPage() {
               quarterly sentiment, not meeting cadence, not NPS. The behavior
               in the first 30 days determines whether a customer reaches
               renewal as an advocate or a churn risk. Every late-stage
-              intervention is a failure of early signal.
+              intervention is a failure of early signal. This is the window
+              that moved booked renewal rate the most.
             </p>
           </Reveal>
 

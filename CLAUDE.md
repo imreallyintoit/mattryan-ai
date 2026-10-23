@@ -133,6 +133,18 @@ chart — keep both notes if you touch that content. The four workflow cards'
 "How it works" breakdown is a `<details>`/`<summary>` (`.wf-how`), closed by
 default; don't force it open or convert it back to a plain div.
 
+Proof opens with the "49% to 80%" BRR story before its four stat cards and
+the GRR/NRR chart: intro paragraph, a four-item bridge explaining how the
+three layers worked together, `<BrrStoryChart />`, then a closing line. The
+chart (`components/BrrStoryChart.tsx`, data in `data/brrStory.ts`) draws an
+illustrative (not measured) Catmull-Rom curve through six eras via SVG,
+plus six HTML columns (stacking as cards below 900px) each with a title,
+dates, an impact stat, a three-segment layer mix bar, and Humans/Agents and
+signals/Digital text. Edit the copy and the two numeric arrays
+(`layerMix`, `brrCurve`) in the data file, not the component. The mix bar's
+per-era `aria-label` is generated from `layerMix`, not hand-written, so it
+always matches what the bar shows.
+
 **`app/speaking/page.tsx` — speaking.** Numbered sections:
 1. Hero — thesis line + mono-treated stage photo + "Book a talk" CTA, plus a
    "Download speaker one-sheet" button (same button repeats near the closing
@@ -219,9 +231,21 @@ page.
 
 ## Content that must stay accurate
 
-Matt's real numbers (46% renewal lift, 60% support cost cut, $2.7M savings, $4M
-services revenue, 0–8 Pulse Score, 90–180 day lead time) and career facts come
-from his resume and the FY27 G2 churn BOD deck. Don't invent new metrics. Links:
+Matt's real numbers (booked renewal rate (BRR) from 49% to 80% since he
+joined G2 in March 2024, a +31 point climb; 60% support cost cut; $2.7M
+savings; $4M services revenue; 0–8 Pulse Score; 90–180 day lead time) and
+career facts come from his resume and the FY27 G2 churn BOD deck. The site
+used to anchor this on a "46% renewal lift" stat; that framing is retired
+site-wide in favor of the "49% to 80%" BRR story (`/system`'s Proof section,
+`components/BrrStoryChart.tsx`, `data/brrStory.ts`) because it is a single
+number anyone can picture rising, not a derived lift percentage. Never
+convert "49% to 80%" into a relative percentage ("63% lift"); always state
+it as the two absolute numbers or "+31 points". Don't invent new metrics.
+One exception stands deliberately: `lib/speaking-data.ts`'s Customer Success
+Summit Chicago 2025 engagement description still says "lifting renewal
+rates 46%", because it's a record of what that November 2025 talk actually
+said, not current marketing copy, and BRR had not reached 80% yet at that
+date. Don't silently rewrite it to match the current framing. Links:
 LinkedIn `linkedin.com/in/matthewwryan`, email `matthew773@gmail.com`. Matt
 asked for his GitHub profile link removed site-wide (it no longer appears in
 the footer, the profile page's About links, or the Person JSON-LD `sameAs`

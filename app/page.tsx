@@ -357,7 +357,7 @@ export default function Home() {
               {
                 n: "02",
                 title: "AI across the customer lifecycle",
-                body: "Prediction, agents, and the data underneath them, running from onboarding to renewal.",
+                body: "Prediction, agents, and the data underneath them, running from onboarding to renewal. At G2, this took booked renewal rate from 49% to 80%.",
               },
               {
                 n: "03",
@@ -401,12 +401,13 @@ export default function Home() {
                 <span className="work-tag">G2 · 2024 to now</span>
                 <h3 className="display">The AI GTM Operating System</h3>
                 <p>
-                  A predictive system for go-to-market: the Pulse Score, a
-                  30-day activation model, and 14 live agentic workflows.
-                  Documented end to end.
+                  A predictive system for go-to-market that took booked
+                  renewal rate from 49% to 80%: the Pulse Score, a 30-day
+                  activation model, and 14 live agentic workflows. Documented
+                  end to end.
                 </p>
                 <div className="work-feature-stats">
-                  <span><strong>46%</strong> renewal lift</span>
+                  <span><strong>49% to 80%</strong> BRR</span>
                   <span><strong>60%</strong> support cost cut</span>
                   <span><strong>90-180d</strong> risk lead time</span>
                 </div>
@@ -435,7 +436,7 @@ export default function Home() {
               {
                 tag: "G2 · 2024 to now",
                 title: "Professional services from inception",
-                body: "I arrived to no implementation function and retention near 50%. I built the services business, pricing, and a delivery model across three regions.",
+                body: "I arrived to no implementation function and booked renewal rate at 49%. I built the services business, pricing, and a delivery model across three regions.",
               },
               {
                 tag: "Slack / Salesforce · 2020 to 2022",
@@ -590,7 +591,7 @@ export default function Home() {
                 {
                   when: "2024 to NOW",
                   who: "G2 · VP, Global Solutions & Customer Success",
-                  what: "Architected the AI GTM Operating System; built professional services from inception across three regions; co-launched G2's commercial MCP strategy.",
+                  what: "Architected the AI GTM Operating System; built professional services from inception across three regions; co-launched G2's commercial MCP strategy. Booked renewal rate rose from 49% to 80%.",
                   logoSlug: "g2",
                   logoName: "G2",
                 },

@@ -15,14 +15,14 @@ export const topics: Topic[] = [
     pillar: "AI-Native Post-Sales Operating Systems",
     title: "Architecting the AI-First Customer Lifecycle",
     body: "Agent-delivered, human-led systems from onboarding to renewal.",
-    proof: "60% support cost cut, activation up from 8.6% to 39.1%, 46% renewal lift.",
+    proof: "Booked renewal rate from 49% to 80%, activation up from 8.6% to 39.1%, 60% support cost cut.",
   },
   {
     n: "02",
     pillar: "Predictive Retention and Customer Outcome Science",
     title: "Churn Is a Product Problem",
     body: "Leading indicators that surface risk long before the renewal window.",
-    proof: "0 to 8 health model, 90 to 180 days of warning, about 80% churn recall versus 60%.",
+    proof: "0 to 8 health model, 90 to 180 days of warning, about 80% churn recall versus 60%, and BRR from 49% to 80%.",
   },
   {
     n: "03",

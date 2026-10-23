@@ -25,7 +25,7 @@ const stages = rawEngagements.slice(0, 4).map((e) => ({
 }));
 
 const proofStrip = [
-  { figure: "46%", label: "renewal lift at G2" },
+  { figure: "49% to 80%", label: "booked renewal rate at G2" },
   { figure: "60%", label: "support cost cut" },
   { figure: "90 to 180 days", label: "of churn warning before renewal" },
   { figure: "$100K to $11M", label: "forward deployed engineering at Slack" },

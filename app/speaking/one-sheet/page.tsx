@@ -87,7 +87,7 @@ export default function OneSheetPage() {
             <ul className="os-talks">
               {topics.map((t) => (
                 <li className="talk" key={t.n}>
-                  <strong>{t.title}.</strong> {t.body} {t.proof}
+                  <strong>{t.title}{/[.!?]$/.test(t.title) ? "" : "."}</strong> {t.body} {t.proof}
                 </li>
               ))}
             </ul>

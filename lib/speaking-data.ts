@@ -20,7 +20,7 @@ export const topics: Topic[] = [
   {
     n: "02",
     pillar: "Predictive Retention and Customer Outcome Science",
-    title: "Churn Is a Product Problem",
+    title: "Churn Isn't a Product, Marketing, or Revenue Problem. It's a Business Problem.",
     body: "Leading indicators that surface risk long before the renewal window.",
     proof: "0 to 8 health model, 90 to 180 days of warning, about 80% churn recall versus 60%, and BRR from 49% to 80%.",
   },
